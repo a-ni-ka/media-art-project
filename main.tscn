@@ -1,8 +1,9 @@
-[gd_scene load_steps=7 format=3 uid="uid://4a33w8jd0tmg"]
+[gd_scene load_steps=9 format=3 uid="uid://4a33w8jd0tmg"]
 
 [ext_resource type="Texture2D" uid="uid://dxdwcc07kt2q3" path="res://visuals/w11wallpaper.jpg" id="2_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://c2op4jrngcgc2" path="res://visuals/start-button.png" id="2_h2yge"]
 [ext_resource type="Texture2D" uid="uid://c8np16206qjlw" path="res://visuals/search.svg" id="3_h2yge"]
+[ext_resource type="Script" uid="uid://dfjqhnollgwy4" path="res://date_time.gd" id="4_1bvp3"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h2yge"]
 bg_color = Color(0.909804, 0.921569, 0.945098, 1)
@@ -22,6 +23,11 @@ corner_radius_bottom_left = 25
 bg_color = Color(0.917647, 0.92549, 0.94902, 0)
 border_color = Color(0.8, 0.8, 0.8, 0)
 border_blend = true
+
+[sub_resource type="LabelSettings" id="LabelSettings_h2yge"]
+line_spacing = 0.0
+font_size = 10
+font_color = Color(0.0941176, 0.0941176, 0.0941176, 1)
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -79,7 +85,7 @@ size_flags_vertical = 4
 theme_override_styles/panel = SubResource("StyleBoxFlat_h2yge")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/PanelContainer"]
-custom_minimum_size = Vector2(200, 30)
+custom_minimum_size = Vector2(180, 30)
 layout_mode = 2
 theme_override_constants/separation = 10
 
@@ -95,15 +101,40 @@ expand_mode = 1
 stretch_mode = 4
 
 [node name="LineEdit" type="LineEdit" parent="HBoxContainer/PanelContainer/HBoxContainer"]
-custom_minimum_size = Vector2(200, 30)
+custom_minimum_size = Vector2(180, 30)
 layout_mode = 2
 size_flags_vertical = 4
+theme_override_colors/selection_color = Color(0, 0.509804, 1, 1)
 theme_override_colors/caret_color = Color(0.0923971, 0.0923971, 0.0923971, 1)
 theme_override_colors/font_placeholder_color = Color(0.340339, 0.340339, 0.340339, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 0)
+theme_override_colors/font_selected_color = Color(0.901961, 0.92549, 0.94902, 1)
 theme_override_colors/font_color = Color(0.0941176, 0.0941176, 0.0941176, 1)
 theme_override_constants/caret_width = 1
 theme_override_font_sizes/font_size = 12
 theme_override_styles/focus = SubResource("StyleBoxEmpty_h2yge")
 theme_override_styles/normal = SubResource("StyleBoxFlat_0xm2m")
 placeholder_text = "Search"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 1
+anchors_preset = 12
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 0
+alignment = 2
+
+[node name="Label" type="Label" parent="HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "%.%.%"
+label_settings = SubResource("LabelSettings_h2yge")
+horizontal_alignment = 2
+script = ExtResource("4_1bvp3")
+
+[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer2"]
+custom_minimum_size = Vector2(10, 0)
+layout_mode = 2
