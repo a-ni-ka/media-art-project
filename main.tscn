@@ -1,9 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://4a33w8jd0tmg"]
+[gd_scene load_steps=12 format=3 uid="uid://4a33w8jd0tmg"]
 
 [ext_resource type="Texture2D" uid="uid://dxdwcc07kt2q3" path="res://visuals/w11wallpaper.jpg" id="2_0xm2m"]
 [ext_resource type="Texture2D" uid="uid://c2op4jrngcgc2" path="res://visuals/start-button.png" id="2_h2yge"]
 [ext_resource type="Texture2D" uid="uid://c8np16206qjlw" path="res://visuals/search.svg" id="3_h2yge"]
 [ext_resource type="Script" uid="uid://dfjqhnollgwy4" path="res://date_time.gd" id="4_1bvp3"]
+[ext_resource type="PackedScene" uid="uid://fowymqxvc5gq" path="res://elements/search_area.tscn" id="4_7mycd"]
+[ext_resource type="PackedScene" uid="uid://bxcbid1w300rb" path="res://elements/recycle_bin.tscn" id="5_lquwl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h2yge"]
 bg_color = Color(0.909804, 0.921569, 0.945098, 1)
@@ -29,6 +31,9 @@ line_spacing = 0.0
 font_size = 10
 font_color = Color(0.0941176, 0.0941176, 0.0941176, 1)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
+size = Vector2(63, 45)
+
 [node name="Main" type="Control"]
 layout_mode = 3
 anchors_preset = 15
@@ -36,6 +41,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="DesktopWallpaper" type="TextureRect" parent="."]
 layout_mode = 1
@@ -44,6 +50,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 texture = ExtResource("2_0xm2m")
 expand_mode = 1
 
@@ -68,6 +75,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
+mouse_filter = 2
 theme_override_constants/separation = 10
 alignment = 1
 
@@ -82,23 +90,28 @@ stretch_mode = 4
 [node name="PanelContainer" type="PanelContainer" parent="TaskBarCenter"]
 layout_mode = 2
 size_flags_vertical = 4
+mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_h2yge")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="TaskBarCenter/PanelContainer"]
 custom_minimum_size = Vector2(180, 30)
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/separation = 10
 
 [node name="MarginLeft" type="MarginContainer" parent="TaskBarCenter/PanelContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="TextureRect" type="TextureRect" parent="TaskBarCenter/PanelContainer/HBoxContainer"]
+[node name="Search" type="TextureRect" parent="TaskBarCenter/PanelContainer/HBoxContainer"]
 custom_minimum_size = Vector2(18, 18)
 layout_mode = 2
 size_flags_vertical = 4
+mouse_default_cursor_shape = 2
 texture = ExtResource("3_h2yge")
 expand_mode = 1
 stretch_mode = 4
+
+[node name="SearchArea" parent="TaskBarCenter/PanelContainer/HBoxContainer/Search" instance=ExtResource("4_7mycd")]
 
 [node name="LineEdit" type="LineEdit" parent="TaskBarCenter/PanelContainer/HBoxContainer"]
 custom_minimum_size = Vector2(170, 30)
@@ -142,6 +155,14 @@ label_settings = SubResource("LabelSettings_h2yge")
 horizontal_alignment = 2
 script = ExtResource("4_1bvp3")
 
+[node name="Area2D" type="Area2D" parent="TaskBarRight/DateTime"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="TaskBarRight/DateTime/Area2D"]
+position = Vector2(14.5, 7.5)
+shape = SubResource("RectangleShape2D_1bvp3")
+
 [node name="MarginContainer" type="MarginContainer" parent="TaskBarRight"]
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
+
+[node name="RecycleBin" parent="." instance=ExtResource("5_lquwl")]
