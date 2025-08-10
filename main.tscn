@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://4a33w8jd0tmg"]
+[gd_scene load_steps=19 format=3 uid="uid://4a33w8jd0tmg"]
 
 [ext_resource type="Texture2D" uid="uid://dxdwcc07kt2q3" path="res://visuals/w11wallpaper.jpg" id="2_0xm2m"]
 [ext_resource type="Script" uid="uid://bnhmru8blddne" path="res://desktop_wallpaper.gd" id="2_272bh"]
@@ -11,11 +11,20 @@
 [ext_resource type="PackedScene" uid="uid://bxcbid1w300rb" path="res://elements/recycle_bin.tscn" id="5_lquwl"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_272bh"]
-bg_color = Color(0.898039, 0.929412, 0.952941, 1)
+bg_color = Color(0.819608, 0.882353, 0.92549, 1)
 corner_radius_top_left = 10
 corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kek77"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_4c57u"]
+bg_color = Color(1, 1, 1, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_efxa6"]
+bg_color = Color(1, 1, 1, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h2yge"]
 bg_color = Color(0.909804, 0.921569, 0.945098, 1)
@@ -85,16 +94,19 @@ size_flags_vertical = 4
 
 [node name="ContextMenuLine" parent="DesktopWallpaper/ContextMenu/MarginContainer/VBoxContainer" instance=ExtResource("3_5vw27")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_kek77")
 label = "View"
 icon = ExtResource("4_kek77")
 
 [node name="ContextMenuLine2" parent="DesktopWallpaper/ContextMenu/MarginContainer/VBoxContainer" instance=ExtResource("3_5vw27")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_4c57u")
 label = "Refresh"
 icon = ExtResource("4_kek77")
 
 [node name="ContextMenuLine3" parent="DesktopWallpaper/ContextMenu/MarginContainer/VBoxContainer" instance=ExtResource("3_5vw27")]
 layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_efxa6")
 label = "New"
 
 [node name="ColorTaskBar" type="ColorRect" parent="."]
