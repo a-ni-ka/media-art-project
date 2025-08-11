@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://4a33w8jd0tmg"]
+[gd_scene load_steps=20 format=3 uid="uid://4a33w8jd0tmg"]
 
 [ext_resource type="Texture2D" uid="uid://dxdwcc07kt2q3" path="res://visuals/w11wallpaper.jpg" id="1_ynf5e"]
 [ext_resource type="Script" uid="uid://bnhmru8blddne" path="res://Scripts/desktop_wallpaper.gd" id="2_hptm8"]
@@ -9,6 +9,7 @@
 [ext_resource type="PackedScene" uid="uid://fowymqxvc5gq" path="res://elements/search_area.tscn" id="7_wsu2k"]
 [ext_resource type="Script" uid="uid://dfjqhnollgwy4" path="res://Scripts/date_time.gd" id="8_k12tt"]
 [ext_resource type="PackedScene" uid="uid://bxcbid1w300rb" path="res://elements/recycle_bin.tscn" id="9_h1bgf"]
+[ext_resource type="PackedScene" uid="uid://dv3ov2oy2co63" path="res://Scenes/mouse.tscn" id="10_hptm8"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_272bh"]
 bg_color = Color(0.819608, 0.882353, 0.92549, 1)
@@ -17,11 +18,11 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_b3802"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hptm8"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fevyy"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d1ilt"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hibaj"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6iyac"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h2yge"]
 bg_color = Color(0.909804, 0.921569, 0.945098, 1)
@@ -91,19 +92,19 @@ size_flags_vertical = 4
 
 [node name="ContextMenuLine" parent="DesktopWallpaper/ContextMenu/MarginContainer/VBoxContainer" instance=ExtResource("3_d1ilt")]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_b3802")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_hptm8")
 label = "View"
 icon = ExtResource("4_6iyac")
 
 [node name="ContextMenuLine2" parent="DesktopWallpaper/ContextMenu/MarginContainer/VBoxContainer" instance=ExtResource("3_d1ilt")]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_fevyy")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_d1ilt")
 label = "Refresh"
 icon = ExtResource("4_6iyac")
 
 [node name="ContextMenuLine3" parent="DesktopWallpaper/ContextMenu/MarginContainer/VBoxContainer" instance=ExtResource("3_d1ilt")]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_hibaj")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_6iyac")
 label = "New"
 
 [node name="ColorTaskBar" type="ColorRect" parent="."]
@@ -218,3 +219,7 @@ custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 
 [node name="RecycleBin" parent="." instance=ExtResource("9_h1bgf")]
+
+[node name="Mouse" parent="." instance=ExtResource("10_hptm8")]
+position = Vector2(423.5, 178.5)
+scale = Vector2(0.03, 0.03)

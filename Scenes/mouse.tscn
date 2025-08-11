@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dv3ov2oy2co63"]
+
+[ext_resource type="Script" uid="uid://dx0e7ek28p5bp" path="res://Scripts/mouse.gd" id="1_3ber4"]
+[ext_resource type="Texture2D" uid="uid://ej5yi42gl420" path="res://visuals/mouse.png" id="1_dev0r"]
+
+[node name="Mouse" type="CharacterBody2D"]
+script = ExtResource("1_3ber4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(38, 2)
+texture = ExtResource("1_dev0r")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-113, -217)
+polygon = PackedVector2Array(17, -36, 395, 311, -32, 521, -32, -76)
