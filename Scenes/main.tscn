@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://4a33w8jd0tmg"]
+[gd_scene load_steps=21 format=3 uid="uid://4a33w8jd0tmg"]
 
 [ext_resource type="Texture2D" uid="uid://dxdwcc07kt2q3" path="res://visuals/w11wallpaper.jpg" id="1_ynf5e"]
 [ext_resource type="Script" uid="uid://bnhmru8blddne" path="res://Scripts/desktop_wallpaper.gd" id="2_hptm8"]
@@ -6,10 +6,11 @@
 [ext_resource type="Texture2D" uid="uid://bu1c6m55uvqew" path="res://visuals/icon_view_24x24.png" id="4_6iyac"]
 [ext_resource type="Texture2D" uid="uid://c2op4jrngcgc2" path="res://visuals/start-button.png" id="5_fdnlq"]
 [ext_resource type="Texture2D" uid="uid://c8np16206qjlw" path="res://visuals/search.svg" id="6_jkdf5"]
-[ext_resource type="PackedScene" uid="uid://fowymqxvc5gq" path="res://elements/search_area.tscn" id="7_wsu2k"]
+[ext_resource type="PackedScene" uid="uid://fowymqxvc5gq" path="res://Scenes/search_area.tscn" id="7_wsu2k"]
 [ext_resource type="Script" uid="uid://dfjqhnollgwy4" path="res://Scripts/date_time.gd" id="8_k12tt"]
-[ext_resource type="PackedScene" uid="uid://bxcbid1w300rb" path="res://elements/recycle_bin.tscn" id="9_h1bgf"]
+[ext_resource type="PackedScene" uid="uid://bxcbid1w300rb" path="res://Scenes/recycle_bin.tscn" id="9_h1bgf"]
 [ext_resource type="PackedScene" uid="uid://dv3ov2oy2co63" path="res://Scenes/mouse.tscn" id="10_hptm8"]
+[ext_resource type="PackedScene" uid="uid://dlkaebh8nai8u" path="res://Scenes/icon.tscn" id="11_d1ilt"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_272bh"]
 bg_color = Color(0.819608, 0.882353, 0.92549, 1)
@@ -18,11 +19,11 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d1ilt"]
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6iyac"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fdnlq"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jkdf5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h2yge"]
 bg_color = Color(0.909804, 0.921569, 0.945098, 1)
@@ -92,19 +93,19 @@ size_flags_vertical = 4
 
 [node name="ContextMenuLine" parent="DesktopWallpaper/ContextMenu/MarginContainer/VBoxContainer" instance=ExtResource("3_d1ilt")]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_6iyac")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_d1ilt")
 label = "View"
 icon = ExtResource("4_6iyac")
 
 [node name="ContextMenuLine2" parent="DesktopWallpaper/ContextMenu/MarginContainer/VBoxContainer" instance=ExtResource("3_d1ilt")]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_fdnlq")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_6iyac")
 label = "Refresh"
 icon = ExtResource("4_6iyac")
 
 [node name="ContextMenuLine3" parent="DesktopWallpaper/ContextMenu/MarginContainer/VBoxContainer" instance=ExtResource("3_d1ilt")]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_jkdf5")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_fdnlq")
 label = "New"
 
 [node name="ColorTaskBar" type="ColorRect" parent="."]
@@ -219,6 +220,10 @@ custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 
 [node name="RecycleBin" parent="." instance=ExtResource("9_h1bgf")]
+position = Vector2(2, 1)
+
+[node name="Icon" parent="." instance=ExtResource("11_d1ilt")]
+position = Vector2(400, 85)
 
 [node name="Mouse" parent="." instance=ExtResource("10_hptm8")]
 position = Vector2(423.5, 178.5)

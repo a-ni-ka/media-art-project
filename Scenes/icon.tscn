@@ -1,0 +1,30 @@
+[gd_scene load_steps=4 format=3 uid="uid://dlkaebh8nai8u"]
+
+[ext_resource type="Script" uid="uid://bxmjkx7lppbq" path="res://Scripts/icon.gd" id="1_rsedf"]
+[ext_resource type="Texture2D" uid="uid://restn4myfd6p" path="res://visuals/file_explorer.png" id="2_mremn"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ye3n1"]
+size = Vector2(59, 76.5)
+
+[node name="Icon" type="Area2D"]
+script = ExtResource("1_rsedf")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(0, -5)
+texture = ExtResource("2_mremn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 2)
+shape = SubResource("RectangleShape2D_ye3n1")
+
+[node name="Label" type="Label" parent="."]
+offset_left = -23.0
+offset_top = 14.0
+offset_right = 23.0
+offset_bottom = 37.0
+text = "Test"
+horizontal_alignment = 1
+vertical_alignment = 1
+metadata/_edit_use_anchors_ = true
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
