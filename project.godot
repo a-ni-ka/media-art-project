@@ -17,11 +17,13 @@ boot_splash/image="uid://dr12l6ec02fv"
 config/icon="res://icon.svg"
 boot_splash/minimum_display_time=2000
 
+[autoload]
+
+Gamemaster="*res://Scenes/gamemaster.tscn"
+
 [display]
 
 window/size/mode=4
-window/stretch/mode="viewport"
-window/stretch/aspect="expand"
 
 [input]
 

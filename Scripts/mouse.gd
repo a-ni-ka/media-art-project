@@ -13,7 +13,7 @@ func _input(event: InputEvent) -> void:
 				$".".position = event.position
 	if event.is_action_pressed("turn_mouse_into_mario"):
 		state = "mario"
-
+	
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN

@@ -18,11 +18,11 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_hptm8"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d1ilt"]
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6iyac"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fdnlq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jkdf5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h2yge"]
 bg_color = Color(0.909804, 0.921569, 0.945098, 1)
@@ -92,19 +92,19 @@ size_flags_vertical = 4
 
 [node name="ContextMenuLine" parent="DesktopWallpaper/ContextMenu/MarginContainer/VBoxContainer" instance=ExtResource("3_d1ilt")]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_hptm8")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_6iyac")
 label = "View"
 icon = ExtResource("4_6iyac")
 
 [node name="ContextMenuLine2" parent="DesktopWallpaper/ContextMenu/MarginContainer/VBoxContainer" instance=ExtResource("3_d1ilt")]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_d1ilt")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_fdnlq")
 label = "Refresh"
 icon = ExtResource("4_6iyac")
 
 [node name="ContextMenuLine3" parent="DesktopWallpaper/ContextMenu/MarginContainer/VBoxContainer" instance=ExtResource("3_d1ilt")]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_6iyac")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_jkdf5")
 label = "New"
 
 [node name="ColorTaskBar" type="ColorRect" parent="."]
