@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://cn8egm6iik1y2"]
+
+[node name="window" type="Node"]
+
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_right = 318.0
+offset_bottom = 184.0
+color = Color(0.724643, 0.724643, 0.724643, 1)
