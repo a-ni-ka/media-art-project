@@ -1,19 +1,25 @@
 extends CharacterBody2D
 
+signal mouse_pressed
+
+
 
 const SPEED = 300.0
 const JUMP_VELOCITY = -400.0
 
+@onready var mouse = $"."
 @onready var state = "normal"
 
 func _input(event: InputEvent) -> void:
 	Input.use_accumulated_input = false
 	if state == "normal":
 		if event is InputEventMouseMotion:
-				$".".position = event.position
+				mouse.position = event.position
+		if event.is_action_pressed("Left Click"):
+			mouse_pressed.emit()
 	if event.is_action_pressed("turn_mouse_into_mario"):
 		state = "mario"
-	
+
 
 func _ready():
 	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN

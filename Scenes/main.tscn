@@ -222,9 +222,13 @@ layout_mode = 2
 [node name="RecycleBin" parent="." instance=ExtResource("9_h1bgf")]
 position = Vector2(2, 1)
 
-[node name="Icon" parent="." instance=ExtResource("11_d1ilt")]
-position = Vector2(400, 85)
+[node name="Icon_Prototype" parent="." instance=ExtResource("11_d1ilt")]
+position = Vector2(267, 358)
 
 [node name="Mouse" parent="." instance=ExtResource("10_hptm8")]
 position = Vector2(423.5, 178.5)
 scale = Vector2(0.03, 0.03)
+
+[connection signal="mouse_pressed" from="Mouse" to="Icon_Prototype" method="_on_mouse_mouse_pressed"]
+
+[editable path="Icon_Prototype"]

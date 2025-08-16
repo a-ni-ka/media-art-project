@@ -18,13 +18,14 @@ position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_ye3n1")
 
 [node name="Label" type="Label" parent="."]
-offset_left = -23.0
-offset_top = 14.0
-offset_right = 23.0
-offset_bottom = 37.0
+offset_left = -24.0
+offset_top = 17.0
+offset_right = 22.0
+offset_bottom = 40.0
 text = "Test"
 horizontal_alignment = 1
 vertical_alignment = 1
 metadata/_edit_use_anchors_ = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
