@@ -7,7 +7,6 @@ extends Area2D
 @onready var label: Label = $Label
 
 func _on_body_entered(body: Node2D) -> void:
-	print("entered")
 	if body.name == "Mouse":
 		mouse_state = true
 
@@ -18,7 +17,6 @@ func _on_body_exited(body: Node2D) -> void:
 func _on_mouse_mouse_pressed() -> void:
 	if mouse_state:
 		# write in your code for what the icon should do
-		
 		if Gamemaster.click_icon.has(str(label.text)):
 			Gamemaster.click_icon[str(label.text)] += 1
 			print(Gamemaster.click_icon)

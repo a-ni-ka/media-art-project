@@ -1,8 +1,87 @@
-[gd_scene format=3 uid="uid://cn8egm6iik1y2"]
+[gd_scene load_steps=11 format=3 uid="uid://cn8egm6iik1y2"]
 
-[node name="window" type="Node"]
+[ext_resource type="Script" uid="uid://bx1kwos3tx6t2" path="res://Scripts/bar.gd" id="1_23jqw"]
+[ext_resource type="Texture2D" uid="uid://cd7dh4vvg02df" path="res://visuals/minimize.png" id="1_30sqi"]
+[ext_resource type="Script" uid="uid://csmdt8bd1rktn" path="res://Scripts/window.gd" id="1_r37kj"]
+[ext_resource type="Texture2D" uid="uid://cy0m60u4o4jay" path="res://visuals/Fullscreen.png" id="2_0slyu"]
+[ext_resource type="Script" uid="uid://c4lfto16vamyc" path="res://Scripts/minimize.gd" id="2_r37kj"]
+[ext_resource type="Texture2D" uid="uid://iye2wsnbbrqw" path="res://visuals/close.png" id="3_gvfsm"]
+[ext_resource type="Script" uid="uid://cma57ul2c70i2" path="res://Scripts/fullscreen.gd" id="4_pff0d"]
+[ext_resource type="Script" uid="uid://cr3mj4nu5gmc1" path="res://Scripts/close.gd" id="6_u56ti"]
 
-[node name="ColorRect" type="ColorRect" parent="."]
-offset_right = 318.0
-offset_bottom = 184.0
-color = Color(0.724643, 0.724643, 0.724643, 1)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_30sqi"]
+size = Vector2(406, 22)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_gs3ir"]
+size = Vector2(27.9375, 22)
+
+[node name="window_prototype" type="ColorRect"]
+offset_right = 505.0
+offset_bottom = 360.0
+script = ExtResource("1_r37kj")
+
+[node name="Bar" type="Area2D" parent="."]
+collision_layer = 2
+script = ExtResource("1_23jqw")
+
+[node name="ColorRect" type="ColorRect" parent="Bar"]
+offset_right = 505.0
+offset_bottom = 22.0
+color = Color(0.804743, 0.804743, 0.804743, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Bar"]
+position = Vector2(203, 11)
+shape = SubResource("RectangleShape2D_30sqi")
+
+[node name="minimize" type="Area2D" parent="."]
+position = Vector2(427, 11)
+collision_layer = 2
+script = ExtResource("2_r37kj")
+
+[node name="Sprite2D" type="Sprite2D" parent="minimize"]
+position = Vector2(1.38283e-05, 3.57628e-07)
+scale = Vector2(0.32, 0.241251)
+texture = ExtResource("1_30sqi")
+
+[node name="minimize_collision" type="CollisionShape2D" parent="minimize"]
+shape = SubResource("RectangleShape2D_gs3ir")
+
+[node name="fullscreen" type="Area2D" parent="."]
+position = Vector2(459, 11)
+collision_layer = 2
+script = ExtResource("4_pff0d")
+
+[node name="Sprite2D" type="Sprite2D" parent="fullscreen"]
+position = Vector2(-1.33514e-05, 0)
+scale = Vector2(0.320019, 0.240001)
+texture = ExtResource("2_0slyu")
+
+[node name="fullscreen_collision" type="CollisionShape2D" parent="fullscreen"]
+shape = SubResource("RectangleShape2D_gs3ir")
+
+[node name="close" type="Area2D" parent="."]
+position = Vector2(491, 11)
+collision_layer = 2
+script = ExtResource("6_u56ti")
+
+[node name="Sprite2D" type="Sprite2D" parent="close"]
+position = Vector2(-3.33786e-06, -3.35276e-07)
+scale = Vector2(0.325, 0.238751)
+texture = ExtResource("3_gvfsm")
+
+[node name="close_collision" type="CollisionShape2D" parent="close"]
+shape = SubResource("RectangleShape2D_gs3ir")
+
+[connection signal="body_entered" from="Bar" to="Bar" method="_on_body_entered"]
+[connection signal="body_exited" from="Bar" to="Bar" method="_on_body_exited"]
+[connection signal="move" from="Bar" to="." method="_on_bar_move"]
+[connection signal="ready" from="Bar" to="Bar" method="_on_ready"]
+[connection signal="body_entered" from="minimize" to="minimize" method="_on_body_entered"]
+[connection signal="body_exited" from="minimize" to="minimize" method="_on_body_exited"]
+[connection signal="minimize" from="minimize" to="." method="_on_minimize_minimize"]
+[connection signal="body_entered" from="fullscreen" to="fullscreen" method="_on_body_entered"]
+[connection signal="body_exited" from="fullscreen" to="fullscreen" method="_on_body_exited"]
+[connection signal="fullscreen" from="fullscreen" to="." method="_on_fullscreen_fullscreen"]
+[connection signal="body_entered" from="close" to="close" method="_on_body_entered"]
+[connection signal="body_exited" from="close" to="close" method="_on_body_exited"]
+[connection signal="close" from="close" to="." method="_on_close_close"]

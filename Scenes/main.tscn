@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://4a33w8jd0tmg"]
+[gd_scene load_steps=22 format=3 uid="uid://4a33w8jd0tmg"]
 
 [ext_resource type="Texture2D" uid="uid://dxdwcc07kt2q3" path="res://visuals/w11wallpaper.jpg" id="1_ynf5e"]
 [ext_resource type="Script" uid="uid://bnhmru8blddne" path="res://Scripts/desktop_wallpaper.gd" id="2_hptm8"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://bxcbid1w300rb" path="res://Scenes/recycle_bin.tscn" id="9_h1bgf"]
 [ext_resource type="PackedScene" uid="uid://dv3ov2oy2co63" path="res://Scenes/mouse.tscn" id="10_hptm8"]
 [ext_resource type="PackedScene" uid="uid://dlkaebh8nai8u" path="res://Scenes/icon.tscn" id="11_d1ilt"]
+[ext_resource type="PackedScene" uid="uid://cn8egm6iik1y2" path="res://Scenes/window.tscn" id="12_6iyac"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_272bh"]
 bg_color = Color(0.819608, 0.882353, 0.92549, 1)
@@ -19,11 +20,11 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_d1ilt"]
-
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6iyac"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fdnlq"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jkdf5"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h2yge"]
 bg_color = Color(0.909804, 0.921569, 0.945098, 1)
@@ -93,19 +94,19 @@ size_flags_vertical = 4
 
 [node name="ContextMenuLine" parent="DesktopWallpaper/ContextMenu/MarginContainer/VBoxContainer" instance=ExtResource("3_d1ilt")]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_d1ilt")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_6iyac")
 label = "View"
 icon = ExtResource("4_6iyac")
 
 [node name="ContextMenuLine2" parent="DesktopWallpaper/ContextMenu/MarginContainer/VBoxContainer" instance=ExtResource("3_d1ilt")]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_6iyac")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_fdnlq")
 label = "Refresh"
 icon = ExtResource("4_6iyac")
 
 [node name="ContextMenuLine3" parent="DesktopWallpaper/ContextMenu/MarginContainer/VBoxContainer" instance=ExtResource("3_d1ilt")]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_fdnlq")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_jkdf5")
 label = "New"
 
 [node name="ColorTaskBar" type="ColorRect" parent="."]
@@ -225,10 +226,34 @@ position = Vector2(2, 1)
 [node name="Icon_Prototype" parent="." instance=ExtResource("11_d1ilt")]
 position = Vector2(267, 358)
 
+[node name="window_prototype" parent="." instance=ExtResource("12_6iyac")]
+layout_mode = 0
+offset_left = 602.0
+offset_top = 255.0
+offset_right = 1107.0
+offset_bottom = 615.0
+
+[node name="Bar" parent="window_prototype" index="0"]
+collision_layer = 1
+
+[node name="minimize" parent="window_prototype" index="1"]
+collision_layer = 1
+
+[node name="fullscreen" parent="window_prototype" index="2"]
+collision_layer = 1
+
+[node name="close" parent="window_prototype" index="3"]
+collision_layer = 1
+
 [node name="Mouse" parent="." instance=ExtResource("10_hptm8")]
 position = Vector2(423.5, 178.5)
 scale = Vector2(0.03, 0.03)
 
 [connection signal="mouse_pressed" from="Mouse" to="Icon_Prototype" method="_on_mouse_mouse_pressed"]
+[connection signal="mouse_pressed" from="Mouse" to="window_prototype/Bar" method="_on_mouse_mouse_pressed"]
+[connection signal="mouse_pressed" from="Mouse" to="window_prototype/minimize" method="_on_mouse_mouse_pressed"]
+[connection signal="mouse_pressed" from="Mouse" to="window_prototype/fullscreen" method="_on_mouse_mouse_pressed"]
+[connection signal="mouse_pressed" from="Mouse" to="window_prototype/close" method="_on_mouse_mouse_pressed"]
 
 [editable path="Icon_Prototype"]
+[editable path="window_prototype"]
