@@ -26,6 +26,13 @@ Gamemaster="*res://Scenes/gamemaster.tscn"
 window/size/viewport_width=1600
 window/size/viewport_height=900
 window/size/mode=4
+window/stretch/mode="canvas_items"
+window/stretch/aspect="expand"
+
+[gui]
+
+theme/custom="uid://dxai4xc7elyvi"
+theme/custom_font="uid://ksloxaxuuijm"
 
 [input]
 

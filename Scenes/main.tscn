@@ -1,11 +1,13 @@
-[gd_scene load_steps=22 format=3 uid="uid://4a33w8jd0tmg"]
+[gd_scene load_steps=24 format=3 uid="uid://4a33w8jd0tmg"]
 
 [ext_resource type="Texture2D" uid="uid://dxdwcc07kt2q3" path="res://visuals/w11wallpaper.jpg" id="1_ynf5e"]
 [ext_resource type="Script" uid="uid://bnhmru8blddne" path="res://Scripts/desktop_wallpaper.gd" id="2_hptm8"]
 [ext_resource type="PackedScene" uid="uid://dfp7jxsdjx0qq" path="res://Scenes/context_menu_line.tscn" id="3_d1ilt"]
 [ext_resource type="Texture2D" uid="uid://bu1c6m55uvqew" path="res://visuals/icon_view_24x24.png" id="4_6iyac"]
 [ext_resource type="Texture2D" uid="uid://c2op4jrngcgc2" path="res://visuals/start-button.png" id="5_fdnlq"]
+[ext_resource type="Texture2D" uid="uid://cf7lldcab0dty" path="res://visuals/icon_refresh.png" id="5_jkdf5"]
 [ext_resource type="Texture2D" uid="uid://c8np16206qjlw" path="res://visuals/search.svg" id="6_jkdf5"]
+[ext_resource type="Texture2D" uid="uid://dxtyke5ld8me2" path="res://visuals/icon_new.png" id="6_wsu2k"]
 [ext_resource type="PackedScene" uid="uid://fowymqxvc5gq" path="res://Scenes/search_area.tscn" id="7_wsu2k"]
 [ext_resource type="Script" uid="uid://dfjqhnollgwy4" path="res://Scripts/date_time.gd" id="8_k12tt"]
 [ext_resource type="PackedScene" uid="uid://bxcbid1w300rb" path="res://Scenes/recycle_bin.tscn" id="9_h1bgf"]
@@ -20,11 +22,11 @@ corner_radius_top_right = 10
 corner_radius_bottom_right = 10
 corner_radius_bottom_left = 10
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_6iyac"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wsu2k"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_fdnlq"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k12tt"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jkdf5"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h1bgf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h2yge"]
 bg_color = Color(0.909804, 0.921569, 0.945098, 1)
@@ -75,6 +77,7 @@ expand_mode = 1
 script = ExtResource("2_hptm8")
 
 [node name="ContextMenu" type="PanelContainer" parent="DesktopWallpaper"]
+z_index = 1
 custom_minimum_size = Vector2(300, 32)
 layout_mode = 1
 offset_right = 200.0
@@ -94,20 +97,21 @@ size_flags_vertical = 4
 
 [node name="ContextMenuLine" parent="DesktopWallpaper/ContextMenu/MarginContainer/VBoxContainer" instance=ExtResource("3_d1ilt")]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_6iyac")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_wsu2k")
 label = "View"
 icon = ExtResource("4_6iyac")
 
 [node name="ContextMenuLine2" parent="DesktopWallpaper/ContextMenu/MarginContainer/VBoxContainer" instance=ExtResource("3_d1ilt")]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_fdnlq")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_k12tt")
 label = "Refresh"
-icon = ExtResource("4_6iyac")
+icon = ExtResource("5_jkdf5")
 
 [node name="ContextMenuLine3" parent="DesktopWallpaper/ContextMenu/MarginContainer/VBoxContainer" instance=ExtResource("3_d1ilt")]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_jkdf5")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_h1bgf")
 label = "New"
+icon = ExtResource("6_wsu2k")
 
 [node name="ColorTaskBar" type="ColorRect" parent="."]
 custom_minimum_size = Vector2(0, 45)
@@ -246,6 +250,7 @@ collision_layer = 1
 collision_layer = 1
 
 [node name="Mouse" parent="." instance=ExtResource("10_hptm8")]
+z_index = 5
 position = Vector2(423.5, 178.5)
 scale = Vector2(0.03, 0.03)
 

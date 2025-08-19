@@ -15,7 +15,7 @@ func _input(event: InputEvent) -> void:
 	# Counts amount of clicks
 	if event.is_action_pressed("Left Click"):
 		click += 1
-	
+
 	# Saves last ten letters typed in array
 	if event is InputEventKey:
 		match event.keycode:
