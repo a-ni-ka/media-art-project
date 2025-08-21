@@ -1,32 +1,18 @@
-[gd_scene load_steps=24 format=3 uid="uid://4a33w8jd0tmg"]
+[gd_scene load_steps=19 format=3 uid="uid://4a33w8jd0tmg"]
 
 [ext_resource type="Texture2D" uid="uid://dxdwcc07kt2q3" path="res://visuals/w11wallpaper.jpg" id="1_ynf5e"]
 [ext_resource type="Script" uid="uid://bnhmru8blddne" path="res://Scripts/desktop_wallpaper.gd" id="2_hptm8"]
-[ext_resource type="PackedScene" uid="uid://dfp7jxsdjx0qq" path="res://Scenes/context_menu_line.tscn" id="3_d1ilt"]
-[ext_resource type="Texture2D" uid="uid://bu1c6m55uvqew" path="res://visuals/icon_view_24x24.png" id="4_6iyac"]
+[ext_resource type="PackedScene" uid="uid://dk16qhj3ykph2" path="res://Scenes/ContextMenu/context_menu.tscn" id="3_6iyac"]
+[ext_resource type="Script" uid="uid://gcdai4gkb41h" path="res://Scenes/taskbar.gd" id="4_fdnlq"]
 [ext_resource type="Texture2D" uid="uid://c2op4jrngcgc2" path="res://visuals/start-button.png" id="5_fdnlq"]
-[ext_resource type="Texture2D" uid="uid://cf7lldcab0dty" path="res://visuals/icon_refresh.png" id="5_jkdf5"]
 [ext_resource type="Texture2D" uid="uid://c8np16206qjlw" path="res://visuals/search.svg" id="6_jkdf5"]
-[ext_resource type="Texture2D" uid="uid://dxtyke5ld8me2" path="res://visuals/icon_new.png" id="6_wsu2k"]
 [ext_resource type="PackedScene" uid="uid://fowymqxvc5gq" path="res://Scenes/search_area.tscn" id="7_wsu2k"]
 [ext_resource type="Script" uid="uid://dfjqhnollgwy4" path="res://Scripts/date_time.gd" id="8_k12tt"]
 [ext_resource type="PackedScene" uid="uid://bxcbid1w300rb" path="res://Scenes/recycle_bin.tscn" id="9_h1bgf"]
 [ext_resource type="PackedScene" uid="uid://dv3ov2oy2co63" path="res://Scenes/mouse.tscn" id="10_hptm8"]
+[ext_resource type="Texture2D" uid="uid://pgyu161absk4" path="res://visuals/file_explorer_icon.png" id="10_wsu2k"]
 [ext_resource type="PackedScene" uid="uid://dlkaebh8nai8u" path="res://Scenes/icon.tscn" id="11_d1ilt"]
 [ext_resource type="PackedScene" uid="uid://cn8egm6iik1y2" path="res://Scenes/window.tscn" id="12_6iyac"]
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_272bh"]
-bg_color = Color(0.819608, 0.882353, 0.92549, 1)
-corner_radius_top_left = 10
-corner_radius_top_right = 10
-corner_radius_bottom_right = 10
-corner_radius_bottom_left = 10
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_wsu2k"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_k12tt"]
-
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_h1bgf"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h2yge"]
 bg_color = Color(0.909804, 0.921569, 0.945098, 1)
@@ -71,49 +57,16 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-mouse_filter = 2
 texture = ExtResource("1_ynf5e")
 expand_mode = 1
 script = ExtResource("2_hptm8")
 
-[node name="ContextMenu" type="PanelContainer" parent="DesktopWallpaper"]
-z_index = 1
-custom_minimum_size = Vector2(300, 32)
-layout_mode = 1
-offset_right = 200.0
-offset_bottom = 32.0
-theme_override_styles/panel = SubResource("StyleBoxFlat_272bh")
+[node name="ContextMenu" parent="DesktopWallpaper" instance=ExtResource("3_6iyac")]
+layout_mode = 0
+offset_right = 300.0
+context_menu_type = 1
 
-[node name="MarginContainer" type="MarginContainer" parent="DesktopWallpaper/ContextMenu"]
-layout_mode = 2
-theme_override_constants/margin_left = 10
-theme_override_constants/margin_top = 10
-theme_override_constants/margin_right = 10
-theme_override_constants/margin_bottom = 10
-
-[node name="VBoxContainer" type="VBoxContainer" parent="DesktopWallpaper/ContextMenu/MarginContainer"]
-layout_mode = 2
-size_flags_vertical = 4
-
-[node name="ContextMenuLine" parent="DesktopWallpaper/ContextMenu/MarginContainer/VBoxContainer" instance=ExtResource("3_d1ilt")]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_wsu2k")
-label = "View"
-icon = ExtResource("4_6iyac")
-
-[node name="ContextMenuLine2" parent="DesktopWallpaper/ContextMenu/MarginContainer/VBoxContainer" instance=ExtResource("3_d1ilt")]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_k12tt")
-label = "Refresh"
-icon = ExtResource("5_jkdf5")
-
-[node name="ContextMenuLine3" parent="DesktopWallpaper/ContextMenu/MarginContainer/VBoxContainer" instance=ExtResource("3_d1ilt")]
-layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_h1bgf")
-label = "New"
-icon = ExtResource("6_wsu2k")
-
-[node name="ColorTaskBar" type="ColorRect" parent="."]
+[node name="Taskbar" type="Control" parent="."]
 custom_minimum_size = Vector2(0, 45)
 layout_mode = 1
 anchors_preset = 12
@@ -122,23 +75,38 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
+script = ExtResource("4_fdnlq")
+
+[node name="ContextMenu" parent="Taskbar" instance=ExtResource("3_6iyac")]
+layout_mode = 0
+offset_right = 300.0
+offset_bottom = 47.0
+context_menu_type = 2
+
+[node name="ColorTaskBar" type="ColorRect" parent="Taskbar"]
+custom_minimum_size = Vector2(0, 45)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 size_flags_horizontal = 3
+mouse_filter = 2
 color = Color(0.854902, 0.87451, 0.921569, 1)
 
-[node name="TaskBarCenter" type="HBoxContainer" parent="."]
+[node name="TaskBarCenter" type="HBoxContainer" parent="Taskbar"]
 custom_minimum_size = Vector2(0, 45)
 layout_mode = 1
-anchors_preset = 12
-anchor_top = 1.0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
-grow_vertical = 0
-mouse_filter = 2
+grow_vertical = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="StartButton" type="TextureButton" parent="TaskBarCenter"]
+[node name="StartButton" type="TextureButton" parent="Taskbar/TaskBarCenter"]
 custom_minimum_size = Vector2(23, 23)
 layout_mode = 2
 size_flags_vertical = 4
@@ -146,22 +114,22 @@ texture_normal = ExtResource("5_fdnlq")
 ignore_texture_size = true
 stretch_mode = 4
 
-[node name="PanelContainer" type="PanelContainer" parent="TaskBarCenter"]
+[node name="PanelContainer" type="PanelContainer" parent="Taskbar/TaskBarCenter"]
 layout_mode = 2
 size_flags_vertical = 4
 mouse_filter = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_h2yge")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="TaskBarCenter/PanelContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Taskbar/TaskBarCenter/PanelContainer"]
 custom_minimum_size = Vector2(180, 30)
 layout_mode = 2
 mouse_filter = 2
 theme_override_constants/separation = 10
 
-[node name="MarginLeft" type="MarginContainer" parent="TaskBarCenter/PanelContainer/HBoxContainer"]
+[node name="MarginLeft" type="MarginContainer" parent="Taskbar/TaskBarCenter/PanelContainer/HBoxContainer"]
 layout_mode = 2
 
-[node name="Search" type="TextureRect" parent="TaskBarCenter/PanelContainer/HBoxContainer"]
+[node name="Search" type="TextureRect" parent="Taskbar/TaskBarCenter/PanelContainer/HBoxContainer"]
 custom_minimum_size = Vector2(18, 18)
 layout_mode = 2
 size_flags_vertical = 4
@@ -170,9 +138,9 @@ texture = ExtResource("6_jkdf5")
 expand_mode = 1
 stretch_mode = 4
 
-[node name="SearchArea" parent="TaskBarCenter/PanelContainer/HBoxContainer/Search" instance=ExtResource("7_wsu2k")]
+[node name="SearchArea" parent="Taskbar/TaskBarCenter/PanelContainer/HBoxContainer/Search" instance=ExtResource("7_wsu2k")]
 
-[node name="LineEdit" type="LineEdit" parent="TaskBarCenter/PanelContainer/HBoxContainer"]
+[node name="LineEdit" type="LineEdit" parent="Taskbar/TaskBarCenter/PanelContainer/HBoxContainer"]
 custom_minimum_size = Vector2(170, 30)
 layout_mode = 2
 size_flags_vertical = 4
@@ -188,25 +156,35 @@ theme_override_styles/focus = SubResource("StyleBoxEmpty_h2yge")
 theme_override_styles/normal = SubResource("StyleBoxFlat_0xm2m")
 placeholder_text = "Search"
 
-[node name="MarginRight" type="MarginContainer" parent="TaskBarCenter/PanelContainer/HBoxContainer"]
+[node name="MarginRight" type="MarginContainer" parent="Taskbar/TaskBarCenter/PanelContainer/HBoxContainer"]
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 
-[node name="TaskBarRight" type="HBoxContainer" parent="."]
+[node name="FileExplorerButton" type="TextureButton" parent="Taskbar/TaskBarCenter"]
+custom_minimum_size = Vector2(28, 28)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+texture_normal = ExtResource("10_wsu2k")
+ignore_texture_size = true
+stretch_mode = 4
+
+[node name="TaskBarRight" type="HBoxContainer" parent="Taskbar"]
 custom_minimum_size = Vector2(200, 45)
 layout_mode = 1
-anchors_preset = 3
+anchors_preset = 6
 anchor_left = 1.0
-anchor_top = 1.0
+anchor_top = 0.5
 anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = -46.0
-offset_top = -45.0
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -22.5
+offset_bottom = 22.5
 grow_horizontal = 0
-grow_vertical = 0
+grow_vertical = 2
 alignment = 2
 
-[node name="DateTime" type="Label" parent="TaskBarRight"]
+[node name="DateTime" type="Label" parent="Taskbar/TaskBarRight"]
 layout_mode = 2
 size_flags_horizontal = 8
 text = "%.%.%"
@@ -214,13 +192,13 @@ label_settings = SubResource("LabelSettings_h2yge")
 horizontal_alignment = 2
 script = ExtResource("8_k12tt")
 
-[node name="Area2D" type="Area2D" parent="TaskBarRight/DateTime"]
+[node name="Area2D" type="Area2D" parent="Taskbar/TaskBarRight/DateTime"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="TaskBarRight/DateTime/Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Taskbar/TaskBarRight/DateTime/Area2D"]
 position = Vector2(14.5, 7.5)
 shape = SubResource("RectangleShape2D_1bvp3")
 
-[node name="MarginContainer" type="MarginContainer" parent="TaskBarRight"]
+[node name="MarginContainer" type="MarginContainer" parent="Taskbar/TaskBarRight"]
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 
