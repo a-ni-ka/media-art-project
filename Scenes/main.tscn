@@ -1,8 +1,9 @@
-[gd_scene load_steps=19 format=3 uid="uid://4a33w8jd0tmg"]
+[gd_scene load_steps=20 format=3 uid="uid://4a33w8jd0tmg"]
 
 [ext_resource type="Texture2D" uid="uid://dxdwcc07kt2q3" path="res://visuals/w11wallpaper.jpg" id="1_ynf5e"]
 [ext_resource type="Script" uid="uid://bnhmru8blddne" path="res://Scripts/desktop_wallpaper.gd" id="2_hptm8"]
 [ext_resource type="PackedScene" uid="uid://dk16qhj3ykph2" path="res://Scenes/ContextMenu/context_menu.tscn" id="3_6iyac"]
+[ext_resource type="Script" uid="uid://cl0xvgtuumseb" path="res://Scripts/desktop_select.gd" id="3_jkdf5"]
 [ext_resource type="Script" uid="uid://gcdai4gkb41h" path="res://Scenes/taskbar.gd" id="4_fdnlq"]
 [ext_resource type="Texture2D" uid="uid://c2op4jrngcgc2" path="res://visuals/start-button.png" id="5_fdnlq"]
 [ext_resource type="Texture2D" uid="uid://c8np16206qjlw" path="res://visuals/search.svg" id="6_jkdf5"]
@@ -60,6 +61,16 @@ grow_vertical = 2
 texture = ExtResource("1_ynf5e")
 expand_mode = 1
 script = ExtResource("2_hptm8")
+
+[node name="DesktopSelect" type="Control" parent="DesktopWallpaper"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 1
+script = ExtResource("3_jkdf5")
 
 [node name="ContextMenu" parent="DesktopWallpaper" instance=ExtResource("3_6iyac")]
 layout_mode = 0

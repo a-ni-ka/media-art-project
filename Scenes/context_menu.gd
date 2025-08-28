@@ -50,8 +50,7 @@ func place_context_menu(event: InputEventMouseButton) -> void:
 			position.y = event.position.y - size.y
 	for item in get_tree().get_nodes_in_group("ContextMenu"):
 		var control_node := item as Control
-		if control_node.visible:
-			control_node.visible = false
+		control_node.visible = false
 	visible = true
 
 
