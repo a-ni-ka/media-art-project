@@ -1,5 +1,15 @@
+@tool
 class_name Icon
 extends Area2D
+
+@export var icon: CompressedTexture2D :
+	set(value):
+		icon = value
+		$Sprite2D.texture = icon
+@export var title: String :
+	set(value):
+		title = value
+		$Label.text = title
 
 # When copying this icon, remember to connect to the mouse signal
 

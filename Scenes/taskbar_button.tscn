@@ -1,0 +1,54 @@
+[gd_scene load_steps=4 format=3 uid="uid://e2trfnt3f67m"]
+
+[ext_resource type="Script" uid="uid://cak7e1oyu3iqw" path="res://Scripts/taskbar_button.gd" id="1_sq02w"]
+[ext_resource type="Texture2D" uid="uid://cb8y80sene83g" path="res://icon.svg" id="2_7ri7r"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_jkdf5"]
+bg_color = Color(0.898039, 0.913725, 0.945098, 1)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[node name="TaskBarButton" type="Control"]
+custom_minimum_size = Vector2(37, 37)
+layout_mode = 3
+anchors_preset = 0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+script = ExtResource("1_sq02w")
+icon = ExtResource("2_7ri7r")
+icon_size = 25.0
+
+[node name="HoverBackground" type="Panel" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_jkdf5")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Icon" type="TextureRect" parent="CenterContainer"]
+unique_name_in_owner = true
+custom_minimum_size = Vector2(25, 25)
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+expand_mode = 1
+stretch_mode = 4

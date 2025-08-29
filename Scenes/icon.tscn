@@ -4,28 +4,42 @@
 [ext_resource type="Texture2D" uid="uid://restn4myfd6p" path="res://visuals/file_explorer.png" id="2_mremn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ye3n1"]
-size = Vector2(59, 76.5)
+size = Vector2(87.375, 83.25)
 
 [node name="Icon" type="Area2D"]
 script = ExtResource("1_rsedf")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, -5)
+[node name="Sprite2D" type="TextureRect" parent="."]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -24.0
+offset_top = -24.0
+offset_right = 24.0
+offset_bottom = 24.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 texture = ExtResource("2_mremn")
+expand_mode = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, 2)
 shape = SubResource("RectangleShape2D_ye3n1")
 
 [node name="Label" type="Label" parent="."]
-offset_left = -24.0
+offset_left = -40.0
 offset_top = 17.0
-offset_right = 22.0
+offset_right = 41.0
 offset_bottom = 40.0
+size_flags_horizontal = 4
 text = "Test"
 horizontal_alignment = 1
 vertical_alignment = 1
-metadata/_edit_use_anchors_ = true
+autowrap_mode = 2
+text_overrun_behavior = 3
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
