@@ -26,5 +26,8 @@
 - desktop file icon detects left click
 - left click & drag on desktop draws a selection rectangle
 
+## What is being worked on? Current problems and issues?
+- figuring out the best way to implement the zoom function
+
 ## What are we planning to implement?
 - sooo many things
