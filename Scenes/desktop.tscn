@@ -8,7 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://e2trfnt3f67m" path="res://Scenes/taskbar_button.tscn" id="6_b55dp"]
 [ext_resource type="Texture2D" uid="uid://c2op4jrngcgc2" path="res://visuals/start-button.png" id="7_ad33h"]
 [ext_resource type="Texture2D" uid="uid://c8np16206qjlw" path="res://visuals/search.svg" id="8_inoge"]
-[ext_resource type="Script" uid="uid://csmpkjf8glief" path="res://Scenes/search.gd" id="9_n3uxm"]
+[ext_resource type="Script" uid="uid://csmpkjf8glief" path="res://Scripts/search.gd" id="9_n3uxm"]
 [ext_resource type="PackedScene" uid="uid://fowymqxvc5gq" path="res://Scenes/search_area.tscn" id="10_ix27p"]
 [ext_resource type="Texture2D" uid="uid://pgyu161absk4" path="res://visuals/file_explorer_icon.png" id="11_cq71g"]
 [ext_resource type="Script" uid="uid://dfjqhnollgwy4" path="res://Scripts/date_time.gd" id="12_scol6"]
@@ -251,6 +251,7 @@ position = Vector2(423.5, 178.5)
 scale = Vector2(0.03, 0.03)
 
 [connection signal="mouse_pressed" from="Mouse" to="Icon_Prototype" method="_on_mouse_mouse_pressed"]
+[connection signal="mouse_pressed" from="Mouse" to="Spotify" method="_on_mouse_mouse_pressed"]
 [connection signal="mouse_pressed" from="Mouse" to="window_prototype/Bar" method="_on_mouse_mouse_pressed"]
 [connection signal="mouse_pressed" from="Mouse" to="window_prototype/minimize" method="_on_mouse_mouse_pressed"]
 [connection signal="mouse_pressed" from="Mouse" to="window_prototype/fullscreen" method="_on_mouse_mouse_pressed"]
