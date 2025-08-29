@@ -16,9 +16,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -24.0
-offset_top = -24.0
+offset_top = -30.0
 offset_right = 24.0
-offset_bottom = 24.0
+offset_bottom = 18.0
 grow_horizontal = 2
 grow_vertical = 2
 size_flags_horizontal = 4
@@ -30,10 +30,10 @@ expand_mode = 1
 shape = SubResource("RectangleShape2D_ye3n1")
 
 [node name="Label" type="Label" parent="."]
-offset_left = -40.0
-offset_top = 17.0
-offset_right = 41.0
-offset_bottom = 40.0
+offset_left = -42.0
+offset_top = 18.0
+offset_right = 43.0
+offset_bottom = 41.0
 size_flags_horizontal = 4
 text = "Test"
 horizontal_alignment = 1

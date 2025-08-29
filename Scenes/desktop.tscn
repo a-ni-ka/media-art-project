@@ -1,21 +1,23 @@
-[gd_scene load_steps=22 format=3 uid="uid://4a33w8jd0tmg"]
+[gd_scene load_steps=24 format=3 uid="uid://4a33w8jd0tmg"]
 
-[ext_resource type="Texture2D" uid="uid://dxdwcc07kt2q3" path="res://visuals/w11wallpaper.jpg" id="1_ynf5e"]
-[ext_resource type="Script" uid="uid://bnhmru8blddne" path="res://Scripts/desktop_wallpaper.gd" id="2_hptm8"]
-[ext_resource type="PackedScene" uid="uid://dk16qhj3ykph2" path="res://Scenes/ContextMenu/context_menu.tscn" id="3_6iyac"]
-[ext_resource type="Script" uid="uid://cl0xvgtuumseb" path="res://Scripts/desktop_select.gd" id="3_jkdf5"]
-[ext_resource type="Script" uid="uid://gcdai4gkb41h" path="res://Scripts/taskbar.gd" id="4_fdnlq"]
-[ext_resource type="Texture2D" uid="uid://c2op4jrngcgc2" path="res://visuals/start-button.png" id="5_fdnlq"]
-[ext_resource type="Texture2D" uid="uid://c8np16206qjlw" path="res://visuals/search.svg" id="6_jkdf5"]
-[ext_resource type="PackedScene" uid="uid://fowymqxvc5gq" path="res://Scenes/search_area.tscn" id="7_wsu2k"]
-[ext_resource type="Script" uid="uid://dfjqhnollgwy4" path="res://Scripts/date_time.gd" id="8_k12tt"]
-[ext_resource type="PackedScene" uid="uid://bxcbid1w300rb" path="res://Scenes/recycle_bin.tscn" id="9_h1bgf"]
-[ext_resource type="PackedScene" uid="uid://e2trfnt3f67m" path="res://Scenes/taskbar_button.tscn" id="9_jkdf5"]
-[ext_resource type="PackedScene" uid="uid://dv3ov2oy2co63" path="res://Scenes/mouse.tscn" id="10_hptm8"]
-[ext_resource type="Texture2D" uid="uid://pgyu161absk4" path="res://visuals/file_explorer_icon.png" id="10_wsu2k"]
-[ext_resource type="PackedScene" uid="uid://dlkaebh8nai8u" path="res://Scenes/icon.tscn" id="11_d1ilt"]
-[ext_resource type="PackedScene" uid="uid://cn8egm6iik1y2" path="res://Scenes/window.tscn" id="12_6iyac"]
-[ext_resource type="Texture2D" uid="uid://cy3lb3jupwjlu" path="res://visuals/recycle_icon.png" id="14_k12tt"]
+[ext_resource type="Texture2D" uid="uid://dxdwcc07kt2q3" path="res://visuals/w11wallpaper.jpg" id="1_4j8fu"]
+[ext_resource type="Script" uid="uid://bnhmru8blddne" path="res://Scripts/desktop_wallpaper.gd" id="2_djnmm"]
+[ext_resource type="Script" uid="uid://cl0xvgtuumseb" path="res://Scripts/desktop_select.gd" id="3_pfbb1"]
+[ext_resource type="PackedScene" uid="uid://dk16qhj3ykph2" path="res://Scenes/ContextMenu/context_menu.tscn" id="4_wg1g7"]
+[ext_resource type="Script" uid="uid://gcdai4gkb41h" path="res://Scripts/taskbar.gd" id="5_qpnbv"]
+[ext_resource type="PackedScene" uid="uid://e2trfnt3f67m" path="res://Scenes/taskbar_button.tscn" id="6_b55dp"]
+[ext_resource type="Texture2D" uid="uid://c2op4jrngcgc2" path="res://visuals/start-button.png" id="7_ad33h"]
+[ext_resource type="Texture2D" uid="uid://c8np16206qjlw" path="res://visuals/search.svg" id="8_inoge"]
+[ext_resource type="Script" uid="uid://csmpkjf8glief" path="res://Scenes/search.gd" id="9_n3uxm"]
+[ext_resource type="PackedScene" uid="uid://fowymqxvc5gq" path="res://Scenes/search_area.tscn" id="10_ix27p"]
+[ext_resource type="Texture2D" uid="uid://pgyu161absk4" path="res://visuals/file_explorer_icon.png" id="11_cq71g"]
+[ext_resource type="Script" uid="uid://dfjqhnollgwy4" path="res://Scripts/date_time.gd" id="12_scol6"]
+[ext_resource type="PackedScene" uid="uid://bxcbid1w300rb" path="res://Scenes/recycle_bin.tscn" id="13_cvi26"]
+[ext_resource type="PackedScene" uid="uid://dlkaebh8nai8u" path="res://Scenes/icon.tscn" id="14_pvnqr"]
+[ext_resource type="Texture2D" uid="uid://restn4myfd6p" path="res://visuals/file_explorer.png" id="15_jk4xc"]
+[ext_resource type="Texture2D" uid="uid://b3vssf3on3ube" path="res://visuals/icon_spotify_64x64.png" id="16_ojlgc"]
+[ext_resource type="PackedScene" uid="uid://cn8egm6iik1y2" path="res://Scenes/window.tscn" id="17_iunll"]
+[ext_resource type="PackedScene" uid="uid://dv3ov2oy2co63" path="res://Scenes/mouse.tscn" id="18_gru58"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h2yge"]
 bg_color = Color(0.909804, 0.921569, 0.945098, 1)
@@ -44,7 +46,7 @@ font_color = Color(0.0941176, 0.0941176, 0.0941176, 1)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
 size = Vector2(63, 45)
 
-[node name="Main" type="Control"]
+[node name="Desktop" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -60,9 +62,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-texture = ExtResource("1_ynf5e")
+texture = ExtResource("1_4j8fu")
 expand_mode = 1
-script = ExtResource("2_hptm8")
+script = ExtResource("2_djnmm")
 
 [node name="DesktopSelect" type="Control" parent="DesktopWallpaper"]
 layout_mode = 1
@@ -72,9 +74,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
-script = ExtResource("3_jkdf5")
+script = ExtResource("3_pfbb1")
 
-[node name="ContextMenu" parent="DesktopWallpaper" instance=ExtResource("3_6iyac")]
+[node name="ContextMenu" parent="DesktopWallpaper" instance=ExtResource("4_wg1g7")]
 layout_mode = 0
 offset_right = 300.0
 context_menu_type = 1
@@ -88,9 +90,9 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 0
-script = ExtResource("4_fdnlq")
+script = ExtResource("5_qpnbv")
 
-[node name="ContextMenu" parent="Taskbar" instance=ExtResource("3_6iyac")]
+[node name="ContextMenu" parent="Taskbar" instance=ExtResource("4_wg1g7")]
 layout_mode = 0
 offset_right = 300.0
 offset_bottom = 47.0
@@ -119,9 +121,9 @@ grow_vertical = 2
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="Start" parent="Taskbar/TaskbarCenter" instance=ExtResource("9_jkdf5")]
+[node name="Start" parent="Taskbar/TaskbarCenter" instance=ExtResource("6_b55dp")]
 layout_mode = 2
-icon = ExtResource("5_fdnlq")
+icon = ExtResource("7_ad33h")
 icon_size = 22.0
 
 [node name="PanelContainer" type="PanelContainer" parent="Taskbar/TaskbarCenter"]
@@ -144,11 +146,12 @@ custom_minimum_size = Vector2(18, 18)
 layout_mode = 2
 size_flags_vertical = 4
 mouse_default_cursor_shape = 2
-texture = ExtResource("6_jkdf5")
+texture = ExtResource("8_inoge")
 expand_mode = 1
 stretch_mode = 4
+script = ExtResource("9_n3uxm")
 
-[node name="SearchArea" parent="Taskbar/TaskbarCenter/PanelContainer/HBoxContainer/Search" instance=ExtResource("7_wsu2k")]
+[node name="SearchArea" parent="Taskbar/TaskbarCenter/PanelContainer/HBoxContainer/Search" instance=ExtResource("10_ix27p")]
 
 [node name="LineEdit" type="LineEdit" parent="Taskbar/TaskbarCenter/PanelContainer/HBoxContainer"]
 custom_minimum_size = Vector2(170, 30)
@@ -170,11 +173,11 @@ placeholder_text = "Search"
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 
-[node name="FileExplorer" parent="Taskbar/TaskbarCenter" instance=ExtResource("9_jkdf5")]
+[node name="FileExplorer" parent="Taskbar/TaskbarCenter" instance=ExtResource("6_b55dp")]
 layout_mode = 2
-icon = ExtResource("10_wsu2k")
+icon = ExtResource("11_cq71g")
 
-[node name="Godot" parent="Taskbar/TaskbarCenter" instance=ExtResource("9_jkdf5")]
+[node name="Godot" parent="Taskbar/TaskbarCenter" instance=ExtResource("6_b55dp")]
 layout_mode = 2
 
 [node name="TaskbarRight" type="HBoxContainer" parent="Taskbar"]
@@ -198,7 +201,7 @@ size_flags_horizontal = 8
 text = "%.%.%"
 label_settings = SubResource("LabelSettings_h2yge")
 horizontal_alignment = 2
-script = ExtResource("8_k12tt")
+script = ExtResource("12_scol6")
 
 [node name="Area2D" type="Area2D" parent="Taskbar/TaskbarRight/DateTime"]
 
@@ -210,21 +213,20 @@ shape = SubResource("RectangleShape2D_1bvp3")
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 
-[node name="RecycleBin" parent="." instance=ExtResource("9_h1bgf")]
+[node name="RecycleBin" parent="." instance=ExtResource("13_cvi26")]
 position = Vector2(2, 1)
 
-[node name="Icon_Prototype" parent="." instance=ExtResource("11_d1ilt")]
+[node name="Icon_Prototype" parent="." instance=ExtResource("14_pvnqr")]
 position = Vector2(267, 358)
-icon = ExtResource("14_k12tt")
-title = "Recycle Bin"
+icon = ExtResource("15_jk4xc")
+title = "Test File"
 
-[node name="Sprite2D" parent="Icon_Prototype" index="0"]
-texture = ExtResource("14_k12tt")
+[node name="Spotify" parent="." instance=ExtResource("14_pvnqr")]
+position = Vector2(57, 157)
+icon = ExtResource("16_ojlgc")
+title = "My Music"
 
-[node name="Label" parent="Icon_Prototype" index="2"]
-text = "Recycle Bin"
-
-[node name="window_prototype" parent="." instance=ExtResource("12_6iyac")]
+[node name="window_prototype" parent="." instance=ExtResource("17_iunll")]
 layout_mode = 0
 offset_left = 602.0
 offset_top = 255.0
@@ -243,7 +245,7 @@ collision_layer = 1
 [node name="close" parent="window_prototype" index="3"]
 collision_layer = 1
 
-[node name="Mouse" parent="." instance=ExtResource("10_hptm8")]
+[node name="Mouse" parent="." instance=ExtResource("18_gru58")]
 z_index = 5
 position = Vector2(423.5, 178.5)
 scale = Vector2(0.03, 0.03)
@@ -254,5 +256,4 @@ scale = Vector2(0.03, 0.03)
 [connection signal="mouse_pressed" from="Mouse" to="window_prototype/fullscreen" method="_on_mouse_mouse_pressed"]
 [connection signal="mouse_pressed" from="Mouse" to="window_prototype/close" method="_on_mouse_mouse_pressed"]
 
-[editable path="Icon_Prototype"]
 [editable path="window_prototype"]
