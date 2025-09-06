@@ -1,7 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://cms615imfktqn"]
+[gd_scene load_steps=6 format=3 uid="uid://cms615imfktqn"]
 
 [ext_resource type="Script" uid="uid://dfcnfcs0bh7q6" path="res://Scripts/main.gd" id="1_bo1nx"]
 [ext_resource type="PackedScene" uid="uid://4a33w8jd0tmg" path="res://Scenes/desktop.tscn" id="1_jjgbg"]
+[ext_resource type="Shader" uid="uid://cwx5fpekmot6i" path="res://Scenes/colorblind.gdshader" id="3_8gbba"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_jjvhh"]
+shader = ExtResource("3_8gbba")
+shader_parameter/tolerance = 0.0
+shader_parameter/prev_color_1 = Color(0, 0.392157, 0.964706, 1)
+shader_parameter/new_color_1 = Color(2.76752e-06, 0.559168, 5.77569e-07, 1)
+shader_parameter/prev_color_2 = Color(0.85098, 0.870588, 0.917647, 1)
+shader_parameter/new_color_2 = Color(0.999988, 0.194407, 0.144178, 1)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_8gbba"]
+viewport_path = NodePath("SubViewportContainer/SubViewport")
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -16,6 +28,13 @@ script = ExtResource("1_bo1nx")
 layout_mode = 0
 offset_right = 40.0
 offset_bottom = 40.0
+
+[node name="TextureRect" type="TextureRect" parent="SubViewportContainer"]
+top_level = true
+material = SubResource("ShaderMaterial_jjvhh")
+layout_mode = 2
+mouse_filter = 2
+texture = SubResource("ViewportTexture_8gbba")
 
 [node name="SubViewport" type="SubViewport" parent="SubViewportContainer"]
 handle_input_locally = false

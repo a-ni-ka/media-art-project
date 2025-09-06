@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Media Art Project"
-run/main_scene="uid://4a33w8jd0tmg"
+run/main_scene="uid://cms615imfktqn"
 config/features=PackedStringArray("4.4", "Forward Plus")
 boot_splash/image="uid://dr12l6ec02fv"
 config/icon="res://icon.svg"
