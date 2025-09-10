@@ -11,9 +11,9 @@ func _ready() -> void:
 	$HoverBackground.hide()
 
 
-func _on_button_area_exited(body: Node2D) -> void:
+func _on_button_area_exited(_body: Node2D) -> void:
 	$HoverBackground.hide()
 
 
-func _on_button_area_entered(body: Node2D) -> void:
+func _on_button_area_entered(_body: Node2D) -> void:
 	$HoverBackground.show()
