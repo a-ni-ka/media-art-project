@@ -14,6 +14,7 @@
 	- spotify
 	- files
 - basic window layout
+- color swap shader
 ### Functionally
 - right click = context menu
 - taskbar buttons are highlighted when hovering
@@ -25,9 +26,12 @@
 	- 10 last keys pressed added to a list
 - desktop file icon detects left click
 - left click & drag on desktop draws a selection rectangle
+- left click on search icon = zoom to random zoom state
+	- if zoom is more than 100%, screen can be scrolled by moving the cursor to the edge
 
 ## What is being worked on? Current problems and issues?
-- figuring out the best way to implement the zoom function
+- making the screen scroll better
+- making the selection shape weirder
 
 ## What are we planning to implement?
 - sooo many things
