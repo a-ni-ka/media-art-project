@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://4a33w8jd0tmg"]
+[gd_scene load_steps=23 format=3 uid="uid://4a33w8jd0tmg"]
 
 [ext_resource type="Texture2D" uid="uid://dxdwcc07kt2q3" path="res://visuals/w11wallpaper.jpg" id="1_4j8fu"]
 [ext_resource type="Script" uid="uid://bnhmru8blddne" path="res://Scripts/desktop_wallpaper.gd" id="2_djnmm"]
@@ -12,7 +12,6 @@
 [ext_resource type="PackedScene" uid="uid://fowymqxvc5gq" path="res://Scenes/search_area.tscn" id="10_ix27p"]
 [ext_resource type="Texture2D" uid="uid://pgyu161absk4" path="res://visuals/file_explorer_icon.png" id="11_cq71g"]
 [ext_resource type="Script" uid="uid://dfjqhnollgwy4" path="res://Scripts/date_time.gd" id="12_scol6"]
-[ext_resource type="PackedScene" uid="uid://bxcbid1w300rb" path="res://Scenes/recycle_bin.tscn" id="13_cvi26"]
 [ext_resource type="PackedScene" uid="uid://dlkaebh8nai8u" path="res://Scenes/icon.tscn" id="14_pvnqr"]
 [ext_resource type="Texture2D" uid="uid://restn4myfd6p" path="res://visuals/file_explorer.png" id="15_jk4xc"]
 [ext_resource type="Texture2D" uid="uid://b3vssf3on3ube" path="res://visuals/icon_spotify_64x64.png" id="16_ojlgc"]
@@ -63,7 +62,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_4j8fu")
-expand_mode = 1
+expand_mode = 2
+stretch_mode = 6
 script = ExtResource("2_djnmm")
 
 [node name="DesktopSelect" type="Control" parent="DesktopWallpaper"]
@@ -213,9 +213,6 @@ shape = SubResource("RectangleShape2D_1bvp3")
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 
-[node name="RecycleBin" parent="." instance=ExtResource("13_cvi26")]
-position = Vector2(2, 1)
-
 [node name="Icon_Prototype" parent="." instance=ExtResource("14_pvnqr")]
 position = Vector2(267, 358)
 icon = ExtResource("15_jk4xc")
@@ -250,6 +247,8 @@ z_index = 5
 position = Vector2(423.5, 178.5)
 scale = Vector2(0.03, 0.03)
 
+[connection signal="body_entered" from="Taskbar/TaskbarCenter/PanelContainer/HBoxContainer/Search/SearchArea" to="Taskbar/TaskbarCenter/PanelContainer/HBoxContainer/Search/SearchArea" method="_on_body_entered"]
+[connection signal="body_exited" from="Taskbar/TaskbarCenter/PanelContainer/HBoxContainer/Search/SearchArea" to="Taskbar/TaskbarCenter/PanelContainer/HBoxContainer/Search/SearchArea" method="_on_body_exited"]
 [connection signal="mouse_pressed" from="Mouse" to="Icon_Prototype" method="_on_mouse_mouse_pressed"]
 [connection signal="mouse_pressed" from="Mouse" to="Spotify" method="_on_mouse_mouse_pressed"]
 [connection signal="mouse_pressed" from="Mouse" to="window_prototype/Bar" method="_on_mouse_mouse_pressed"]

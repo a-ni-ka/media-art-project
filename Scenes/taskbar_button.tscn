@@ -1,4 +1,4 @@
-[gd_scene load_steps=4 format=3 uid="uid://e2trfnt3f67m"]
+[gd_scene load_steps=5 format=3 uid="uid://e2trfnt3f67m"]
 
 [ext_resource type="Script" uid="uid://cak7e1oyu3iqw" path="res://Scripts/taskbar_button.gd" id="1_sq02w"]
 [ext_resource type="Texture2D" uid="uid://cb8y80sene83g" path="res://icon.svg" id="2_7ri7r"]
@@ -13,6 +13,9 @@ corner_radius_top_left = 2
 corner_radius_top_right = 2
 corner_radius_bottom_right = 2
 corner_radius_bottom_left = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_7ri7r"]
+size = Vector2(24, 24)
 
 [node name="TaskBarButton" type="Control"]
 custom_minimum_size = Vector2(37, 37)
@@ -53,3 +56,12 @@ mouse_filter = 2
 texture = ExtResource("2_7ri7r")
 expand_mode = 1
 stretch_mode = 4
+
+[node name="ButtonArea" type="Area2D" parent="."]
+
+[node name="ButtonShape" type="CollisionShape2D" parent="ButtonArea"]
+position = Vector2(18, 18)
+shape = SubResource("RectangleShape2D_7ri7r")
+
+[connection signal="body_entered" from="ButtonArea" to="." method="_on_button_area_entered"]
+[connection signal="body_exited" from="ButtonArea" to="." method="_on_button_area_exited"]

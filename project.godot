@@ -20,6 +20,7 @@ boot_splash/minimum_display_time=2000
 [autoload]
 
 Gamemaster="*res://Scenes/gamemaster.tscn"
+EventBus="*res://Scripts/event_bus.gd"
 
 [display]
 
