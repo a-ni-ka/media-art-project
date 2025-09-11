@@ -9,6 +9,13 @@ size = Vector2(87.375, 83.25)
 [node name="Icon" type="Area2D"]
 script = ExtResource("1_rsedf")
 
+[node name="ColorRect" type="ColorRect" parent="."]
+offset_left = -48.0
+offset_top = -40.0
+offset_right = -8.0
+scale = Vector2(2.4, 2.16)
+color = Color(1, 1, 1, 0.270588)
+
 [node name="Sprite2D" type="TextureRect" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
@@ -26,9 +33,6 @@ size_flags_vertical = 4
 texture = ExtResource("2_mremn")
 expand_mode = 1
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_ye3n1")
-
 [node name="Label" type="Label" parent="."]
 offset_left = -42.0
 offset_top = 18.0
@@ -41,7 +45,23 @@ vertical_alignment = 1
 autowrap_mode = 2
 text_overrun_behavior = 3
 
+[node name="Button" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -48.0
+offset_top = -40.0
+offset_right = -40.0
+offset_bottom = -32.0
+scale = Vector2(11.92, 10.72)
+action_mode = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ye3n1")
+disabled = true
+
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="Button" to="." method="_on_button_mouse_entered"]
+[connection signal="mouse_exited" from="Button" to="." method="_on_button_mouse_exited"]
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

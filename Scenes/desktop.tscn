@@ -1,4 +1,4 @@
-[gd_scene load_steps=20 format=3 uid="uid://4a33w8jd0tmg"]
+[gd_scene load_steps=21 format=3 uid="uid://4a33w8jd0tmg"]
 
 [ext_resource type="Texture2D" uid="uid://dxdwcc07kt2q3" path="res://visuals/w11wallpaper.jpg" id="1_4j8fu"]
 [ext_resource type="Script" uid="uid://bnhmru8blddne" path="res://Scripts/desktop_wallpaper.gd" id="2_djnmm"]
@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://pgyu161absk4" path="res://visuals/file_explorer_icon.png" id="11_cq71g"]
 [ext_resource type="Script" uid="uid://dfjqhnollgwy4" path="res://Scripts/date_time.gd" id="12_scol6"]
 [ext_resource type="PackedScene" uid="uid://dlkaebh8nai8u" path="res://Scenes/icon.tscn" id="14_pvnqr"]
+[ext_resource type="Script" uid="uid://dl81oaq38sjxv" path="res://Scenes/myfiles.gd" id="15_1djlj"]
 [ext_resource type="Texture2D" uid="uid://b3vssf3on3ube" path="res://visuals/icon_spotify_64x64.png" id="16_ojlgc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h2yge"]
@@ -215,8 +216,9 @@ position = Vector2(57, 157)
 icon = ExtResource("16_ojlgc")
 title = "My Music"
 
-[node name="Icon" parent="." instance=ExtResource("14_pvnqr")]
+[node name="Files" parent="." instance=ExtResource("14_pvnqr")]
 position = Vector2(168, 158)
+script = ExtResource("15_1djlj")
 icon = ExtResource("11_cq71g")
 title = "My Files"
 
