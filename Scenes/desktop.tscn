@@ -13,7 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://pgyu161absk4" path="res://visuals/file_explorer_icon.png" id="11_cq71g"]
 [ext_resource type="Script" uid="uid://dfjqhnollgwy4" path="res://Scripts/date_time.gd" id="12_scol6"]
 [ext_resource type="PackedScene" uid="uid://dlkaebh8nai8u" path="res://Scenes/icon.tscn" id="14_pvnqr"]
-[ext_resource type="Script" uid="uid://dl81oaq38sjxv" path="res://Scenes/myfiles.gd" id="15_1djlj"]
+[ext_resource type="Script" uid="uid://dl81oaq38sjxv" path="res://Scripts/myfiles.gd" id="15_1djlj"]
 [ext_resource type="Texture2D" uid="uid://b3vssf3on3ube" path="res://visuals/icon_spotify_64x64.png" id="16_ojlgc"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h2yge"]
@@ -221,6 +221,17 @@ position = Vector2(168, 158)
 script = ExtResource("15_1djlj")
 icon = ExtResource("11_cq71g")
 title = "My Files"
+
+[node name="Window" type="Window" parent="Files"]
+position = Vector2i(-1000, 0)
+size = Vector2i(500, 500)
+
+[node name="ColorRect" type="ColorRect" parent="Files/Window"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [connection signal="body_entered" from="Taskbar/TaskbarCenter/PanelContainer/HBoxContainer/Search/SearchArea" to="Taskbar/TaskbarCenter/PanelContainer/HBoxContainer/Search/SearchArea" method="_on_body_entered"]
 [connection signal="body_exited" from="Taskbar/TaskbarCenter/PanelContainer/HBoxContainer/Search/SearchArea" to="Taskbar/TaskbarCenter/PanelContainer/HBoxContainer/Search/SearchArea" method="_on_body_exited"]
