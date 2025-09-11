@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://dviyk2eutauel"]
+
+[node name="window_prototype" type="Window"]
+initial_position = 1
