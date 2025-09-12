@@ -8,5 +8,5 @@ func _on_button_pressed() -> void:
 	else:
 		Gamemaster.click_icon[str(label.text)] = 1
 		print(Gamemaster.click_icon)
-	$Window.position = get_global_mouse_position()
+	$file_window.position = get_global_mouse_position()
 	

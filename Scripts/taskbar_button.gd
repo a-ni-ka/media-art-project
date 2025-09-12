@@ -17,3 +17,11 @@ func _on_button_area_exited(_body: Node2D) -> void:
 
 func _on_button_area_entered(_body: Node2D) -> void:
 	$HoverBackground.show()
+
+
+func _on_button_area_mouse_entered() -> void:
+	$HoverBackground.show()
+
+
+func _on_button_area_mouse_exited() -> void:
+	$HoverBackground.hide()

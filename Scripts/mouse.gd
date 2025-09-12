@@ -18,10 +18,6 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("turn_mouse_into_mario"):
 		state = "mario"
 
-
-func _ready():
-	Input.mouse_mode = Input.MOUSE_MODE_HIDDEN
-
 func _physics_process(delta: float) -> void:
 	if state == "mario":
 		if not is_on_floor():
