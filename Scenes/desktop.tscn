@@ -10,11 +10,11 @@
 [ext_resource type="Texture2D" uid="uid://c8np16206qjlw" path="res://visuals/search.svg" id="8_inoge"]
 [ext_resource type="Script" uid="uid://csmpkjf8glief" path="res://Scripts/search.gd" id="9_n3uxm"]
 [ext_resource type="PackedScene" uid="uid://fowymqxvc5gq" path="res://Scenes/search_area.tscn" id="10_ix27p"]
-[ext_resource type="Texture2D" uid="uid://restn4myfd6p" path="res://visuals/file_explorer.png" id="11_3ic4u"]
+[ext_resource type="Script" uid="uid://cal44pm13ulx8" path="res://Scripts/File/taskbar_button_files.gd" id="11_4j8fu"]
 [ext_resource type="Texture2D" uid="uid://pgyu161absk4" path="res://visuals/file_explorer_icon.png" id="11_cq71g"]
 [ext_resource type="Script" uid="uid://dfjqhnollgwy4" path="res://Scripts/date_time.gd" id="12_scol6"]
 [ext_resource type="PackedScene" uid="uid://dlkaebh8nai8u" path="res://Scenes/icon.tscn" id="14_pvnqr"]
-[ext_resource type="Script" uid="uid://dl81oaq38sjxv" path="res://Scripts/myfiles.gd" id="15_1djlj"]
+[ext_resource type="Script" uid="uid://dl81oaq38sjxv" path="res://Scripts/File/myfiles.gd" id="15_1djlj"]
 [ext_resource type="PackedScene" uid="uid://dlrb3kvmkrrc0" path="res://Scenes/File_Window/file_window.tscn" id="16_ghx37"]
 [ext_resource type="Texture2D" uid="uid://b3vssf3on3ube" path="res://visuals/icon_spotify_64x64.png" id="16_ojlgc"]
 [ext_resource type="PackedScene" uid="uid://dv3ov2oy2co63" path="res://Scenes/mouse.tscn" id="18_4j8fu"]
@@ -176,7 +176,8 @@ layout_mode = 2
 
 [node name="FileExplorer" parent="Taskbar/TaskbarCenter" instance=ExtResource("6_b55dp")]
 layout_mode = 2
-icon = ExtResource("11_3ic4u")
+script = ExtResource("11_4j8fu")
+icon = ExtResource("11_cq71g")
 
 [node name="Godot" parent="Taskbar/TaskbarCenter" instance=ExtResource("6_b55dp")]
 layout_mode = 2
@@ -226,6 +227,7 @@ icon = ExtResource("11_cq71g")
 title = "My Files"
 
 [node name="file_window" parent="Files" instance=ExtResource("16_ghx37")]
+unique_name_in_owner = true
 position = Vector2i(-1000, 36)
 
 [node name="Mouse" parent="." instance=ExtResource("18_4j8fu")]
@@ -233,3 +235,4 @@ scale = Vector2(0.07, 0.07)
 
 [connection signal="body_entered" from="Taskbar/TaskbarCenter/PanelContainer/HBoxContainer/Search/SearchArea" to="Taskbar/TaskbarCenter/PanelContainer/HBoxContainer/Search/SearchArea" method="_on_body_entered"]
 [connection signal="body_exited" from="Taskbar/TaskbarCenter/PanelContainer/HBoxContainer/Search/SearchArea" to="Taskbar/TaskbarCenter/PanelContainer/HBoxContainer/Search/SearchArea" method="_on_body_exited"]
+[connection signal="mouse_pressed" from="Mouse" to="Taskbar/TaskbarCenter/FileExplorer" method="_on_mouse_mouse_pressed"]

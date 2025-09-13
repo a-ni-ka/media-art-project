@@ -28,6 +28,8 @@ func _on_button_pressed() -> void:
 
 func _on_button_mouse_entered() -> void:
 	$ColorRect.visible = true
+	label.text_overrun_behavior = TextServer.OVERRUN_NO_TRIMMING
 
 func _on_button_mouse_exited() -> void:
 	$ColorRect.visible = false
+	label.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS

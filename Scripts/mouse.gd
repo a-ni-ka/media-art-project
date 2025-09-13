@@ -18,7 +18,7 @@ func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("turn_mouse_into_mario"):
 		state = "mario"
 
-func _physics_process(delta: float) -> void:
+'func _physics_process(delta: float) -> void:
 	if state == "mario":
 		if not is_on_floor():
 			velocity += get_gravity() * delta
@@ -34,4 +34,4 @@ func _physics_process(delta: float) -> void:
 		else:
 			velocity.x = move_toward(velocity.x, 0, SPEED)
 
-		move_and_slide()
+		move_and_slide()'
