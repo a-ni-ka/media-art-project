@@ -5,15 +5,13 @@
 [ext_resource type="AudioStream" uid="uid://6ucnuwlaic4u" path="res://sounds/wheeeeee.wav" id="3_akrn1"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_akrn1"]
-friction = 0.0
-bounce = 1.0
+bounce = 0.5
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qsmct"]
 size = Vector2(109, 85)
 
 [node name="Confetti" type="RigidBody2D"]
 top_level = true
-mass = 0.025
 physics_material_override = SubResource("PhysicsMaterial_akrn1")
 script = ExtResource("1_qsmct")
 
@@ -25,10 +23,22 @@ scale = Vector2(0.316406, 0.289062)
 texture = ExtResource("1_sqb1q")
 
 [node name="Label" type="Label" parent="."]
-offset_left = -54.0
+offset_left = -55.0
 offset_top = 32.0
 offset_right = 54.0
 offset_bottom = 55.0
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [node name="effect" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("3_akrn1")
+
+[node name="Button" type="Button" parent="."]
+self_modulate = Color(1, 1, 1, 0)
+offset_left = -54.0
+offset_top = -43.0
+offset_right = 54.0
+offset_bottom = 42.0
+
+[connection signal="pressed" from="Button" to="." method="_on_button_pressed"]

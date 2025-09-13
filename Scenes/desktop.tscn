@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://4a33w8jd0tmg"]
+[gd_scene load_steps=24 format=3 uid="uid://4a33w8jd0tmg"]
 
 [ext_resource type="Texture2D" uid="uid://dxdwcc07kt2q3" path="res://visuals/w11wallpaper.jpg" id="1_4j8fu"]
 [ext_resource type="Script" uid="uid://bnhmru8blddne" path="res://Scripts/desktop_wallpaper.gd" id="2_djnmm"]
@@ -17,8 +17,7 @@
 [ext_resource type="Script" uid="uid://dl81oaq38sjxv" path="res://Scripts/File/myfiles.gd" id="15_1djlj"]
 [ext_resource type="PackedScene" uid="uid://dlrb3kvmkrrc0" path="res://Scenes/File_Window/file_window.tscn" id="16_ghx37"]
 [ext_resource type="Texture2D" uid="uid://b3vssf3on3ube" path="res://visuals/icon_spotify_64x64.png" id="16_ojlgc"]
-[ext_resource type="PackedScene" uid="uid://dv3ov2oy2co63" path="res://Scenes/mouse.tscn" id="18_4j8fu"]
-[ext_resource type="Script" uid="uid://dri20kevuugfx" path="res://Scripts/File/bounce.gd" id="19_djnmm"]
+[ext_resource type="PackedScene" uid="uid://bqdej8g1xcycc" path="res://Scenes/File_Window/bounce.tscn" id="18_4j8fu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h2yge"]
 bg_color = Color(0.909804, 0.921569, 0.945098, 1)
@@ -46,9 +45,6 @@ font_color = Color(0.0941176, 0.0941176, 0.0941176, 1)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_1bvp3"]
 size = Vector2(63, 45)
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_4j8fu"]
-size = Vector2(814, 446)
 
 [node name="Desktop" type="Control"]
 layout_mode = 3
@@ -219,13 +215,6 @@ shape = SubResource("RectangleShape2D_1bvp3")
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 
-[node name="bounce" type="Area2D" parent="."]
-position = Vector2(749, 477)
-script = ExtResource("19_djnmm")
-
-[node name="bounce_coll" type="CollisionShape2D" parent="bounce"]
-shape = SubResource("RectangleShape2D_4j8fu")
-
 [node name="Spotify" parent="." instance=ExtResource("14_pvnqr")]
 position = Vector2(57, 157)
 icon = ExtResource("16_ojlgc")
@@ -239,11 +228,10 @@ title = "My Files"
 
 [node name="file_window" parent="Files" instance=ExtResource("16_ghx37")]
 unique_name_in_owner = true
-position = Vector2i(-1000, 36)
+position = Vector2i(-2000, 36)
 
-[node name="Mouse" parent="." instance=ExtResource("18_4j8fu")]
-scale = Vector2(0.07, 0.07)
+[node name="bounce" parent="Files" instance=ExtResource("18_4j8fu")]
+position = Vector2(-1768, 103)
 
 [connection signal="body_entered" from="Taskbar/TaskbarCenter/PanelContainer/HBoxContainer/Search/SearchArea" to="Taskbar/TaskbarCenter/PanelContainer/HBoxContainer/Search/SearchArea" method="_on_body_entered"]
 [connection signal="body_exited" from="Taskbar/TaskbarCenter/PanelContainer/HBoxContainer/Search/SearchArea" to="Taskbar/TaskbarCenter/PanelContainer/HBoxContainer/Search/SearchArea" method="_on_body_exited"]
-[connection signal="mouse_pressed" from="Mouse" to="Taskbar/TaskbarCenter/FileExplorer" method="_on_mouse_mouse_pressed"]

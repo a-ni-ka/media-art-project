@@ -1,0 +1,15 @@
+[gd_scene load_steps=4 format=3 uid="uid://bqdej8g1xcycc"]
+
+[ext_resource type="Script" uid="uid://dri20kevuugfx" path="res://Scripts/File/bounce.gd" id="1_qll3v"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_4j8fu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4j8fu"]
+size = Vector2(814, 446)
+
+[node name="bounce" type="AnimatableBody2D"]
+physics_material_override = SubResource("PhysicsMaterial_4j8fu")
+script = ExtResource("1_qll3v")
+
+[node name="bounce_coll" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_4j8fu")

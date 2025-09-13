@@ -29,8 +29,11 @@ func _on_work_pressed() -> void:
 	else:
 		pass
 
-
-func _on_button_pressed() -> void:
+func _on_file_button_pressed() -> void:
 	var obj = confetti.instantiate()
-	obj.position = self.position + Vector2i(self.size.x / 2.0, 50)
+	obj.position = position + Vector2i(size.x / 2.0, 50)
+	obj.display.connect(_on_confetti_display)
 	add_sibling(obj)
+
+func _on_confetti_display(name: String):
+	print(name)
