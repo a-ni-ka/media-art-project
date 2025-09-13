@@ -226,7 +226,7 @@ icon = ExtResource("11_cq71g")
 title = "My Files"
 
 [node name="file_window" parent="Files" instance=ExtResource("16_ghx37")]
-position = Vector2i(-1000, 0)
+position = Vector2i(-1000, 36)
 
 [node name="Mouse" parent="." instance=ExtResource("18_4j8fu")]
 scale = Vector2(0.07, 0.07)
