@@ -1,7 +1,11 @@
 extends Window
 
+signal content(name)
+
 var state = "none"
 var confetti = preload("res://Scenes/File_Window/confetti.tscn")
+var reader = preload("res://Scenes/File_Window/reader.tscn")
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	hide()
@@ -17,7 +21,6 @@ func _on_hobbies_pressed() -> void:
 		$work_files.position = Vector2(269,-300)
 		$hobby_files.position = Vector2 (269,3)
 		state = "hobby"
-		
 	else:
 		pass
 
@@ -35,5 +38,7 @@ func _on_file_button_pressed() -> void:
 	obj.display.connect(_on_confetti_display)
 	add_sibling(obj)
 
-func _on_confetti_display(name: String):
-	print(name)
+func _on_confetti_display(type: String, point: Vector2):
+	var obj = reader.instantiate()
+	obj.write(type, point)
+	add_sibling(obj)

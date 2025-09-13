@@ -1,0 +1,50 @@
+[gd_scene load_steps=4 format=3 uid="uid://d3ycu8bsiwhr3"]
+
+[ext_resource type="Script" uid="uid://tuamaq6voi08" path="res://Scripts/File/pdf_reader.gd" id="1_4nrjp"]
+[ext_resource type="StyleBox" uid="uid://daear7jejjj8j" path="res://Scenes/File_Window/reader_unfocused.tres" id="2_d8dvg"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pk4wx"]
+content_margin_left = 10.0
+content_margin_top = 60.0
+bg_color = Color(0.00566115, 0.00566115, 0.00566114, 1)
+border_width_left = 8
+border_width_top = 31
+border_width_right = 8
+border_width_bottom = 8
+border_color = Color(0.690196, 0.690196, 0.690196, 1)
+
+[node name="pdf_reader" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_4nrjp")
+
+[node name="TextEdit" type="TextEdit" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.011
+anchor_bottom = 1.0
+offset_right = 391.0
+offset_bottom = 604.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+theme_override_styles/normal = ExtResource("2_d8dvg")
+theme_override_styles/focus = SubResource("StyleBoxFlat_pk4wx")
+text = "Hello my name is text edit"
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -55.0
+offset_right = 225.0
+grow_vertical = 0
+theme_type_variation = &"HeaderLarge"
+theme_override_font_sizes/font_size = 40
+text = "Countdown: "
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 10.0
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

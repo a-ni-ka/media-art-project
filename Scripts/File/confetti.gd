@@ -1,6 +1,6 @@
 extends RigidBody2D
 
-signal display(name: String)
+signal display(type: String, point: Vector2)
 
 const FLY = -1000
 const NAMES = ["Transcipt", "Meeting Plan", "Important Information", "DO NOT DELETE", "Union Letter", "Contract"]
@@ -18,4 +18,4 @@ func _ready() -> void:
 	apply_impulse(Vector2(direction * randi_range(300, 1000), FLY))
 
 func _on_button_pressed() -> void:
-	display.emit($Label.text)
+	display.emit($Label.text, global_position)
