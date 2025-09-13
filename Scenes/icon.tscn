@@ -1,12 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://dlkaebh8nai8u"]
+[gd_scene load_steps=3 format=3 uid="uid://dlkaebh8nai8u"]
 
 [ext_resource type="Script" uid="uid://bxmjkx7lppbq" path="res://Scripts/icon.gd" id="1_rsedf"]
 [ext_resource type="Texture2D" uid="uid://restn4myfd6p" path="res://visuals/file_explorer.png" id="2_mremn"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_ye3n1"]
-size = Vector2(87.375, 83.25)
-
 [node name="Icon" type="Area2D"]
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_rsedf")
 
 [node name="ColorRect" type="ColorRect" parent="."]
@@ -54,10 +53,6 @@ offset_right = -40.0
 offset_bottom = -32.0
 scale = Vector2(11.92, 10.72)
 action_mode = 0
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-shape = SubResource("RectangleShape2D_ye3n1")
-disabled = true
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]

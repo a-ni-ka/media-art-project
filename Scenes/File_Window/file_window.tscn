@@ -21,6 +21,7 @@ bg_color = Color(0.690196, 0.690196, 0.690196, 1)
 title = "My Files"
 position = Vector2i(0, 36)
 size = Vector2i(800, 450)
+unresizable = true
 theme_override_styles/embedded_border = ExtResource("1_us0vl")
 theme_override_styles/embedded_unfocused_border = SubResource("StyleBoxFlat_3u60x")
 script = ExtResource("1_su4cx")
@@ -192,6 +193,7 @@ text = "Graphs"
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer/hobbies" to="." method="_on_hobbies_pressed"]
 [connection signal="pressed" from="PanelContainer/VBoxContainer/HBoxContainer2/work" to="." method="_on_work_pressed"]
 [connection signal="pressed" from="work_files/imp_documents/Button" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="work_files/reports/Button" to="." method="_on_button_pressed"]
 
 [editable path="hobby_files/knitting"]
 [editable path="hobby_files/bird_watching"]

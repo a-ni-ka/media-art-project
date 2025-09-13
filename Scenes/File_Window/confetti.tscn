@@ -1,14 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://b320f0v6taayk"]
+[gd_scene load_steps=6 format=3 uid="uid://b320f0v6taayk"]
 
-[ext_resource type="Script" uid="uid://dksygbaadr68v" path="res://Scripts/File/confetti.gd" id="1_qsmct"]
+[ext_resource type="Script" uid="uid://g605u7jjrga8" path="res://Scripts/File/confetti.gd" id="1_qsmct"]
 [ext_resource type="Texture2D" uid="uid://cxdjeaq5185m" path="res://visuals/pdf.png" id="1_sqb1q"]
 [ext_resource type="AudioStream" uid="uid://6ucnuwlaic4u" path="res://sounds/wheeeeee.wav" id="3_akrn1"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_akrn1"]
+friction = 0.0
+bounce = 1.0
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_qsmct"]
 size = Vector2(109, 85)
 
-[node name="Confetti" type="CharacterBody2D"]
+[node name="Confetti" type="RigidBody2D"]
 top_level = true
+mass = 0.025
+physics_material_override = SubResource("PhysicsMaterial_akrn1")
 script = ExtResource("1_qsmct")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
@@ -19,7 +25,6 @@ scale = Vector2(0.316406, 0.289062)
 texture = ExtResource("1_sqb1q")
 
 [node name="Label" type="Label" parent="."]
-anchors_preset = -1
 offset_left = -54.0
 offset_top = 32.0
 offset_right = 54.0
