@@ -1,50 +1,50 @@
-[gd_scene load_steps=4 format=3 uid="uid://d3ycu8bsiwhr3"]
+[gd_scene load_steps=6 format=3 uid="uid://d3ycu8bsiwhr3"]
 
 [ext_resource type="Script" uid="uid://tuamaq6voi08" path="res://Scripts/File/pdf_reader.gd" id="1_4nrjp"]
-[ext_resource type="StyleBox" uid="uid://daear7jejjj8j" path="res://Scenes/File_Window/reader_unfocused.tres" id="2_d8dvg"]
+[ext_resource type="StyleBox" uid="uid://dwkn57nwejros" path="res://Scenes/File_Window/styles/file_window_focused.tres" id="3_247jp"]
+[ext_resource type="AudioStream" uid="uid://cgc3eqmsakyo7" path="res://sounds/pop.mp3" id="3_pk4wx"]
+[ext_resource type="StyleBox" uid="uid://bv5gpockhvor8" path="res://Scenes/File_Window/styles/file_window_unfocused.tres" id="4_ja8ih"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pk4wx"]
-content_margin_left = 10.0
-content_margin_top = 60.0
-bg_color = Color(0.00566115, 0.00566115, 0.00566114, 1)
-border_width_left = 8
-border_width_top = 31
-border_width_right = 8
-border_width_bottom = 8
-border_color = Color(0.690196, 0.690196, 0.690196, 1)
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_d8dvg"]
+size = Vector2(315, 537)
 
 [node name="pdf_reader" type="Control"]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_4nrjp")
 
-[node name="TextEdit" type="TextEdit" parent="."]
-layout_mode = 1
-anchors_preset = -1
-anchor_right = 1.011
-anchor_bottom = 1.0
-offset_right = 391.0
-offset_bottom = 604.0
-size_flags_horizontal = 3
-size_flags_vertical = 3
-theme_override_styles/normal = ExtResource("2_d8dvg")
-theme_override_styles/focus = SubResource("StyleBoxFlat_pk4wx")
-text = "Hello my name is text edit"
-
-[node name="Label" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 2
-anchor_top = 1.0
-anchor_bottom = 1.0
-offset_top = -55.0
-offset_right = 225.0
-grow_vertical = 0
-theme_type_variation = &"HeaderLarge"
-theme_override_font_sizes/font_size = 40
-text = "Countdown: "
-
 [node name="Timer" type="Timer" parent="."]
 wait_time = 10.0
 autostart = true
 
+[node name="pop" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_pk4wx")
+
+[node name="Window" type="Window" parent="."]
+position = Vector2i(0, 36)
+size = Vector2i(300, 500)
+always_on_top = true
+theme_override_styles/embedded_border = ExtResource("3_247jp")
+theme_override_styles/embedded_unfocused_border = ExtResource("4_ja8ih")
+
+[node name="TextEdit" type="TextEdit" parent="Window"]
+clip_contents = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+text = "Hello my name is text edit"
+
+[node name="bounce" type="AnimatableBody2D" parent="."]
+position = Vector2(150, 275)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bounce"]
+position = Vector2(0, -1)
+shape = SubResource("RectangleShape2D_d8dvg")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="finished" from="pop" to="." method="_on_pop_finished"]
+[connection signal="size_changed" from="Window" to="." method="_on_window_size_changed"]

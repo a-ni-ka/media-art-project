@@ -226,11 +226,10 @@ script = ExtResource("15_1djlj")
 icon = ExtResource("11_cq71g")
 title = "My Files"
 
-[node name="file_window" parent="Files" instance=ExtResource("16_ghx37")]
-unique_name_in_owner = true
-
 [node name="bounce" parent="Files" instance=ExtResource("18_4j8fu")]
 position = Vector2(-1768, 103)
+
+[node name="file_window" parent="Files" instance=ExtResource("16_ghx37")]
 
 [connection signal="body_entered" from="Taskbar/TaskbarCenter/PanelContainer/HBoxContainer/Search/SearchArea" to="Taskbar/TaskbarCenter/PanelContainer/HBoxContainer/Search/SearchArea" method="_on_body_entered"]
 [connection signal="body_exited" from="Taskbar/TaskbarCenter/PanelContainer/HBoxContainer/Search/SearchArea" to="Taskbar/TaskbarCenter/PanelContainer/HBoxContainer/Search/SearchArea" method="_on_body_exited"]

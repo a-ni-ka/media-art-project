@@ -1,10 +1,12 @@
 extends Window
 
-signal content(name)
 
 var state = "none"
 var confetti = preload("res://Scenes/File_Window/confetti.tscn")
 var reader = preload("res://Scenes/File_Window/reader.tscn")
+var secret_window = preload("res://Scenes/File_Window/secret_window.tscn")
+var tries = 0
+var passwords = ["password", "mince", "secret", "guess", "castle", "drowssap", "please", "algebra", "sondern", "fähigkeit"]
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -42,3 +44,14 @@ func _on_confetti_display(type: String, point: Vector2):
 	var obj = reader.instantiate()
 	obj.write(type, point)
 	add_sibling(obj)
+
+func _on_secret_pressed() -> void:
+	var obj = secret_window.instantiate()
+	obj.closed.connect(_on_secret_closed)
+	obj.password = passwords[tries % 10]
+	obj.tries = tries
+	add_child(obj)
+
+func _on_secret_closed(x):
+	tries += x
+	
