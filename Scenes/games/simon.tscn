@@ -1,0 +1,111 @@
+[gd_scene load_steps=12 format=3 uid="uid://b4yvc064eetoy"]
+
+[ext_resource type="Texture2D" uid="uid://veqcw76ao1ot" path="res://assets/visuals/simon_says/up_unpressed.png" id="1_ub4uw"]
+[ext_resource type="Script" uid="uid://bf0jgd3wm84j6" path="res://Scripts/games/simon.gd" id="1_xdy1y"]
+[ext_resource type="Texture2D" uid="uid://dhu2mrbu43lpa" path="res://assets/visuals/simon_says/up_pressed.png" id="2_xdy1y"]
+[ext_resource type="Texture2D" uid="uid://bquunc4ktav1n" path="res://assets/visuals/simon_says/left_unpressed.png" id="3_hsawk"]
+[ext_resource type="Texture2D" uid="uid://cxk3w1o1igxfa" path="res://assets/visuals/simon_says/left_pressed.png" id="4_q6ekt"]
+[ext_resource type="Texture2D" uid="uid://cv4ap534ebmsi" path="res://assets/visuals/simon_says/right_unpressed.png" id="5_2ft0d"]
+[ext_resource type="Texture2D" uid="uid://uu62l54amckr" path="res://assets/visuals/simon_says/right_pressed.png" id="6_eet4v"]
+[ext_resource type="Texture2D" uid="uid://dkdfvlcvlr21q" path="res://assets/visuals/simon_says/down_unpressed.png" id="7_yufds"]
+[ext_resource type="Texture2D" uid="uid://d4mqx370h8mqm" path="res://assets/visuals/simon_says/down_pressed.png" id="8_ngy1h"]
+[ext_resource type="AudioStream" uid="uid://cgc3eqmsakyo7" path="res://assets/sounds/pop.mp3" id="10_hsawk"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hsawk"]
+bg_color = Color(0.0142752, 0.0142752, 0.0142752, 1)
+
+[node name="simon" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_xdy1y")
+
+[node name="Window" type="Window" parent="."]
+title = "Security Measure"
+initial_position = 1
+size = Vector2i(450, 450)
+
+[node name="ColorRect" type="ColorRect" parent="Window"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.666569, 0.666569, 0.666569, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Window"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="up" type="TextureButton" parent="Window/VBoxContainer" groups=["buttons"]]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+size_flags_vertical = 6
+texture_normal = ExtResource("1_ub4uw")
+texture_pressed = ExtResource("2_xdy1y")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Window/VBoxContainer"]
+layout_mode = 2
+
+[node name="left" type="TextureButton" parent="Window/VBoxContainer/HBoxContainer" groups=["buttons"]]
+custom_minimum_size = Vector2(100, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("3_hsawk")
+texture_pressed = ExtResource("4_q6ekt")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="right" type="TextureButton" parent="Window/VBoxContainer/HBoxContainer" groups=["buttons"]]
+custom_minimum_size = Vector2(100, 200)
+layout_mode = 2
+size_flags_horizontal = 3
+texture_normal = ExtResource("5_2ft0d")
+texture_pressed = ExtResource("6_eet4v")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="down" type="TextureButton" parent="Window/VBoxContainer" groups=["buttons"]]
+custom_minimum_size = Vector2(200, 100)
+layout_mode = 2
+size_flags_vertical = 6
+texture_normal = ExtResource("7_yufds")
+texture_pressed = ExtResource("8_ngy1h")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="Label" type="Label" parent="Window"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -191.0
+offset_top = -57.0
+offset_right = 191.0
+offset_bottom = 57.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 68
+theme_override_styles/normal = SubResource("StyleBoxFlat_hsawk")
+horizontal_alignment = 1
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.5
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("10_hsawk")
+
+[connection signal="gui_input" from="." to="." method="_on_gui_input"]
+[connection signal="ready" from="." to="." method="_on_ready"]
+[connection signal="close_requested" from="Window" to="." method="_on_window_close_requested"]
+[connection signal="pressed" from="Window/VBoxContainer/up" to="." method="_on_button_pressed" binds= ["up"]]
+[connection signal="pressed" from="Window/VBoxContainer/HBoxContainer/left" to="." method="_on_button_pressed" binds= ["left"]]
+[connection signal="pressed" from="Window/VBoxContainer/HBoxContainer/right" to="." method="_on_button_pressed" binds= ["right"]]
+[connection signal="pressed" from="Window/VBoxContainer/down" to="." method="_on_button_pressed" binds= ["down"]]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

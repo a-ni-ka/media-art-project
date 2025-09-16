@@ -9,13 +9,13 @@ var click_icon = {}
 var letters = []
 #Event flags, can be stored in array
 var flags = []
-
-
+# letters written out in a string
+var word = ""
 func _input(event: InputEvent) -> void:
 	# Counts amount of clicks
 	if event.is_action_pressed("Left Click"):
 		click += 1
-
+	
 	# Saves last ten letters typed in array
 	if event is InputEventKey:
 		match event.keycode:
@@ -73,5 +73,8 @@ func _input(event: InputEvent) -> void:
 				letters.append("z")
 			_:
 				pass
+		
 		if letters.size() > 10:
 			print(letters.pop_front())
+		
+		print(letters)
