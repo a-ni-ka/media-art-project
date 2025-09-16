@@ -1,8 +1,0 @@
-[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dxai4xc7elyvi"]
-
-[sub_resource type="SystemFont" id="SystemFont_dn5hb"]
-font_names = PackedStringArray("Segoe UI")
-generate_mipmaps = true
-
-[resource]
-Label/fonts/font = SubResource("SystemFont_dn5hb")

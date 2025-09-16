@@ -6,7 +6,7 @@ extends AnimatableBody2D
 func _ready() -> void:
 	window.size_changed.connect(_on_file_window_size_changed)
 
-func _physics_process(delta: float) -> void:
+func _physics_process(_delta: float) -> void:
 	global_position = Vector2(window.position.x + window.size.x / 2.0, window.position.y + window.size.y / 2.0)
 
 func _on_file_window_size_changed() -> void:
