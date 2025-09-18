@@ -20,4 +20,4 @@ func _process(_delta: float) -> void:
 	$bounce.global_position = Vector2($Window.position.x + $Window.size.x / 2.0, $Window.position.y + $Window.size.y / 2.0 - 11)
 
 func _on_window_size_changed() -> void:
-	$bounce/CollisionShape2D.shape.size = Vector2($Window.size.x + 15, $Window.size.y + 37)
+	$bounce/CollisionShape2D.shape.size = Vector2($Window.size.x, $Window.size.y + 37)

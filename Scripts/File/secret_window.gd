@@ -15,6 +15,7 @@ func _on_con_pressed() -> void:
 		obj.mode = "annoying"
 		add_sibling(obj)
 		obj.display(rick, Vector2(randi_range(10,750), randi_range(10,450)), "Reward")
+		queue_free()
 	elif tries > 50:
 		pass
 
