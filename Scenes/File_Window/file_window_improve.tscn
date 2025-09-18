@@ -1,0 +1,266 @@
+[gd_scene load_steps=15 format=3 uid="uid://rivmbmqxn413"]
+
+[ext_resource type="StyleBox" uid="uid://dwkn57nwejros" path="res://Scenes/File_Window/styles/file_window_focused.tres" id="1_us0vl"]
+[ext_resource type="Texture2D" uid="uid://ct4lsw0x4lbq0" path="res://assets/visuals/folder.png" id="2_su0r6"]
+[ext_resource type="StyleBox" uid="uid://bv5gpockhvor8" path="res://Scenes/File_Window/styles/file_window_unfocused.tres" id="2_t3bgu"]
+[ext_resource type="Script" uid="uid://dmgmrrf63xj7n" path="res://Scripts/File/file_window_improve.gd" id="3_q4svc"]
+[ext_resource type="StyleBox" uid="uid://cvovlpmqs7rl3" path="res://Scenes/File_Window/styles/focus_button.tres" id="3_su0r6"]
+[ext_resource type="StyleBox" uid="uid://g4bfciooroje" path="res://Scenes/File_Window/styles/normal_button.tres" id="3_us0vl"]
+[ext_resource type="PackedScene" uid="uid://dlkaebh8nai8u" path="res://Scenes/icon.tscn" id="6_3u60x"]
+[ext_resource type="Texture2D" uid="uid://dxtyke5ld8me2" path="res://assets/visuals/icon_new_24x24.png" id="6_d4qv1"]
+[ext_resource type="Texture2D" uid="uid://cxo8egerf1hv6" path="res://assets/visuals/cut_icon.png" id="7_7jlto"]
+[ext_resource type="Texture2D" uid="uid://cjrgmttlunpd5" path="res://assets/visuals/copy_icon.png" id="8_id5f6"]
+[ext_resource type="Texture2D" uid="uid://pk4pxffxtmcj" path="res://assets/visuals/paste_icon.png" id="9_h2i47"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q4svc"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_bottom = 1
+border_color = Color(0.597176, 0.597176, 0.597176, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_7jlto"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.466181, 0.466181, 0.466181, 1)
+corner_radius_top_left = 2
+corner_radius_top_right = 2
+corner_radius_bottom_right = 2
+corner_radius_bottom_left = 2
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vlr1w"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
+[node name="file_window" type="Window"]
+title = "My Files"
+position = Vector2i(0, 36)
+size = Vector2i(800, 450)
+theme_override_styles/embedded_border = ExtResource("1_us0vl")
+theme_override_styles/embedded_unfocused_border = ExtResource("2_t3bgu")
+script = ExtResource("3_q4svc")
+
+[node name="work_files" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 431.0
+offset_top = -143.0
+offset_right = 1069.0
+offset_bottom = -143.0
+
+[node name="imp_documents" parent="work_files" instance=ExtResource("6_3u60x")]
+position = Vector2(61, 49)
+icon = ExtResource("2_su0r6")
+title = "Important Documents"
+
+[node name="ColorRect" parent="work_files/imp_documents" index="0"]
+color = Color(0.494118, 0.494118, 0.494118, 0.34902)
+
+[node name="Sprite2D" parent="work_files/imp_documents" index="1"]
+texture = ExtResource("2_su0r6")
+
+[node name="Label" parent="work_files/imp_documents" index="2"]
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Important Documents"
+
+[node name="reports" parent="work_files" instance=ExtResource("6_3u60x")]
+position = Vector2(160, 49)
+icon = ExtResource("2_su0r6")
+title = "Reports"
+
+[node name="ColorRect" parent="work_files/reports" index="0"]
+color = Color(0.494118, 0.494118, 0.494118, 0.34902)
+
+[node name="Sprite2D" parent="work_files/reports" index="1"]
+texture = ExtResource("2_su0r6")
+
+[node name="Label" parent="work_files/reports" index="2"]
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Reports"
+
+[node name="graphs" parent="work_files" instance=ExtResource("6_3u60x")]
+position = Vector2(259, 49)
+icon = ExtResource("2_su0r6")
+title = "Graphs"
+
+[node name="ColorRect" parent="work_files/graphs" index="0"]
+color = Color(0.494118, 0.494118, 0.494118, 0.34902)
+
+[node name="Sprite2D" parent="work_files/graphs" index="1"]
+texture = ExtResource("2_su0r6")
+
+[node name="Label" parent="work_files/graphs" index="2"]
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Graphs"
+
+[node name="hobby_files" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 128.0
+offset_top = -137.0
+offset_right = 128.0
+offset_bottom = -137.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="knitting" parent="hobby_files" instance=ExtResource("6_3u60x")]
+position = Vector2(61, 49)
+icon = ExtResource("2_su0r6")
+title = "Knitting"
+
+[node name="ColorRect" parent="hobby_files/knitting" index="0"]
+color = Color(0.493545, 0.493546, 0.493546, 0.34902)
+
+[node name="Sprite2D" parent="hobby_files/knitting" index="1"]
+texture = ExtResource("2_su0r6")
+
+[node name="Label" parent="hobby_files/knitting" index="2"]
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Knitting"
+
+[node name="bird_watching" parent="hobby_files" instance=ExtResource("6_3u60x")]
+position = Vector2(160, 49)
+icon = ExtResource("2_su0r6")
+title = "Bird Watchi"
+
+[node name="ColorRect" parent="hobby_files/bird_watching" index="0"]
+color = Color(0.494118, 0.494118, 0.494118, 0.34902)
+
+[node name="Sprite2D" parent="hobby_files/bird_watching" index="1"]
+texture = ExtResource("2_su0r6")
+
+[node name="Label" parent="hobby_files/bird_watching" index="2"]
+offset_left = -43.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Bird Watching"
+
+[node name="ColorRect" type="ColorRect" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Control" type="VBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.2
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer/Control"]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_q4svc")
+
+[node name="interact" type="HBoxContainer" parent="VBoxContainer/Control/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="new" type="Button" parent="VBoxContainer/Control/PanelContainer/interact"]
+layout_mode = 2
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_styles/hover = SubResource("StyleBoxFlat_7jlto")
+theme_override_styles/normal = SubResource("StyleBoxFlat_vlr1w")
+text = "New "
+icon = ExtResource("6_d4qv1")
+
+[node name="cut" type="TextureButton" parent="VBoxContainer/Control/PanelContainer/interact"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+texture_normal = ExtResource("7_7jlto")
+texture_pressed = ExtResource("7_7jlto")
+texture_hover = ExtResource("7_7jlto")
+texture_disabled = ExtResource("7_7jlto")
+texture_focused = ExtResource("7_7jlto")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="copy" type="TextureButton" parent="VBoxContainer/Control/PanelContainer/interact"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+texture_normal = ExtResource("8_id5f6")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="paste" type="TextureButton" parent="VBoxContainer/Control/PanelContainer/interact"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+texture_normal = ExtResource("9_h2i47")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="return" type="HBoxContainer" parent="VBoxContainer/Control"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+drag_area_margin_begin = 2
+drag_area_margin_end = 2
+drag_area_highlight_in_editor = true
+
+[node name="types" type="VBoxContainer" parent="VBoxContainer/HSplitContainer"]
+custom_minimum_size = Vector2(150, 0)
+layout_mode = 2
+
+[node name="hobbies" type="Button" parent="VBoxContainer/HSplitContainer/types"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+theme_override_styles/focus = ExtResource("3_su0r6")
+theme_override_styles/normal = ExtResource("3_us0vl")
+text = "Hobbies"
+icon = ExtResource("2_su0r6")
+alignment = 0
+expand_icon = true
+
+[node name="work" type="Button" parent="VBoxContainer/HSplitContainer/types"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+theme_override_styles/focus = ExtResource("3_su0r6")
+theme_override_styles/normal = ExtResource("3_us0vl")
+text = "Work"
+icon = ExtResource("2_su0r6")
+alignment = 0
+expand_icon = true
+
+[node name="secret" type="Button" parent="VBoxContainer/HSplitContainer/types"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_font_sizes/font_size = 18
+theme_override_styles/focus = ExtResource("3_su0r6")
+theme_override_styles/normal = ExtResource("3_us0vl")
+text = "Secret"
+icon = ExtResource("2_su0r6")
+alignment = 0
+expand_icon = true
+
+[node name="folders" type="VBoxContainer" parent="VBoxContainer/HSplitContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[connection signal="close_requested" from="." to="." method="_on_close_requested"]
+[connection signal="size_changed" from="." to="." method="_on_size_changed"]
+[connection signal="pressed" from="work_files/imp_documents/Button" to="." method="_on_file_button_pressed"]
+[connection signal="pressed" from="VBoxContainer/HSplitContainer/types/hobbies" to="." method="_on_hobbies_pressed"]
+[connection signal="pressed" from="VBoxContainer/HSplitContainer/types/work" to="." method="_on_work_pressed"]
+[connection signal="pressed" from="VBoxContainer/HSplitContainer/types/secret" to="." method="_on_secret_pressed"]
+
+[editable path="work_files/imp_documents"]
+[editable path="work_files/reports"]
+[editable path="work_files/graphs"]
+[editable path="hobby_files/knitting"]
+[editable path="hobby_files/bird_watching"]

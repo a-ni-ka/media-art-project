@@ -143,27 +143,29 @@ var secret_window = preload("res://Scenes/File_Window/secret_window.tscn")
 var tries = 0
 var passwords = ["password", "mince", "secret", "guess", "castle", "drowssap", "please", "algebra", "sondern", "fähigkeit"]
 var password = ""
+
+@onready var folders = $VBoxContainer/HSplitContainer/folders
+@onready var work = $work_files
+@onready var hobby = $hobby_files
 # Called when the node enters the scene tree for the first time.
-func _ready() -> void:
-	pass
 
 func _on_close_requested() -> void:
-	self.position = Vector2i(-1000, 0)
-	self.size = Vector2i(267,450)
-	self.hide()
-	
+	queue_free()
+
 func _on_hobbies_pressed() -> void:
 	if state != "hobby":
-		$work_files.position = Vector2(269,-300)
-		$hobby_files.position = Vector2 (269,3)
+		work.reparent(self)
+		work.position = Vector2(-250,-250)
+		hobby.reparent(folders)
 		state = "hobby"
 	else:
 		pass
 
 func _on_work_pressed() -> void:
 	if state != "work":
-		$work_files.position = Vector2(269,3)
-		$hobby_files.position = Vector2(269,-300)
+		hobby.reparent(self)
+		hobby.position = Vector2(-250,-250)
+		work.reparent(folders)
 		state = "work"
 	else:
 		pass
