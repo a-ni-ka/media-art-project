@@ -15,8 +15,8 @@
 [ext_resource type="Script" uid="uid://dfjqhnollgwy4" path="res://Scripts/date_time.gd" id="12_scol6"]
 [ext_resource type="PackedScene" uid="uid://dlkaebh8nai8u" path="res://Scenes/icon.tscn" id="14_pvnqr"]
 [ext_resource type="Script" uid="uid://dl81oaq38sjxv" path="res://Scripts/File/myfiles.gd" id="15_1djlj"]
-[ext_resource type="PackedScene" uid="uid://dlrb3kvmkrrc0" path="res://Scenes/File_Window/file_window.tscn" id="16_ghx37"]
 [ext_resource type="Texture2D" uid="uid://b3vssf3on3ube" path="res://assets/visuals/icon_spotify_64x64.png" id="16_ojlgc"]
+[ext_resource type="PackedScene" uid="uid://rivmbmqxn413" path="res://Scenes/File_Window/file_window_improve.tscn" id="17_4j8fu"]
 [ext_resource type="PackedScene" uid="uid://bqdej8g1xcycc" path="res://Scenes/File_Window/bounce.tscn" id="18_4j8fu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h2yge"]
@@ -226,10 +226,10 @@ script = ExtResource("15_1djlj")
 icon = ExtResource("11_cq71g")
 title = "My Files"
 
+[node name="file_window" parent="Files" instance=ExtResource("17_4j8fu")]
+
 [node name="bounce" parent="Files" instance=ExtResource("18_4j8fu")]
 position = Vector2(-1768, 103)
-
-[node name="file_window" parent="Files" instance=ExtResource("16_ghx37")]
 
 [connection signal="body_entered" from="Taskbar/TaskbarCenter/PanelContainer/HBoxContainer/Search/SearchArea" to="Taskbar/TaskbarCenter/PanelContainer/HBoxContainer/Search/SearchArea" method="_on_body_entered"]
 [connection signal="body_exited" from="Taskbar/TaskbarCenter/PanelContainer/HBoxContainer/Search/SearchArea" to="Taskbar/TaskbarCenter/PanelContainer/HBoxContainer/Search/SearchArea" method="_on_body_exited"]

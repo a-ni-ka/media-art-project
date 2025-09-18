@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://rivmbmqxn413"]
+[gd_scene load_steps=22 format=3 uid="uid://rivmbmqxn413"]
 
 [ext_resource type="StyleBox" uid="uid://dwkn57nwejros" path="res://Scenes/File_Window/styles/file_window_focused.tres" id="1_us0vl"]
 [ext_resource type="Texture2D" uid="uid://ct4lsw0x4lbq0" path="res://assets/visuals/folder.png" id="2_su0r6"]
@@ -11,6 +11,11 @@
 [ext_resource type="Texture2D" uid="uid://cxo8egerf1hv6" path="res://assets/visuals/cut_icon.png" id="7_7jlto"]
 [ext_resource type="Texture2D" uid="uid://cjrgmttlunpd5" path="res://assets/visuals/copy_icon.png" id="8_id5f6"]
 [ext_resource type="Texture2D" uid="uid://pk4pxffxtmcj" path="res://assets/visuals/paste_icon.png" id="9_h2i47"]
+[ext_resource type="Texture2D" uid="uid://ox132r1q8m5w" path="res://assets/visuals/arrow_back.png" id="10_h2i47"]
+[ext_resource type="Texture2D" uid="uid://sn0tfiudfhfy" path="res://assets/visuals/arrow_forward.png" id="11_mmqlb"]
+[ext_resource type="Texture2D" uid="uid://dvesf7bxmi6i5" path="res://assets/visuals/home.png" id="12_2q78f"]
+[ext_resource type="Texture2D" uid="uid://c8np16206qjlw" path="res://assets/visuals/search.svg" id="12_wb5ep"]
+[ext_resource type="StyleBox" uid="uid://dv0y6lyqxqht7" path="res://Scenes/File_Window/styles/hovered_button.tres" id="13_b8qj7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q4svc"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -32,10 +37,24 @@ corner_radius_bottom_left = 2
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_vlr1w"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2q78f"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(0.596078, 0.596078, 0.596078, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_uwqkh"]
+bg_color = Color(0.6, 0.6, 0.6, 0)
+
 [node name="file_window" type="Window"]
 title = "My Files"
 position = Vector2i(0, 36)
 size = Vector2i(800, 450)
+theme_override_colors/title_color = Color(0, 0, 0, 1)
+theme_override_constants/close_h_offset = 24
+theme_override_constants/close_v_offset = 24
 theme_override_styles/embedded_border = ExtResource("1_us0vl")
 theme_override_styles/embedded_unfocused_border = ExtResource("2_t3bgu")
 script = ExtResource("3_q4svc")
@@ -162,6 +181,10 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_q4svc")
 layout_mode = 2
 size_flags_vertical = 3
 
+[node name="a" type="ColorRect" parent="VBoxContainer/Control/PanelContainer/interact"]
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
 [node name="new" type="Button" parent="VBoxContainer/Control/PanelContainer/interact"]
 layout_mode = 2
 theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
@@ -203,6 +226,96 @@ stretch_mode = 5
 [node name="return" type="HBoxContainer" parent="VBoxContainer/Control"]
 layout_mode = 2
 size_flags_vertical = 3
+theme_override_constants/separation = 10
+
+[node name="a" type="ColorRect" parent="VBoxContainer/Control/return"]
+custom_minimum_size = Vector2(5, 0)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
+
+[node name="back" type="TextureButton" parent="VBoxContainer/Control/return"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+texture_normal = ExtResource("10_h2i47")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="forward" type="TextureButton" parent="VBoxContainer/Control/return"]
+custom_minimum_size = Vector2(15, 15)
+layout_mode = 2
+texture_normal = ExtResource("11_mmqlb")
+ignore_texture_size = true
+stretch_mode = 5
+
+[node name="filepath" type="PanelContainer" parent="VBoxContainer/Control/return"]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_2q78f")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Control/return/filepath"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Control/return/filepath/HBoxContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+texture = ExtResource("12_2q78f")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/Control/return/filepath/HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/selection_color = Color(0.14902, 0.807843, 0.87451, 0.529412)
+theme_override_colors/font_placeholder_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_colors/font_uneditable_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/read_only = SubResource("StyleBoxFlat_uwqkh")
+theme_override_styles/normal = SubResource("StyleBoxFlat_uwqkh")
+text = "> Home"
+placeholder_text = "Search..."
+editable = false
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+
+[node name="search" type="PanelContainer" parent="VBoxContainer/Control/return"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_styles/panel = SubResource("StyleBoxFlat_2q78f")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/Control/return/search"]
+layout_mode = 2
+
+[node name="TextureRect" type="TextureRect" parent="VBoxContainer/Control/return/search/HBoxContainer"]
+custom_minimum_size = Vector2(20, 0)
+layout_mode = 2
+texture = ExtResource("12_wb5ep")
+expand_mode = 1
+stretch_mode = 5
+
+[node name="LineEdit" type="LineEdit" parent="VBoxContainer/Control/return/search/HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/selection_color = Color(0.14902, 0.807843, 0.87451, 0.529412)
+theme_override_colors/font_placeholder_color = Color(0, 0, 0, 1)
+theme_override_colors/font_selected_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_styles/normal = SubResource("StyleBoxFlat_uwqkh")
+placeholder_text = "Search..."
+context_menu_enabled = false
+emoji_menu_enabled = false
+virtual_keyboard_enabled = false
+shortcut_keys_enabled = false
+middle_mouse_paste_enabled = false
+
+[node name="a2" type="ColorRect" parent="VBoxContainer/Control/return"]
+custom_minimum_size = Vector2(15, 0)
+layout_mode = 2
+color = Color(1, 1, 1, 0)
 
 [node name="HSplitContainer" type="HSplitContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -218,8 +331,15 @@ layout_mode = 2
 [node name="hobbies" type="Button" parent="VBoxContainer/HSplitContainer/types"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 18
 theme_override_styles/focus = ExtResource("3_su0r6")
+theme_override_styles/hover = ExtResource("13_b8qj7")
 theme_override_styles/normal = ExtResource("3_us0vl")
 text = "Hobbies"
 icon = ExtResource("2_su0r6")
@@ -229,8 +349,15 @@ expand_icon = true
 [node name="work" type="Button" parent="VBoxContainer/HSplitContainer/types"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 18
 theme_override_styles/focus = ExtResource("3_su0r6")
+theme_override_styles/hover = ExtResource("13_b8qj7")
 theme_override_styles/normal = ExtResource("3_us0vl")
 text = "Work"
 icon = ExtResource("2_su0r6")
@@ -240,8 +367,15 @@ expand_icon = true
 [node name="secret" type="Button" parent="VBoxContainer/HSplitContainer/types"]
 layout_mode = 2
 size_flags_horizontal = 3
+theme_override_colors/font_disabled_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
 theme_override_font_sizes/font_size = 18
 theme_override_styles/focus = ExtResource("3_su0r6")
+theme_override_styles/hover = ExtResource("13_b8qj7")
 theme_override_styles/normal = ExtResource("3_us0vl")
 text = "Secret"
 icon = ExtResource("2_su0r6")

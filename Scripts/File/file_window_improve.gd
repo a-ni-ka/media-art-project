@@ -147,10 +147,14 @@ var password = ""
 @onready var folders = $VBoxContainer/HSplitContainer/folders
 @onready var work = $work_files
 @onready var hobby = $hobby_files
-# Called when the node enters the scene tree for the first time.
+
+func _ready():
+	position = Vector2i (-1000,0)
+	hide()
 
 func _on_close_requested() -> void:
-	queue_free()
+	position = Vector2i (-1000,0)
+	hide()
 
 func _on_hobbies_pressed() -> void:
 	if state != "hobby":
