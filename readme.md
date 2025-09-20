@@ -35,3 +35,6 @@
 
 ## What are we planning to implement?
 - sooo many things
+
+## Credits
+- Black Squirrel for the Mine Sweeper Sprites
