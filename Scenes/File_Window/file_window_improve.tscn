@@ -236,14 +236,14 @@ layout_mode = 2
 color = Color(1, 1, 1, 0)
 
 [node name="back" type="TextureButton" parent="VBoxContainer/Control/return"]
-custom_minimum_size = Vector2(15, 15)
+custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 texture_normal = ExtResource("10_h2i47")
 ignore_texture_size = true
 stretch_mode = 5
 
 [node name="forward" type="TextureButton" parent="VBoxContainer/Control/return"]
-custom_minimum_size = Vector2(15, 15)
+custom_minimum_size = Vector2(20, 20)
 layout_mode = 2
 texture_normal = ExtResource("11_mmqlb")
 ignore_texture_size = true
@@ -391,6 +391,8 @@ layout_mode = 2
 [connection signal="close_requested" from="." to="." method="_on_close_requested"]
 [connection signal="size_changed" from="." to="." method="_on_size_changed"]
 [connection signal="pressed" from="work_files/imp_documents/Button" to="." method="_on_file_button_pressed"]
+[connection signal="button_down" from="VBoxContainer/Control/return/back" to="." method="_on_back_button_down"]
+[connection signal="button_down" from="VBoxContainer/Control/return/forward" to="." method="_on_forward_button_down"]
 [connection signal="pressed" from="VBoxContainer/HSplitContainer/types/hobbies" to="." method="_on_hobbies_pressed"]
 [connection signal="pressed" from="VBoxContainer/HSplitContainer/types/work" to="." method="_on_work_pressed"]
 [connection signal="pressed" from="VBoxContainer/HSplitContainer/types/secret" to="." method="_on_secret_pressed"]

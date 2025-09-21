@@ -201,7 +201,6 @@ func _on_confetti_display(type: String, point: Vector2):
 	text = text.insert(randi_range(0, text.length()-1), password)
 	obj.write(text, point)
 	add_sibling(obj)
-	
 
 func _on_secret_pressed() -> void:
 	var obj = secret_window.instantiate()
@@ -212,4 +211,9 @@ func _on_secret_pressed() -> void:
 
 func _on_secret_closed(x):
 	tries += x
-	
+
+func _on_back_button_down() -> void:
+	position.x -= 10
+
+func _on_forward_button_down() -> void:
+	position.x += 10 
