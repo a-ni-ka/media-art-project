@@ -144,7 +144,7 @@ text = "Knitting"
 [node name="bird_watching" parent="hobby_files" instance=ExtResource("6_3u60x")]
 position = Vector2(160, 49)
 icon = ExtResource("2_su0r6")
-title = "Bird Watchi"
+title = "Bird Watching"
 
 [node name="ColorRect" parent="hobby_files/bird_watching" index="0"]
 color = Color(0.494118, 0.494118, 0.494118, 0.34902)
@@ -394,6 +394,8 @@ layout_mode = 2
 stream = ExtResource("18_ygwl4")
 volume_db = 8.0
 
+[node name="Timer" type="Timer" parent="."]
+
 [connection signal="close_requested" from="." to="." method="_on_close_requested"]
 [connection signal="size_changed" from="." to="." method="_on_size_changed"]
 [connection signal="pressed" from="work_files/imp_documents/Button" to="." method="_on_file_button_pressed"]
@@ -403,6 +405,7 @@ volume_db = 8.0
 [connection signal="pressed" from="VBoxContainer/HSplitContainer/types/hobbies" to="." method="_on_hobbies_pressed"]
 [connection signal="pressed" from="VBoxContainer/HSplitContainer/types/work" to="." method="_on_work_pressed"]
 [connection signal="pressed" from="VBoxContainer/HSplitContainer/types/secret" to="." method="_on_secret_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 
 [editable path="work_files/imp_documents"]
 [editable path="work_files/reports"]

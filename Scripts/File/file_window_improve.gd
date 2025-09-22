@@ -142,15 +142,20 @@ var confetti = preload("res://Scenes/File_Window/confetti.tscn")
 var reader = preload("res://Scenes/reader_window.tscn")
 var secret_window = preload("res://Scenes/File_Window/secret_window.tscn")
 var bird = preload("res://Scenes/File_Window/bird.tscn")
+var number_picker = preload("res://Scenes/shitty_input/number_picker.tscn")
 # Different variables which are necessary in the code
 var tries = 0
 var state = "none"
 var passwords = ["password", "mince", "secret", "guess", "castle", "drowssap", "please", "algebra", "sondern", "fähigkeit"]
 var password = ""
+var birds = 0
 #Children which are referenced more often
 @onready var folders = $VBoxContainer/HSplitContainer/folders
 @onready var work = $work_files
 @onready var hobby = $hobby_files
+@onready var timer: Timer = $Timer
+@onready var bird_button: Button = $hobby_files/bird_watching/Button
+
 
 func _ready():
 	position = Vector2i (-1000,0)
@@ -224,6 +229,7 @@ func _on_forward_button_down() -> void:
 	position.x += 10 
 #When the birdwatching file is pressed spawns birds on each side of the desktop, which fly back and forth
 func _on_bird_button_pressed() -> void:
+	
 	for x in randi_range(5,20):
 		var obj = bird.instantiate()
 		add_sibling(obj)
@@ -231,4 +237,27 @@ func _on_bird_button_pressed() -> void:
 			obj.global_position = Vector2(randi_range(1700, 2200), randi_range(20,700))
 		else:
 			obj.global_position = Vector2(randi_range(-100, -600), randi_range(20,700))
+		birds += 1
 	$sound.play()
+	timer.wait_time = 10.0
+	bird_button.disabled = true
+	timer.start()
+
+
+func _on_timer_timeout() -> void:
+	timer.stop()
+	bird_button.disabled = false
+	var obj = number_picker.instantiate()
+	obj.title = "Bird Count"
+	obj.text = "How many Birds did you see?"
+	obj.correct_number = birds
+	obj.number_range = [5,20]
+	obj.select.connect(_on_number_selected)
+	add_sibling(obj)
+
+func _on_number_selected(x):
+	if birds != x:
+		$sound.stream = load("res://assets/sounds/wrong.mp3")
+		$sound.play()
+	else:
+		pass

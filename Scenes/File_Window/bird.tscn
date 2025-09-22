@@ -1,10 +1,15 @@
-[gd_scene load_steps=13 format=3 uid="uid://dxn58tga5vhr2"]
+[gd_scene load_steps=15 format=3 uid="uid://dxn58tga5vhr2"]
 
 [ext_resource type="Script" uid="uid://d0o58wkx0ju67" path="res://Scripts/File/bird.gd" id="1_576ms"]
 [ext_resource type="Texture2D" uid="uid://b2gxpqsqpipxg" path="res://assets/visuals/BirdSpriteBig.png" id="2_576ms"]
+[ext_resource type="AudioStream" uid="uid://dx1ab4a8uu7gb" path="res://assets/sounds/chirp.mp3" id="3_7cvsx"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_576ms"]
 size = Vector2(189, 142)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7cvsx"]
+atlas = ExtResource("2_576ms")
+region = Rect2(320, 320, 160, 160)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_1knak"]
 atlas = ExtResource("2_576ms")
@@ -40,6 +45,14 @@ region = Rect2(1120, 160, 160, 160)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_1knak"]
 animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7cvsx")
+}],
+"loop": true,
+"name": &"crash",
+"speed": 5.0
+}, {
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_1knak")
@@ -82,5 +95,9 @@ shape = SubResource("RectangleShape2D_576ms")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1knak")
-animation = &"flying"
+animation = &"crash"
 autoplay = "flying"
+
+[node name="sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_7cvsx")
+autoplay = true
