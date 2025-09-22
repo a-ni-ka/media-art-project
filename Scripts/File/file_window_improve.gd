@@ -1,5 +1,6 @@
 extends Window
 
+#Different Texts this window is supposed to pint onto the reader window
 #region Text Dict
 var texts: Dictionary = {"Transcript": "Team Check-In Meeting Transcript
 
@@ -136,14 +137,17 @@ Thank you for your time and support. We look forward to hearing from you soon.",
 Sign here
 ____________"}
 #endregion
-var state = "none"
+# Scenes to be spawned in code
 var confetti = preload("res://Scenes/File_Window/confetti.tscn")
 var reader = preload("res://Scenes/reader_window.tscn")
 var secret_window = preload("res://Scenes/File_Window/secret_window.tscn")
+var bird = preload("res://Scenes/File_Window/bird.tscn")
+# Different variables which are necessary in the code
 var tries = 0
+var state = "none"
 var passwords = ["password", "mince", "secret", "guess", "castle", "drowssap", "please", "algebra", "sondern", "fähigkeit"]
 var password = ""
-
+#Children which are referenced more often
 @onready var folders = $VBoxContainer/HSplitContainer/folders
 @onready var work = $work_files
 @onready var hobby = $hobby_files
@@ -155,7 +159,7 @@ func _ready():
 func _on_close_requested() -> void:
 	position = Vector2i (-1000,0)
 	hide()
-
+# Switches displayed files to those in the hobby node
 func _on_hobbies_pressed() -> void:
 	if state != "hobby":
 		work.reparent(self)
@@ -164,7 +168,7 @@ func _on_hobbies_pressed() -> void:
 		state = "hobby"
 	else:
 		pass
-
+# Switches displayed files to those in the work node
 func _on_work_pressed() -> void:
 	if state != "work":
 		hobby.reparent(self)
@@ -173,13 +177,13 @@ func _on_work_pressed() -> void:
 		state = "work"
 	else:
 		pass
-
+# When important document file is clicked, spawns a flying pdf file onto the desktop
 func _on_file_button_pressed() -> void:
 	var obj = confetti.instantiate()
 	obj.position = position + Vector2i(size.x / 2.0, 50)
 	obj.display.connect(_on_confetti_display)
 	add_sibling(obj)
-
+#When one of those flying pdf files is clicked, displays the text associated with it in the reader window
 func _on_confetti_display(type: String, point: Vector2):
 	var obj = reader.instantiate()
 	var text = ""
@@ -201,19 +205,30 @@ func _on_confetti_display(type: String, point: Vector2):
 	text = text.insert(randi_range(0, text.length()-1), password)
 	obj.write(text, point)
 	add_sibling(obj)
-
+#Opens another window in which a password can be entered. 
+#This password changes with every time a password is attempted to be entered and with everytime someone tries to find the password in the important documents pdfs, into which the password is inserted at a random position
 func _on_secret_pressed() -> void:
 	var obj = secret_window.instantiate()
 	obj.closed.connect(_on_secret_closed)
 	obj.password = passwords[tries % 10]
 	obj.tries = tries
 	add_child(obj)
-
+#To keep track of the amount of tries a person has spent trying to find the password
 func _on_secret_closed(x):
 	tries += x
-
+#Moves the window ever so slightly if the "go back" or "go forward" button are pushed
 func _on_back_button_down() -> void:
 	position.x -= 10
 
 func _on_forward_button_down() -> void:
 	position.x += 10 
+#When the birdwatching file is pressed spawns birds on each side of the desktop, which fly back and forth
+func _on_bird_button_pressed() -> void:
+	for x in randi_range(5,20):
+		var obj = bird.instantiate()
+		add_sibling(obj)
+		if obj.direction < 0:
+			obj.global_position = Vector2(randi_range(1700, 2200), randi_range(20,700))
+		else:
+			obj.global_position = Vector2(randi_range(-100, -600), randi_range(20,700))
+	$sound.play()

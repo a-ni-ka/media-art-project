@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://rivmbmqxn413"]
+[gd_scene load_steps=24 format=3 uid="uid://rivmbmqxn413"]
 
 [ext_resource type="StyleBox" uid="uid://dwkn57nwejros" path="res://Scenes/File_Window/styles/file_window_focused.tres" id="1_us0vl"]
 [ext_resource type="Texture2D" uid="uid://iye2wsnbbrqw" path="res://assets/visuals/close.png" id="1_uwqkh"]
@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://dvesf7bxmi6i5" path="res://assets/visuals/home.png" id="12_2q78f"]
 [ext_resource type="Texture2D" uid="uid://c8np16206qjlw" path="res://assets/visuals/search.svg" id="12_wb5ep"]
 [ext_resource type="StyleBox" uid="uid://dv0y6lyqxqht7" path="res://Scenes/File_Window/styles/hovered_button.tres" id="13_b8qj7"]
+[ext_resource type="AudioStream" uid="uid://c1k54lvac7jvc" path="res://assets/sounds/birds_flying.wav" id="18_ygwl4"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q4svc"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -50,6 +51,7 @@ border_color = Color(0.596078, 0.596078, 0.596078, 1)
 bg_color = Color(0.6, 0.6, 0.6, 0)
 
 [node name="file_window" type="Window"]
+audio_listener_enable_2d = true
 title = "My Files"
 position = Vector2i(0, 36)
 size = Vector2i(800, 450)
@@ -388,9 +390,14 @@ expand_icon = true
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 
+[node name="sound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("18_ygwl4")
+volume_db = 8.0
+
 [connection signal="close_requested" from="." to="." method="_on_close_requested"]
 [connection signal="size_changed" from="." to="." method="_on_size_changed"]
 [connection signal="pressed" from="work_files/imp_documents/Button" to="." method="_on_file_button_pressed"]
+[connection signal="pressed" from="hobby_files/bird_watching/Button" to="." method="_on_bird_button_pressed"]
 [connection signal="button_down" from="VBoxContainer/Control/return/back" to="." method="_on_back_button_down"]
 [connection signal="button_down" from="VBoxContainer/Control/return/forward" to="." method="_on_forward_button_down"]
 [connection signal="pressed" from="VBoxContainer/HSplitContainer/types/hobbies" to="." method="_on_hobbies_pressed"]

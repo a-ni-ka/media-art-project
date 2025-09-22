@@ -20,7 +20,7 @@ func _ready() -> void:
 	scale = Vector2(25.0/dif, 25.0/dif)
 	area.scale = Vector2(25.0/dif, 25.0/dif)
 	area.position = Vector2(size.x * 25.0/dif / 2, size.y * 25.0/dif / 2)
-	if randi_range(1,int(dif/2)) % int(dif/2) == 0:
+	if randi_range(1,8) % 8 == 0:
 		tile_state = State.MINE
 	else:
 		tile_state = State.NORMAL
@@ -41,7 +41,7 @@ func _on_gui_input(event: InputEvent) -> void:
 		pressed = true
 		click.emit("left")
 	elif event.is_action_pressed("Right Click"):
-		if pressed:
+		if pressed and sprite.animation == "flag":
 			sprite.animation = "blank"
 			pressed = false
 			click.emit("none")

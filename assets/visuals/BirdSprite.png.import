@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dbitahnp7sgvd"
-path="res://.godot/imported/PC _ Computer - Minesweeper - Miscellaneous - General Sprites.png-99aae2c10d8c6ad3919ad2338ad6865b.ctex"
+uid="uid://d3rsn2vxxmjem"
+path="res://.godot/imported/BirdSprite.png-d51a07b20f6c6604edb29cf959b21386.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/visuals/minesweeper/PC _ Computer - Minesweeper - Miscellaneous - General Sprites.png"
-dest_files=["res://.godot/imported/PC _ Computer - Minesweeper - Miscellaneous - General Sprites.png-99aae2c10d8c6ad3919ad2338ad6865b.ctex"]
+source_file="res://assets/visuals/BirdSprite.png"
+dest_files=["res://.godot/imported/BirdSprite.png-d51a07b20f6c6604edb29cf959b21386.ctex"]
 
 [params]
 

@@ -227,7 +227,6 @@ icon = ExtResource("11_cq71g")
 title = "My Files"
 
 [node name="file_window" parent="Files" instance=ExtResource("17_4j8fu")]
-position = Vector2i(-1000, 36)
 
 [node name="bounce" parent="Files" instance=ExtResource("18_4j8fu")]
 position = Vector2(-1768, 103)
