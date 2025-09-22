@@ -13,6 +13,21 @@ func _gui_input(event: InputEvent) -> void:
 		if mouse_event.button_index == MOUSE_BUTTON_RIGHT and mouse_event.pressed:
 			context_menu.place_context_menu(event)
 
+# Code additions made by Thies
 
+var bird = preload("res://Scenes/File_Window/bird.tscn")
 func _on_file_window_change_wallpaper(path: Variant) -> void:
 	texture = load(path)
+
+func _on_file_window_bird_up() -> void:
+	if Gamemaster.click_icon["Bird Watching"] > 10:
+		$sound.stream = load("res://assets/sounds/birb-up.mp3")
+		$sound.play()
+		for i in 500:
+			var obj = bird.instantiate()
+			add_child(obj)
+			if obj.direction < 0:
+				obj.global_position = Vector2(randi_range(1700, 2200), randi_range(20,700))
+			else:
+				obj.global_position = Vector2(randi_range(-100, -600), randi_range(20,700))
+			

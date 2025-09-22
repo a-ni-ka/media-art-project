@@ -402,6 +402,7 @@ volume_db = 8.0
 [connection signal="pressed" from="hobby_files/bird_watching/Button" to="." method="_on_bird_button_pressed"]
 [connection signal="button_down" from="VBoxContainer/Control/return/back" to="." method="_on_back_button_down"]
 [connection signal="button_down" from="VBoxContainer/Control/return/forward" to="." method="_on_forward_button_down"]
+[connection signal="text_submitted" from="VBoxContainer/Control/return/search/HBoxContainer/LineEdit" to="." method="_on_line_edit_text_submitted"]
 [connection signal="pressed" from="VBoxContainer/HSplitContainer/types/hobbies" to="." method="_on_hobbies_pressed"]
 [connection signal="pressed" from="VBoxContainer/HSplitContainer/types/work" to="." method="_on_work_pressed"]
 [connection signal="pressed" from="VBoxContainer/HSplitContainer/types/secret" to="." method="_on_secret_pressed"]

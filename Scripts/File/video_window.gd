@@ -25,4 +25,9 @@ func _on_window_close_requested() -> void:
 
 
 func _on_video_stream_player_finished() -> void:
+	$Timer.start()
+	$Window/Label.show()
+
+
+func _on_timer_timeout() -> void:
 	queue_free()

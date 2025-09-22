@@ -1,6 +1,7 @@
 extends Window
 
 signal change_wallpaper(path)
+signal bird_up
 
 #Different Texts this window is supposed to pint onto the reader window
 #region Text Dict
@@ -231,7 +232,7 @@ func _on_forward_button_down() -> void:
 	position.x += 10 
 #When the birdwatching file is pressed spawns birds on each side of the desktop, which fly back and forth
 func _on_bird_button_pressed() -> void:
-	
+	bird_up.emit()
 	for x in randi_range(5,20):
 		var obj = bird.instantiate()
 		add_sibling(obj)
@@ -265,3 +266,8 @@ func _on_number_selected(x):
 		$sound.stream = load("res://assets/sounds/epic_eagle_scream_xxx.mp3")
 		$sound.play()
 		change_wallpaper.emit("res://assets/visuals/bird_wallpaper.jpg")
+
+
+func _on_line_edit_text_submitted(new_text: String) -> void:
+	if new_text == "relinquo":
+		get_tree().quit()
