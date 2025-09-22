@@ -12,3 +12,7 @@ func _gui_input(event: InputEvent) -> void:
 		var mouse_event := event as InputEventMouseButton
 		if mouse_event.button_index == MOUSE_BUTTON_RIGHT and mouse_event.pressed:
 			context_menu.place_context_menu(event)
+
+
+func _on_file_window_change_wallpaper(path: Variant) -> void:
+	texture = load(path)

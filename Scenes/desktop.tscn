@@ -233,3 +233,4 @@ position = Vector2(-1768, 103)
 
 [connection signal="body_entered" from="Taskbar/TaskbarCenter/PanelContainer/HBoxContainer/Search/SearchArea" to="Taskbar/TaskbarCenter/PanelContainer/HBoxContainer/Search/SearchArea" method="_on_body_entered"]
 [connection signal="body_exited" from="Taskbar/TaskbarCenter/PanelContainer/HBoxContainer/Search/SearchArea" to="Taskbar/TaskbarCenter/PanelContainer/HBoxContainer/Search/SearchArea" method="_on_body_exited"]
+[connection signal="change_wallpaper" from="Files/file_window" to="DesktopWallpaper" method="_on_file_window_change_wallpaper"]

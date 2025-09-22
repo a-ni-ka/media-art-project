@@ -1,5 +1,7 @@
 extends Window
 
+signal change_wallpaper(path)
+
 #Different Texts this window is supposed to pint onto the reader window
 #region Text Dict
 var texts: Dictionary = {"Transcript": "Team Check-In Meeting Transcript
@@ -239,7 +241,7 @@ func _on_bird_button_pressed() -> void:
 			obj.global_position = Vector2(randi_range(-100, -600), randi_range(20,700))
 		birds += 1
 	$sound.play()
-	timer.wait_time = 10.0
+	timer.wait_time = 15.0
 	bird_button.disabled = true
 	timer.start()
 
@@ -260,4 +262,6 @@ func _on_number_selected(x):
 		$sound.stream = load("res://assets/sounds/wrong.mp3")
 		$sound.play()
 	else:
-		pass
+		$sound.stream = load("res://assets/sounds/epic_eagle_scream_xxx.mp3")
+		$sound.play()
+		change_wallpaper.emit("res://assets/visuals/bird_wallpaper.jpg")
