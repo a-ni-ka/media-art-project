@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://rivmbmqxn413"]
+[gd_scene load_steps=25 format=3 uid="uid://rivmbmqxn413"]
 
 [ext_resource type="StyleBox" uid="uid://dwkn57nwejros" path="res://Scenes/File_Window/styles/file_window_focused.tres" id="1_us0vl"]
 [ext_resource type="Texture2D" uid="uid://iye2wsnbbrqw" path="res://assets/visuals/close.png" id="1_uwqkh"]
@@ -9,6 +9,7 @@
 [ext_resource type="StyleBox" uid="uid://g4bfciooroje" path="res://Scenes/File_Window/styles/normal_button.tres" id="3_us0vl"]
 [ext_resource type="PackedScene" uid="uid://dlkaebh8nai8u" path="res://Scenes/icon.tscn" id="6_3u60x"]
 [ext_resource type="Texture2D" uid="uid://dxtyke5ld8me2" path="res://assets/visuals/icon_new_24x24.png" id="6_d4qv1"]
+[ext_resource type="Texture2D" uid="uid://1l80hb1w7up" path="res://assets/visuals/photos-newicon.png" id="6_qsgcn"]
 [ext_resource type="Texture2D" uid="uid://cxo8egerf1hv6" path="res://assets/visuals/cut_icon.png" id="7_7jlto"]
 [ext_resource type="Texture2D" uid="uid://cjrgmttlunpd5" path="res://assets/visuals/copy_icon.png" id="8_id5f6"]
 [ext_resource type="Texture2D" uid="uid://pk4pxffxtmcj" path="res://assets/visuals/paste_icon.png" id="9_h2i47"]
@@ -63,13 +64,36 @@ theme_override_styles/embedded_border = ExtResource("1_us0vl")
 theme_override_styles/embedded_unfocused_border = ExtResource("2_t3bgu")
 script = ExtResource("3_q4svc")
 
+[node name="birdwatching_files" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 176.0
+offset_top = 87.0
+offset_right = 176.0
+offset_bottom = 87.0
+
+[node name="Picture" parent="birdwatching_files" instance=ExtResource("6_3u60x")]
+position = Vector2(61, 49)
+icon = ExtResource("6_qsgcn")
+title = "Epic Eagle"
+
+[node name="ColorRect" parent="birdwatching_files/Picture" index="0"]
+color = Color(0.494118, 0.494118, 0.494118, 0.34902)
+
+[node name="Sprite2D" parent="birdwatching_files/Picture" index="1"]
+texture = ExtResource("6_qsgcn")
+
+[node name="Label" parent="birdwatching_files/Picture" index="2"]
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Epic Eagle"
+
 [node name="work_files" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
-offset_left = 431.0
-offset_top = -143.0
-offset_right = 1069.0
-offset_bottom = -143.0
+offset_left = 353.0
+offset_top = -121.0
+offset_right = 991.0
+offset_bottom = -121.0
 
 [node name="imp_documents" parent="work_files" instance=ExtResource("6_3u60x")]
 position = Vector2(61, 49)
@@ -265,7 +289,7 @@ texture = ExtResource("12_2q78f")
 expand_mode = 1
 stretch_mode = 5
 
-[node name="LineEdit" type="LineEdit" parent="VBoxContainer/Control/return/filepath/HBoxContainer"]
+[node name="patheditor" type="LineEdit" parent="VBoxContainer/Control/return/filepath/HBoxContainer"]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -276,7 +300,6 @@ theme_override_colors/font_uneditable_color = Color(0, 0, 0, 1)
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_styles/read_only = SubResource("StyleBoxFlat_uwqkh")
 theme_override_styles/normal = SubResource("StyleBoxFlat_uwqkh")
-text = "> Home"
 placeholder_text = "Search..."
 editable = false
 context_menu_enabled = false
@@ -398,6 +421,7 @@ volume_db = 8.0
 
 [connection signal="close_requested" from="." to="." method="_on_close_requested"]
 [connection signal="size_changed" from="." to="." method="_on_size_changed"]
+[connection signal="pressed" from="birdwatching_files/Picture/Button" to="." method="_on_bird_pic_button_pressed"]
 [connection signal="pressed" from="work_files/imp_documents/Button" to="." method="_on_file_button_pressed"]
 [connection signal="pressed" from="hobby_files/bird_watching/Button" to="." method="_on_bird_button_pressed"]
 [connection signal="button_down" from="VBoxContainer/Control/return/back" to="." method="_on_back_button_down"]
@@ -408,6 +432,7 @@ volume_db = 8.0
 [connection signal="pressed" from="VBoxContainer/HSplitContainer/types/secret" to="." method="_on_secret_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 
+[editable path="birdwatching_files/Picture"]
 [editable path="work_files/imp_documents"]
 [editable path="work_files/reports"]
 [editable path="work_files/graphs"]

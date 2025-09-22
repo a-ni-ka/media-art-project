@@ -1,0 +1,41 @@
+[gd_scene load_steps=5 format=3 uid="uid://bbl62f5coxfrl"]
+
+[ext_resource type="Script" uid="uid://dydsokadbyvyt" path="res://Scripts/image_window.gd" id="1_20aux"]
+[ext_resource type="StyleBox" uid="uid://dwkn57nwejros" path="res://Scenes/File_Window/styles/file_window_focused.tres" id="2_imjui"]
+[ext_resource type="StyleBox" uid="uid://bv5gpockhvor8" path="res://Scenes/File_Window/styles/file_window_unfocused.tres" id="3_lufpt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_imjui"]
+size = Vector2(799, 478)
+
+[node name="image_window" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_20aux")
+
+[node name="Window" type="Window" parent="."]
+size = Vector2i(800, 450)
+unresizable = true
+theme_override_styles/embedded_border = ExtResource("2_imjui")
+theme_override_styles/embedded_unfocused_border = ExtResource("3_lufpt")
+
+[node name="TextureRect" type="TextureRect" parent="Window"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+expand_mode = 5
+stretch_mode = 5
+
+[node name="bounce" type="AnimatableBody2D" parent="."]
+position = Vector2(400, 225)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="bounce"]
+position = Vector2(0.5, -16)
+shape = SubResource("RectangleShape2D_imjui")
+
+[connection signal="close_requested" from="Window" to="." method="_on_window_close_requested"]

@@ -146,6 +146,7 @@ var reader = preload("res://Scenes/reader_window.tscn")
 var secret_window = preload("res://Scenes/File_Window/secret_window.tscn")
 var bird = preload("res://Scenes/File_Window/bird.tscn")
 var number_picker = preload("res://Scenes/shitty_input/number_picker.tscn")
+var picture_window = preload("res://Scenes/image_window.tscn")
 # Different variables which are necessary in the code
 var tries = 0
 var state = "none"
@@ -158,11 +159,14 @@ var birds = 0
 @onready var hobby = $hobby_files
 @onready var timer: Timer = $Timer
 @onready var bird_button: Button = $hobby_files/bird_watching/Button
+@onready var patheditor: LineEdit = $VBoxContainer/Control/return/filepath/HBoxContainer/patheditor
+@onready var birdwatching_files: Control = $birdwatching_files
 
 
 func _ready():
 	position = Vector2i (-1000,0)
 	hide()
+	patheditor.text = "Home >"
 
 func _on_close_requested() -> void:
 	position = Vector2i (-1000,0)
@@ -174,6 +178,9 @@ func _on_hobbies_pressed() -> void:
 		work.position = Vector2(-250,-250)
 		hobby.reparent(folders)
 		state = "hobby"
+		birdwatching_files.reparent(self)
+		birdwatching_files.position = Vector2(-250,-250)
+		patheditor.text = "Home > Hobby"
 	else:
 		pass
 # Switches displayed files to those in the work node
@@ -182,7 +189,10 @@ func _on_work_pressed() -> void:
 		hobby.reparent(self)
 		hobby.position = Vector2(-250,-250)
 		work.reparent(folders)
+		birdwatching_files.reparent(self)
+		birdwatching_files.position = Vector2(-250,-250)
 		state = "work"
+		patheditor.text = "Home > Work"
 	else:
 		pass
 # When important document file is clicked, spawns a flying pdf file onto the desktop
@@ -246,7 +256,6 @@ func _on_bird_button_pressed() -> void:
 	bird_button.disabled = true
 	timer.start()
 
-
 func _on_timer_timeout() -> void:
 	timer.stop()
 	bird_button.disabled = false
@@ -266,8 +275,21 @@ func _on_number_selected(x):
 		$sound.stream = load("res://assets/sounds/epic_eagle_scream_xxx.mp3")
 		$sound.play()
 		change_wallpaper.emit("res://assets/visuals/bird_wallpaper.jpg")
-
+		hobby.reparent(self)
+		hobby.position = Vector2(-250,-250)
+		work.reparent(self)
+		work.position = Vector2(-250,-250)
+		birdwatching_files.reparent(folders)
+		state = "bird"
+		patheditor.text = "Home > Hobby > Bird Watching"
 
 func _on_line_edit_text_submitted(new_text: String) -> void:
 	if new_text == "relinquo":
 		get_tree().quit()
+
+func _on_bird_pic_button_pressed() -> void:
+	var obj = picture_window.instantiate()
+	obj.title = "Epic Eagle"
+	obj.image = "res://assets/visuals/bird_wallpaper.jpg"
+	obj.position = Vector2i(300,200)
+	add_sibling(obj)
