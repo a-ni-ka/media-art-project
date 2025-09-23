@@ -30,4 +30,3 @@ func _on_file_window_bird_up() -> void:
 				obj.global_position = Vector2(randi_range(1700, 2200), randi_range(20,700))
 			else:
 				obj.global_position = Vector2(randi_range(-100, -600), randi_range(20,700))
-			

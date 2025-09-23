@@ -11,10 +11,11 @@ func _ready() -> void:
 	$HoverBackground.hide()
 
 
-func _on_button_area_exited(_body: Node2D) -> void:
-	$HoverBackground.hide()
-	mouse_state = false
-
-func _on_button_area_entered(_body: Node2D) -> void:
+func _on_mouse_entered() -> void:
 	$HoverBackground.show()
 	mouse_state = true
+
+
+func _on_mouse_exited() -> void:
+	$HoverBackground.hide()
+	mouse_state = false

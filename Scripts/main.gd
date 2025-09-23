@@ -14,12 +14,21 @@ var zoom_state_option : ZoomStateOptions : set = _set_zoom_state
 
 
 func _ready() -> void:
+	get_tree().set_auto_accept_quit(false)
+	$LoadingScreen.visible = true
 	EventBus.zoom_clicked.connect(_on_zoom_clicked)
 	zoom_state_option = ZoomStateOptions.DEFAULT
 
 
+func _notification(what: int) -> void:
+	if what == NOTIFICATION_WM_CLOSE_REQUEST:
+		$LoadingScreen.visible = true
+
+
 func _on_zoom_clicked() -> void:
-	_set_zoom_state(ZoomStateOptions.values().pick_random())
+	var other_zoom_states: Array = ZoomStateOptions.values()
+	other_zoom_states.erase(zoom_state_option)
+	_set_zoom_state(other_zoom_states.pick_random())
 
 
 func _set_zoom_state(value: ZoomStateOptions) -> void:
