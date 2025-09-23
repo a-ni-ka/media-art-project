@@ -1,11 +1,14 @@
-[gd_scene load_steps=22 format=3 uid="uid://4a33w8jd0tmg"]
+[gd_scene load_steps=28 format=3 uid="uid://4a33w8jd0tmg"]
 
 [ext_resource type="Texture2D" uid="uid://dxdwcc07kt2q3" path="res://assets/visuals/w11wallpaper.jpg" id="1_4j8fu"]
 [ext_resource type="Script" uid="uid://bnhmru8blddne" path="res://Scripts/desktop_wallpaper.gd" id="2_djnmm"]
 [ext_resource type="Script" uid="uid://cl0xvgtuumseb" path="res://Scripts/desktop_select.gd" id="3_pfbb1"]
 [ext_resource type="PackedScene" uid="uid://dk16qhj3ykph2" path="res://Scenes/ContextMenu/context_menu.tscn" id="4_wg1g7"]
+[ext_resource type="Script" uid="uid://dhx65c0fhqj8t" path="res://Scenes/quit_popup.gd" id="5_djnmm"]
+[ext_resource type="Theme" uid="uid://ph5bw77c6tdo" path="res://assets/popup_theme.tres" id="5_pfbb1"]
 [ext_resource type="Script" uid="uid://gcdai4gkb41h" path="res://Scripts/taskbar.gd" id="5_qpnbv"]
 [ext_resource type="PackedScene" uid="uid://e2trfnt3f67m" path="res://Scenes/taskbar_button.tscn" id="6_b55dp"]
+[ext_resource type="FontFile" uid="uid://ksloxaxuuijm" path="res://assets/visuals/segoe_slboot.ttf" id="6_pfbb1"]
 [ext_resource type="Texture2D" uid="uid://c2op4jrngcgc2" path="res://assets/visuals/start-button.png" id="7_ad33h"]
 [ext_resource type="Texture2D" uid="uid://c8np16206qjlw" path="res://assets/visuals/search.svg" id="8_inoge"]
 [ext_resource type="Script" uid="uid://csmpkjf8glief" path="res://Scripts/search.gd" id="9_n3uxm"]
@@ -17,6 +20,16 @@
 [ext_resource type="Texture2D" uid="uid://b3vssf3on3ube" path="res://assets/visuals/icon_spotify_64x64.png" id="16_ojlgc"]
 [ext_resource type="PackedScene" uid="uid://rivmbmqxn413" path="res://Scenes/File_Window/file_window_improve.tscn" id="17_4j8fu"]
 [ext_resource type="PackedScene" uid="uid://bqdej8g1xcycc" path="res://Scenes/File_Window/bounce.tscn" id="18_4j8fu"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_wg1g7"]
+font = ExtResource("6_pfbb1")
+font_color = Color(0, 0, 0, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qpnbv"]
+bg_color = Color(0.870588, 0.870588, 0.870588, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b55dp"]
+bg_color = Color(0.868985, 0.868985, 0.868985, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h2yge"]
 bg_color = Color(0.909804, 0.921569, 0.945098, 1)
@@ -79,6 +92,61 @@ offset_right = 300.0
 context_menu_type = 1
 
 [node name="sound" type="AudioStreamPlayer2D" parent="DesktopWallpaper"]
+
+[node name="QuitPopup" type="Popup" parent="DesktopWallpaper"]
+title = "Oh?"
+initial_position = 1
+size = Vector2i(200, 100)
+visible = true
+borderless = false
+always_on_top = true
+keep_title_visible = true
+theme = ExtResource("5_pfbb1")
+script = ExtResource("5_djnmm")
+
+[node name="ColorRect" type="ColorRect" parent="DesktopWallpaper/QuitPopup"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="DesktopWallpaper/QuitPopup"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -83.0
+offset_top = -37.0
+offset_right = 83.0
+offset_bottom = 37.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="DesktopWallpaper/QuitPopup/MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+theme_override_constants/separation = 20
+
+[node name="Label" type="Label" parent="DesktopWallpaper/QuitPopup/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "What's the magic word?"
+label_settings = SubResource("LabelSettings_wg1g7")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LineEdit" type="LineEdit" parent="DesktopWallpaper/QuitPopup/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_placeholder_color = Color(0.241156, 0.241156, 0.241156, 1)
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("6_pfbb1")
+theme_override_styles/focus = SubResource("StyleBoxFlat_qpnbv")
+theme_override_styles/normal = SubResource("StyleBoxFlat_b55dp")
+placeholder_text = "I'm waiting..."
+alignment = 1
 
 [node name="Taskbar" type="Control" parent="."]
 custom_minimum_size = Vector2(0, 45)
@@ -150,7 +218,7 @@ expand_mode = 1
 stretch_mode = 4
 script = ExtResource("9_n3uxm")
 
-[node name="LineEdit" type="LineEdit" parent="Taskbar/TaskbarCenter/PanelContainer/HBoxContainer"]
+[node name="SearchLineEdit" type="LineEdit" parent="Taskbar/TaskbarCenter/PanelContainer/HBoxContainer"]
 custom_minimum_size = Vector2(170, 30)
 layout_mode = 2
 size_flags_vertical = 4
@@ -220,12 +288,13 @@ icon = ExtResource("11_cq71g")
 title = "My Files"
 
 [node name="file_window" parent="Files" instance=ExtResource("17_4j8fu")]
-position = Vector2i(-1000, 36)
 
 [node name="bounce" parent="Files" instance=ExtResource("18_4j8fu")]
 position = Vector2(-1768, 103)
 
+[connection signal="text_submitted" from="DesktopWallpaper/QuitPopup/MarginContainer/VBoxContainer/LineEdit" to="DesktopWallpaper/QuitPopup" method="_on_text_submitted"]
 [connection signal="mouse_entered" from="Taskbar/TaskbarCenter/PanelContainer/HBoxContainer/Search" to="Taskbar/TaskbarCenter/PanelContainer/HBoxContainer/Search" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Taskbar/TaskbarCenter/PanelContainer/HBoxContainer/Search" to="Taskbar/TaskbarCenter/PanelContainer/HBoxContainer/Search" method="_on_mouse_exited"]
+[connection signal="text_submitted" from="Taskbar/TaskbarCenter/PanelContainer/HBoxContainer/SearchLineEdit" to="DesktopWallpaper" method="_on_search_line_edit_text_submitted"]
 [connection signal="bird_up" from="Files/file_window" to="DesktopWallpaper" method="_on_file_window_bird_up"]
 [connection signal="change_wallpaper" from="Files/file_window" to="DesktopWallpaper" method="_on_file_window_change_wallpaper"]

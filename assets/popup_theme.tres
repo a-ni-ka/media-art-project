@@ -1,0 +1,10 @@
+[gd_resource type="Theme" load_steps=3 format=3 uid="uid://ph5bw77c6tdo"]
+
+[ext_resource type="StyleBox" uid="uid://dwkn57nwejros" path="res://Scenes/File_Window/styles/file_window_focused.tres" id="1_ebwjl"]
+[ext_resource type="StyleBox" uid="uid://bv5gpockhvor8" path="res://Scenes/File_Window/styles/file_window_unfocused.tres" id="2_dy0lt"]
+
+[resource]
+Window/colors/title_color = Color(0, 0, 0, 1)
+Window/icons/close = null
+Window/styles/embedded_border = ExtResource("1_ebwjl")
+Window/styles/embedded_unfocused_border = ExtResource("2_dy0lt")

@@ -1,6 +1,7 @@
 extends TextureRect
 
 @onready var context_menu := $ContextMenu as ContextMenu
+@onready var quit_popup: Popup = $QuitPopup
 
 
 func _ready() -> void:
@@ -30,3 +31,8 @@ func _on_file_window_bird_up() -> void:
 				obj.global_position = Vector2(randi_range(1700, 2200), randi_range(20,700))
 			else:
 				obj.global_position = Vector2(randi_range(-100, -600), randi_range(20,700))
+
+
+func _on_search_line_edit_text_submitted(new_text: String) -> void:
+	if new_text == "quit":
+		quit_popup.show()

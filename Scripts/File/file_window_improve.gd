@@ -223,7 +223,7 @@ func _on_confetti_display(type: String, point: Vector2):
 	text = text.insert(randi_range(0, text.length()-1), password)
 	obj.write(text, point)
 	add_sibling(obj)
-#Opens another window in which a password can be entered. 
+#Opens another window in which a password can be entered.
 #This password changes with every time a password is attempted to be entered and with everytime someone tries to find the password in the important documents pdfs, into which the password is inserted at a random position
 func _on_secret_pressed() -> void:
 	var obj = secret_window.instantiate()
@@ -239,7 +239,7 @@ func _on_back_button_down() -> void:
 	position.x -= 10
 
 func _on_forward_button_down() -> void:
-	position.x += 10 
+	position.x += 10
 #When the birdwatching file is pressed spawns birds on each side of the desktop, which fly back and forth
 func _on_bird_button_pressed() -> void:
 	bird_up.emit()
@@ -307,7 +307,7 @@ func _on_paste_pressed() -> void:
 	change_wallpaper.emit("res://assets/visuals/wallpaper_putz.jpg")
 	$sound.stream = load("res://assets/sounds/putz.wav")
 	$sound.play()
-	
+
 
 
 func _on_hobby_pressed() -> void:
