@@ -291,5 +291,5 @@ func _on_bird_pic_button_pressed() -> void:
 	var obj = picture_window.instantiate()
 	obj.title = "Epic Eagle"
 	obj.image = "res://assets/visuals/bird_wallpaper.jpg"
-	obj.position = Vector2i(300,200)
+	obj.global_position = Vector2i(500,400)
 	add_sibling(obj)

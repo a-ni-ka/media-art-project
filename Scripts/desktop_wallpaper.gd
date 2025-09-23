@@ -20,7 +20,7 @@ func _on_file_window_change_wallpaper(path: Variant) -> void:
 	texture = load(path)
 
 func _on_file_window_bird_up() -> void:
-	if Gamemaster.click_icon["Bird Watching"] > 10:
+	if Gamemaster.click_icon["Reports"] > 10:
 		$sound.stream = load("res://assets/sounds/birb-up.mp3")
 		$sound.play()
 		for i in 500:
