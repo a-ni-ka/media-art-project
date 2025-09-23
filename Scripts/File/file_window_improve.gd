@@ -293,3 +293,22 @@ func _on_bird_pic_button_pressed() -> void:
 	obj.image = "res://assets/visuals/bird_wallpaper.jpg"
 	obj.global_position = Vector2i(500,400)
 	add_sibling(obj)
+
+func _on_cut_pressed() -> void:
+	change_wallpaper.emit("res://assets/visuals/wallpaper_cut.jpg")
+	$VBoxContainer/Control/PanelContainer/interact/cut.disabled = true
+	$sound.stream = load("res://assets/sounds/scissors.mp3")
+	$sound.play()
+	$VBoxContainer/Control/PanelContainer/interact/paste.disabled = false
+
+func _on_paste_pressed() -> void:
+	$VBoxContainer/Control/PanelContainer/interact/paste.disabled = true
+	$VBoxContainer/Control/PanelContainer/interact/cut.disabled = false
+	change_wallpaper.emit("res://assets/visuals/wallpaper_putz.jpg")
+	$sound.stream = load("res://assets/sounds/putz.wav")
+	$sound.play()
+	
+
+
+func _on_hobby_pressed() -> void:
+	pass

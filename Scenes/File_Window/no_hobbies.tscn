@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://cs75v1ce6gj6g"]
+
+[node name="no_hobbies" type="Control"]
+layout_mode = 3
+anchors_preset = 0
+
+[node name="Window" type="Window" parent="."]
+
+[node name="ColorRect" type="ColorRect" parent="Window"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
