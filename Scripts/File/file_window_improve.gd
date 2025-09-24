@@ -3,7 +3,7 @@ extends Window
 signal change_wallpaper(path)
 signal bird_up
 
-#Different Texts this window is supposed to pint onto the reader window
+#Different Texts this window is supposed to pint onto the reader window, some of these texts have been generated using Chat GPT
 #region Text Dict
 var texts: Dictionary = {"Transcript": "Team Check-In Meeting Transcript
 
@@ -307,8 +307,6 @@ func _on_paste_pressed() -> void:
 	change_wallpaper.emit("res://assets/visuals/wallpaper_putz.jpg")
 	$sound.stream = load("res://assets/sounds/putz.wav")
 	$sound.play()
-
-
 
 func _on_hobby_pressed() -> void:
 	pass
