@@ -24,14 +24,15 @@
 - game master:
 	- left click counter
 	- 10 last keys pressed added to a list
-- desktop file icon detects left click
+- desktop icons detect left clicks and Game Master counts them
 - left click & drag on desktop draws a selection rectangle
+	- selection rectangle turns into a bubble that floats to the top of the screen
+	- it can wrap around desktop icons and will then activate them
 - left click on search icon = zoom to random zoom state
 	- if zoom is more than 100%, screen can be scrolled by moving the cursor to the edge
 
 ## What is being worked on? Current problems and issues?
 - making the screen scroll better
-- making the selection shape weirder
 
 ## What are we planning to implement?
 - sooo many things
