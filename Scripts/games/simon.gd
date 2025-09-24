@@ -123,6 +123,7 @@ func _on_button_pressed(name) -> void:
 				result.emit(true)
 				label.text = "You Won!"
 				timer.start(2.0)
+				Gamemaster.flags.append("simon")
 			else:
 				timer.start(5.0)
 		else:

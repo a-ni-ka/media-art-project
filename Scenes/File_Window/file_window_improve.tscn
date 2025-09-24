@@ -125,21 +125,6 @@ texture = ExtResource("2_su0r6")
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Reports"
 
-[node name="graphs" parent="work_files" instance=ExtResource("6_3u60x")]
-position = Vector2(259, 49)
-icon = ExtResource("2_su0r6")
-title = "Graphs"
-
-[node name="ColorRect" parent="work_files/graphs" index="0"]
-color = Color(0.494118, 0.494118, 0.494118, 0.34902)
-
-[node name="Sprite2D" parent="work_files/graphs" index="1"]
-texture = ExtResource("2_su0r6")
-
-[node name="Label" parent="work_files/graphs" index="2"]
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Graphs"
-
 [node name="hobby_files" type="Control" parent="."]
 layout_mode = 3
 anchors_preset = 0
@@ -153,7 +138,7 @@ size_flags_vertical = 0
 [node name="knitting" parent="hobby_files" instance=ExtResource("6_3u60x")]
 position = Vector2(61, 49)
 icon = ExtResource("2_su0r6")
-title = "Knitting"
+title = "Metal Detection"
 
 [node name="ColorRect" parent="hobby_files/knitting" index="0"]
 color = Color(0.493545, 0.493546, 0.493546, 0.34902)
@@ -163,12 +148,12 @@ texture = ExtResource("2_su0r6")
 
 [node name="Label" parent="hobby_files/knitting" index="2"]
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Knitting"
+text = "Metal Detection"
 
 [node name="bird_watching" parent="hobby_files" instance=ExtResource("6_3u60x")]
 position = Vector2(160, 49)
 icon = ExtResource("2_su0r6")
-title = "Bird Watching"
+title = "Drawing"
 
 [node name="ColorRect" parent="hobby_files/bird_watching" index="0"]
 color = Color(0.494118, 0.494118, 0.494118, 0.34902)
@@ -179,7 +164,7 @@ texture = ExtResource("2_su0r6")
 [node name="Label" parent="hobby_files/bird_watching" index="2"]
 offset_left = -43.0
 theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Bird Watching"
+text = "Drawing"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -425,8 +410,8 @@ volume_db = 8.0
 [connection signal="pressed" from="birdwatching_files/Picture/Button" to="." method="_on_bird_pic_button_pressed"]
 [connection signal="pressed" from="work_files/imp_documents/Button" to="." method="_on_file_button_pressed"]
 [connection signal="pressed" from="work_files/reports/Button" to="." method="_on_bird_button_pressed"]
-[connection signal="pressed" from="hobby_files/knitting/Button" to="." method="_on_hobby_pressed"]
-[connection signal="pressed" from="hobby_files/bird_watching/Button" to="." method="_on_hobby_pressed"]
+[connection signal="pressed" from="hobby_files/knitting/Button" to="." method="_on_detection_pressed"]
+[connection signal="pressed" from="hobby_files/bird_watching/Button" to="." method="_on_drawing_pressed"]
 [connection signal="pressed" from="VBoxContainer/Control/PanelContainer/interact/cut" to="." method="_on_cut_pressed"]
 [connection signal="pressed" from="VBoxContainer/Control/PanelContainer/interact/paste" to="." method="_on_paste_pressed"]
 [connection signal="button_down" from="VBoxContainer/Control/return/back" to="." method="_on_back_button_down"]
@@ -440,6 +425,5 @@ volume_db = 8.0
 [editable path="birdwatching_files/Picture"]
 [editable path="work_files/imp_documents"]
 [editable path="work_files/reports"]
-[editable path="work_files/graphs"]
 [editable path="hobby_files/knitting"]
 [editable path="hobby_files/bird_watching"]

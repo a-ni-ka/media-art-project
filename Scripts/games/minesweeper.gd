@@ -124,6 +124,7 @@ func _on_click(click):
 	if x == 0:
 		$Window/Label.text = "You Won"
 		$Window/Label.show()
+		Gamemaster.flags.append("minesweeper")
 		$Timer.start()
 # Handles restart button
 func _on_button_pressed() -> void:

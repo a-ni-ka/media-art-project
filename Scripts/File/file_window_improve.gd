@@ -147,6 +147,9 @@ var secret_window = preload("res://Scenes/File_Window/secret_window.tscn")
 var bird = preload("res://Scenes/File_Window/bird.tscn")
 var number_picker = preload("res://Scenes/shitty_input/number_picker.tscn")
 var picture_window = preload("res://Scenes/image_window.tscn")
+var no_hobby = preload("res://Scenes/File_Window/no_hobbies.tscn")
+var minesweeper = preload("res://Scenes/games/minesweeper.tscn")
+var simon_says = preload("res://Scenes/games/simon.tscn")
 # Different variables which are necessary in the code
 var tries = 0
 var state = "none"
@@ -308,5 +311,27 @@ func _on_paste_pressed() -> void:
 	$sound.stream = load("res://assets/sounds/putz.wav")
 	$sound.play()
 
-func _on_hobby_pressed() -> void:
-	pass
+func _on_detection_pressed() -> void:
+	if not Gamemaster.click_icon.has("Important Documents"):
+		Gamemaster.click_icon["Important Documents"] = 0
+	if not Gamemaster.click_icon.has("Reports"):
+		Gamemaster.click_icon["Reports"] = 0
+	if Gamemaster.click_icon["Important Documents"] + Gamemaster.click_icon["Reports"] < 50:
+		var obj = no_hobby.instantiate()
+		add_sibling(obj)
+	else:
+		var obj = minesweeper.instantiate()
+		add_sibling(obj)
+
+func _on_drawing_pressed() -> void:
+	if not Gamemaster.click_icon.has("Important Documents"):
+		Gamemaster.click_icon["Important Documents"] = 0
+	if not Gamemaster.click_icon.has("Reports"):
+		Gamemaster.click_icon["Reports"] = 0
+	if Gamemaster.click_icon["Important Documents"] + Gamemaster.click_icon["Reports"] < 50:
+		var obj = no_hobby.instantiate()
+		add_sibling(obj)
+	else:
+		var obj = simon_says.instantiate()
+		add_sibling(obj)
+		

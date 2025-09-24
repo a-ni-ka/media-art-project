@@ -32,7 +32,6 @@ func _on_file_window_bird_up() -> void:
 			else:
 				obj.global_position = Vector2(randi_range(-100, -1100), randi_range(20,800))
 
-
 func _on_search_line_edit_text_submitted(new_text: String) -> void:
 	if new_text == "quit":
 		quit_popup.show()
