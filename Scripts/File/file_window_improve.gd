@@ -334,4 +334,3 @@ func _on_drawing_pressed() -> void:
 	else:
 		var obj = simon_says.instantiate()
 		add_sibling(obj)
-		

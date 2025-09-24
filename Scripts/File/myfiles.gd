@@ -16,4 +16,3 @@ func _on_button_pressed() -> void:
 	else:
 		Gamemaster.click_icon[str(label.text)] = 1
 		print(Gamemaster.click_icon)
-	activate_icon()
