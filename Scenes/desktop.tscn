@@ -4,7 +4,7 @@
 [ext_resource type="Script" uid="uid://bnhmru8blddne" path="res://Scripts/desktop_wallpaper.gd" id="2_djnmm"]
 [ext_resource type="Script" uid="uid://cl0xvgtuumseb" path="res://Scripts/desktop_select.gd" id="3_pfbb1"]
 [ext_resource type="PackedScene" uid="uid://dk16qhj3ykph2" path="res://Scenes/ContextMenu/context_menu.tscn" id="4_wg1g7"]
-[ext_resource type="Script" uid="uid://dhx65c0fhqj8t" path="res://Scenes/quit_popup.gd" id="5_djnmm"]
+[ext_resource type="Script" uid="uid://dhx65c0fhqj8t" path="res://Scripts/quit_popup.gd" id="5_djnmm"]
 [ext_resource type="Theme" uid="uid://ph5bw77c6tdo" path="res://assets/popup_theme.tres" id="5_pfbb1"]
 [ext_resource type="Script" uid="uid://gcdai4gkb41h" path="res://Scripts/taskbar.gd" id="5_qpnbv"]
 [ext_resource type="PackedScene" uid="uid://e2trfnt3f67m" path="res://Scenes/taskbar_button.tscn" id="6_b55dp"]

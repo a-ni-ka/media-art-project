@@ -17,7 +17,7 @@ void fragment() {
 		color = mix(new_color_1, color, color_distance_1);
 		color.a = initial_color.a;
     }
-	
+
 	if (color_distance_2 <= tolerance) {
 		color = mix(new_color_2, color, color_distance_2);
 		color.a = initial_color.a;

@@ -9,7 +9,10 @@ var morph_ratio: float = 0. :
 		morph_ratio = value
 		queue_redraw()
 var tween: Tween
-var selection_offset: Vector2
+var selection_offset: Vector2 :
+	set(value):
+		selection_offset = value
+		queue_redraw()
 
 func _ready() -> void:
 	var fill_color := Color(Color.CORNFLOWER_BLUE, .3)
@@ -20,9 +23,9 @@ func _ready() -> void:
 	selection_box.corner_detail = 16
 
 
-func _move_rectangle(_value: float) -> void:
+func _move_selection(_value: float) -> void:
 	selection_offset.y -= _value * 7
-	selection_offset.x = sin(_value * PI * 4) * 100
+	selection_offset.x = sin(_value * PI * 5) * 100
 	queue_redraw()
 
 
@@ -47,7 +50,7 @@ func _gui_input(event: InputEvent) -> void:
 			tween.set_parallel()
 			tween.tween_property(self, "morph_ratio", 1, 1)
 			tween.set_trans(Tween.TRANS_LINEAR)
-			tween.tween_method(_move_rectangle, 0., 1., 10.)
+			tween.tween_method(_move_selection, 0., 1., 10.)
 			accept_event()
 		queue_redraw()
 	if is_selecting and event is InputEventMouseMotion:
@@ -57,7 +60,6 @@ func _gui_input(event: InputEvent) -> void:
 
 
 func _draw() -> void:
-	#if is_selecting:
 	var selection_rect := Rect2()
 	selection_rect.position = selection_start + selection_offset
 	selection_rect.end = selection_end + selection_offset
