@@ -4,6 +4,11 @@ extends Icon
 @onready var window: Window = $file_window
 
 
+func activate_icon() -> void:
+	window.position = position
+	window.show()
+
+
 func _on_button_pressed() -> void:
 	if Gamemaster.click_icon.has(str(label.text)):
 		Gamemaster.click_icon[str(label.text)] += 1
@@ -11,5 +16,4 @@ func _on_button_pressed() -> void:
 	else:
 		Gamemaster.click_icon[str(label.text)] = 1
 		print(Gamemaster.click_icon)
-	window.position = get_global_mouse_position()
-	window.show()
+	activate_icon()

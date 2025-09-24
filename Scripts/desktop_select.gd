@@ -1,5 +1,8 @@
 extends Control
 
+@onready var bubble_area: Area2D = $BubbleArea
+@onready var bubble_shape: CircleShape2D = $BubbleArea/BubbleShape.shape
+
 var is_selecting: bool = false
 var selection_start: Vector2
 var selection_end: Vector2
@@ -13,8 +16,10 @@ var selection_offset: Vector2 :
 	set(value):
 		selection_offset = value
 		queue_redraw()
+var has_target := false
 
 func _ready() -> void:
+	bubble_area.area_entered.connect(_on_area_entered)
 	var fill_color := Color(Color.CORNFLOWER_BLUE, .3)
 	var border_color := Color.CORNFLOWER_BLUE
 	selection_box.bg_color = fill_color
@@ -23,10 +28,59 @@ func _ready() -> void:
 	selection_box.corner_detail = 16
 
 
-func _move_selection(_value: float) -> void:
-	selection_offset.y -= _value * 7
-	selection_offset.x = sin(_value * PI * 5) * 100
+func _on_area_entered(area: Area2D) -> void:
+	if is_selecting or has_target:
+		return
+	has_target = true
+	_move_bubble_to_icon(area)
+	#if "activate_icon" in area:
+		#area.activate_icon()
+
+
+func _move_selection(value: float) -> void:
+	selection_offset.y -= value * 7
+	selection_offset.x = sin(value * PI * 5) * 100
 	queue_redraw()
+
+
+func _set_bubble_radius(radius: float) -> void:
+	var center := _get_bubble_center()
+	selection_start = center - Vector2(radius, radius)
+	selection_end = center + Vector2(radius, radius)
+	queue_redraw()
+
+
+func _get_bubble_radius() -> float:
+	return ((selection_start - selection_end) * .5).length()
+
+
+func _set_bubble_center(center: Vector2) -> void:
+	var bubble_center := _get_bubble_center()
+	selection_offset = Vector2.ZERO
+	selection_start += center - bubble_center
+	selection_end += center - bubble_center
+	queue_redraw()
+
+
+func _get_bubble_center() -> Vector2:
+	return (selection_start + selection_end) / 2.0 + selection_offset
+
+
+func _move_bubble_to_icon(icon: Area2D) -> void:
+	if tween:
+		tween.kill()
+	tween = create_tween()
+	var new_center: Vector2 = icon.position
+	tween.set_ease(Tween.EASE_OUT)
+	tween.set_trans(Tween.TRANS_ELASTIC)
+	tween.set_parallel()
+	tween.tween_method(_set_bubble_center, _get_bubble_center(), new_center, .2)
+	tween.set_ease(Tween.EASE_OUT)
+	tween.set_trans(Tween.TRANS_ELASTIC)
+	tween.tween_method(_set_bubble_radius, _get_bubble_radius(), icon.ICON_SIZE.x * 0.6, .4)
+	tween.tween_callback(_set_bubble_center.bind(Vector2(-1000, -1000))).set_delay(1.)
+	if "activate_icon" in icon:
+		tween.chain().tween_callback(icon.activate_icon)
 
 
 func _gui_input(event: InputEvent) -> void:
@@ -34,6 +88,7 @@ func _gui_input(event: InputEvent) -> void:
 		if event.button_index == MOUSE_BUTTON_LEFT and event.pressed:
 			if tween:
 				tween.kill()
+			has_target = false
 			morph_ratio = 0.
 			selection_offset = Vector2.ZERO
 			selection_start = event.position
@@ -86,3 +141,6 @@ func _draw() -> void:
 	var new_rect := Rect2(center - 0.5 * new_size, new_size)
 
 	draw_style_box(selection_box, new_rect)
+
+	bubble_area.position = center
+	bubble_shape.radius = radius

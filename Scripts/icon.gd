@@ -2,6 +2,8 @@
 class_name Icon
 extends Area2D
 
+const ICON_SIZE := Vector2(70., 70.)
+
 @export var icon: CompressedTexture2D :
 	set(value):
 		icon = value
@@ -17,6 +19,7 @@ extends Area2D
 
 func _ready() -> void:
 	$ColorRect.visible = false
+
 
 func _on_button_pressed() -> void:
 	if Gamemaster.click_icon.has(str(label.text)):

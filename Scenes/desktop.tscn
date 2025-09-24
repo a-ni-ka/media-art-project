@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://4a33w8jd0tmg"]
+[gd_scene load_steps=29 format=3 uid="uid://4a33w8jd0tmg"]
 
 [ext_resource type="Texture2D" uid="uid://dxdwcc07kt2q3" path="res://assets/visuals/w11wallpaper.jpg" id="1_4j8fu"]
 [ext_resource type="Script" uid="uid://bnhmru8blddne" path="res://Scripts/desktop_wallpaper.gd" id="2_djnmm"]
@@ -20,6 +20,8 @@
 [ext_resource type="Texture2D" uid="uid://b3vssf3on3ube" path="res://assets/visuals/icon_spotify_64x64.png" id="16_ojlgc"]
 [ext_resource type="PackedScene" uid="uid://rivmbmqxn413" path="res://Scenes/File_Window/file_window_improve.tscn" id="17_4j8fu"]
 [ext_resource type="PackedScene" uid="uid://bqdej8g1xcycc" path="res://Scenes/File_Window/bounce.tscn" id="18_4j8fu"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_pfbb1"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_wg1g7"]
 font = ExtResource("6_pfbb1")
@@ -85,6 +87,13 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 script = ExtResource("3_pfbb1")
+
+[node name="BubbleArea" type="Area2D" parent="DesktopWallpaper/DesktopSelect"]
+collision_layer = 0
+collision_mask = 2
+
+[node name="BubbleShape" type="CollisionShape2D" parent="DesktopWallpaper/DesktopSelect/BubbleArea"]
+shape = SubResource("CircleShape2D_pfbb1")
 
 [node name="ContextMenu" parent="DesktopWallpaper" instance=ExtResource("4_wg1g7")]
 layout_mode = 0
@@ -278,11 +287,13 @@ layout_mode = 2
 
 [node name="Spotify" parent="." instance=ExtResource("14_pvnqr")]
 position = Vector2(57, 157)
+collision_mask = 2
 icon = ExtResource("16_ojlgc")
 title = "My Music"
 
 [node name="Files" parent="." instance=ExtResource("14_pvnqr")]
 position = Vector2(168, 158)
+collision_mask = 2
 script = ExtResource("15_1djlj")
 icon = ExtResource("11_cq71g")
 title = "My Files"
