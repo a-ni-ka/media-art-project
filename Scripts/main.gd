@@ -20,7 +20,6 @@ func _ready() -> void:
 	$LoadingScreen.visible = true
 	EventBus.zoom_clicked.connect(_on_zoom_clicked)
 	zoom_state_option = ZoomStateOptions.DEFAULT
-	# colorblind_shader.set_shader_parameter("tolerance", .5)
 
 
 func _notification(what: int) -> void:
@@ -68,6 +67,7 @@ func _input(event: InputEvent) -> void:
 			if tolerance < 1:
 				tolerance += .1
 		else:
-			if tolerance > 0:
-				tolerance -= .1
+			if Gamemaster.click%7 == 0:
+				if tolerance > 0:
+					tolerance -= .1
 		colorblind_shader.set_shader_parameter("tolerance", tolerance)
