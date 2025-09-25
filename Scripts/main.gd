@@ -9,8 +9,10 @@ enum ZoomStateOptions {
 }
 
 @onready var canvas_layer: CanvasLayer = $SubViewportContainer/SubViewport/CanvasLayer
+@onready var colorblind_shader: ShaderMaterial = $SubViewportContainer.material
 
 var zoom_state_option : ZoomStateOptions : set = _set_zoom_state
+var tolerance: float = 0.0
 
 
 func _ready() -> void:
@@ -18,6 +20,7 @@ func _ready() -> void:
 	$LoadingScreen.visible = true
 	EventBus.zoom_clicked.connect(_on_zoom_clicked)
 	zoom_state_option = ZoomStateOptions.DEFAULT
+	# colorblind_shader.set_shader_parameter("tolerance", .5)
 
 
 func _notification(what: int) -> void:
@@ -61,3 +64,10 @@ func _input(event: InputEvent) -> void:
 				canvas_layer.offset.y += 10
 			if cursor_position.x < 0:
 				canvas_layer.offset.x += 10
+		if Gamemaster.click > 0 and Gamemaster.click%12 == 0:
+			if tolerance < 1:
+				tolerance += .1
+		else:
+			if tolerance > 0:
+				tolerance -= .1
+		colorblind_shader.set_shader_parameter("tolerance", tolerance)
