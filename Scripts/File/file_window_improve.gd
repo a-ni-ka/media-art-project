@@ -150,6 +150,7 @@ var picture_window = preload("res://Scenes/image_window.tscn")
 var no_hobby = preload("res://Scenes/File_Window/no_hobbies.tscn")
 var minesweeper = preload("res://Scenes/games/minesweeper.tscn")
 var simon_says = preload("res://Scenes/games/simon.tscn")
+var creation = preload("res://Scenes/File_Window/creation_window.tscn")
 # Different variables which are necessary in the code
 var tries = 0
 var state = "none"
@@ -167,8 +168,8 @@ var birds = 0
 
 
 func _ready():
-	position = Vector2i (-1000,0)
 	hide()
+	position = Vector2i(-2000,0)
 	patheditor.text = "Home >"
 
 func _on_close_requested() -> void:
@@ -334,3 +335,23 @@ func _on_drawing_pressed() -> void:
 	else:
 		var obj = simon_says.instantiate()
 		add_sibling(obj)
+
+func _on_focus_entered() -> void:
+	if "minesweeper" and "simon" in Gamemaster.flags:
+		$VBoxContainer/HSplitContainer/folders/hobby_files/tutorial.show()
+
+func _on_tutorial_pressed() -> void:
+	var obj = reader.instantiate()
+	obj.write("3: uo \n Search for it", get_mouse_position())
+	add_sibling(obj)
+
+func _on_new_pressed() -> void:
+	var obj = creation.instantiate()
+	add_sibling(obj)
+
+func _on_copy_pressed() -> void:
+	var obj = picture_window.instantiate()
+	obj.title = "Copy"
+	obj.image = "res://assets/visuals/folder.png"
+	obj.global_position = Vector2i(700,500)
+	add_sibling(obj)

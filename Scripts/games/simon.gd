@@ -97,9 +97,9 @@ func _on_timer_timeout() -> void:
 	elif timer_state == "end":
 		queue_free()
 
-func _on_button_pressed(name) -> void:
+func _on_button_pressed(but) -> void:
 	sound.play()
-	match name:
+	match but:
 		"up":
 			input.append(1)
 		"down":

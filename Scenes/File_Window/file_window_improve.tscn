@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://rivmbmqxn413"]
+[gd_scene load_steps=26 format=3 uid="uid://rivmbmqxn413"]
 
 [ext_resource type="StyleBox" uid="uid://dwkn57nwejros" path="res://Scenes/File_Window/styles/file_window_focused.tres" id="1_us0vl"]
 [ext_resource type="Texture2D" uid="uid://iye2wsnbbrqw" path="res://assets/visuals/close.png" id="1_uwqkh"]
@@ -19,6 +19,7 @@
 [ext_resource type="Texture2D" uid="uid://c8np16206qjlw" path="res://assets/visuals/search.svg" id="12_wb5ep"]
 [ext_resource type="StyleBox" uid="uid://dv0y6lyqxqht7" path="res://Scenes/File_Window/styles/hovered_button.tres" id="13_b8qj7"]
 [ext_resource type="AudioStream" uid="uid://c1k54lvac7jvc" path="res://assets/sounds/birds_flying.wav" id="18_ygwl4"]
+[ext_resource type="Texture2D" uid="uid://cxdjeaq5185m" path="res://assets/visuals/pdf.png" id="19_qmjfu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_q4svc"]
 bg_color = Color(0.6, 0.6, 0.6, 0)
@@ -63,6 +64,63 @@ theme_override_icons/close = ExtResource("1_uwqkh")
 theme_override_styles/embedded_border = ExtResource("1_us0vl")
 theme_override_styles/embedded_unfocused_border = ExtResource("2_t3bgu")
 script = ExtResource("3_q4svc")
+
+[node name="hobby_files" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 162.0
+offset_top = 78.0
+offset_right = 162.0
+offset_bottom = 78.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="knitting" parent="hobby_files" instance=ExtResource("6_3u60x")]
+position = Vector2(61, 49)
+icon = ExtResource("2_su0r6")
+title = "Metal Detection"
+
+[node name="ColorRect" parent="hobby_files/knitting" index="0"]
+color = Color(0.493545, 0.493546, 0.493546, 0.34902)
+
+[node name="Sprite2D" parent="hobby_files/knitting" index="1"]
+texture = ExtResource("2_su0r6")
+
+[node name="Label" parent="hobby_files/knitting" index="2"]
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Metal Detection"
+
+[node name="bird_watching" parent="hobby_files" instance=ExtResource("6_3u60x")]
+position = Vector2(160, 49)
+icon = ExtResource("2_su0r6")
+title = "Drawing"
+
+[node name="ColorRect" parent="hobby_files/bird_watching" index="0"]
+color = Color(0.494118, 0.494118, 0.494118, 0.34902)
+
+[node name="Sprite2D" parent="hobby_files/bird_watching" index="1"]
+texture = ExtResource("2_su0r6")
+
+[node name="Label" parent="hobby_files/bird_watching" index="2"]
+offset_left = -43.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Drawing"
+
+[node name="tutorial" parent="hobby_files" instance=ExtResource("6_3u60x")]
+visible = false
+position = Vector2(259, 49)
+icon = ExtResource("19_qmjfu")
+title = "Tutorial"
+
+[node name="ColorRect" parent="hobby_files/tutorial" index="0"]
+color = Color(0.494118, 0.494118, 0.494118, 0.34902)
+
+[node name="Sprite2D" parent="hobby_files/tutorial" index="1"]
+texture = ExtResource("19_qmjfu")
+
+[node name="Label" parent="hobby_files/tutorial" index="2"]
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+text = "Tutorial"
 
 [node name="birdwatching_files" type="Control" parent="."]
 layout_mode = 3
@@ -124,47 +182,6 @@ texture = ExtResource("2_su0r6")
 [node name="Label" parent="work_files/reports" index="2"]
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 text = "Reports"
-
-[node name="hobby_files" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_left = 128.0
-offset_top = -137.0
-offset_right = 128.0
-offset_bottom = -137.0
-size_flags_horizontal = 0
-size_flags_vertical = 0
-
-[node name="knitting" parent="hobby_files" instance=ExtResource("6_3u60x")]
-position = Vector2(61, 49)
-icon = ExtResource("2_su0r6")
-title = "Metal Detection"
-
-[node name="ColorRect" parent="hobby_files/knitting" index="0"]
-color = Color(0.493545, 0.493546, 0.493546, 0.34902)
-
-[node name="Sprite2D" parent="hobby_files/knitting" index="1"]
-texture = ExtResource("2_su0r6")
-
-[node name="Label" parent="hobby_files/knitting" index="2"]
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Metal Detection"
-
-[node name="bird_watching" parent="hobby_files" instance=ExtResource("6_3u60x")]
-position = Vector2(160, 49)
-icon = ExtResource("2_su0r6")
-title = "Drawing"
-
-[node name="ColorRect" parent="hobby_files/bird_watching" index="0"]
-color = Color(0.494118, 0.494118, 0.494118, 0.34902)
-
-[node name="Sprite2D" parent="hobby_files/bird_watching" index="1"]
-texture = ExtResource("2_su0r6")
-
-[node name="Label" parent="hobby_files/bird_watching" index="2"]
-offset_left = -43.0
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-text = "Drawing"
 
 [node name="ColorRect" type="ColorRect" parent="."]
 anchors_preset = 15
@@ -406,13 +423,17 @@ volume_db = 8.0
 [node name="Timer" type="Timer" parent="."]
 
 [connection signal="close_requested" from="." to="." method="_on_close_requested"]
+[connection signal="focus_entered" from="." to="." method="_on_focus_entered"]
 [connection signal="size_changed" from="." to="." method="_on_size_changed"]
+[connection signal="pressed" from="hobby_files/knitting/Button" to="." method="_on_detection_pressed"]
+[connection signal="pressed" from="hobby_files/bird_watching/Button" to="." method="_on_drawing_pressed"]
+[connection signal="pressed" from="hobby_files/tutorial/Button" to="." method="_on_tutorial_pressed"]
 [connection signal="pressed" from="birdwatching_files/Picture/Button" to="." method="_on_bird_pic_button_pressed"]
 [connection signal="pressed" from="work_files/imp_documents/Button" to="." method="_on_file_button_pressed"]
 [connection signal="pressed" from="work_files/reports/Button" to="." method="_on_bird_button_pressed"]
-[connection signal="pressed" from="hobby_files/knitting/Button" to="." method="_on_detection_pressed"]
-[connection signal="pressed" from="hobby_files/bird_watching/Button" to="." method="_on_drawing_pressed"]
+[connection signal="pressed" from="VBoxContainer/Control/PanelContainer/interact/new" to="." method="_on_new_pressed"]
 [connection signal="pressed" from="VBoxContainer/Control/PanelContainer/interact/cut" to="." method="_on_cut_pressed"]
+[connection signal="pressed" from="VBoxContainer/Control/PanelContainer/interact/copy" to="." method="_on_copy_pressed"]
 [connection signal="pressed" from="VBoxContainer/Control/PanelContainer/interact/paste" to="." method="_on_paste_pressed"]
 [connection signal="button_down" from="VBoxContainer/Control/return/back" to="." method="_on_back_button_down"]
 [connection signal="button_down" from="VBoxContainer/Control/return/forward" to="." method="_on_forward_button_down"]
@@ -422,8 +443,9 @@ volume_db = 8.0
 [connection signal="pressed" from="VBoxContainer/HSplitContainer/types/secret" to="." method="_on_secret_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 
+[editable path="hobby_files/knitting"]
+[editable path="hobby_files/bird_watching"]
+[editable path="hobby_files/tutorial"]
 [editable path="birdwatching_files/Picture"]
 [editable path="work_files/imp_documents"]
 [editable path="work_files/reports"]
-[editable path="hobby_files/knitting"]
-[editable path="hobby_files/bird_watching"]
