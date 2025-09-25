@@ -17,6 +17,7 @@ grow_vertical = 2
 script = ExtResource("1_20aux")
 
 [node name="Window" type="Window" parent="."]
+position = Vector2i(400, 225)
 size = Vector2i(800, 450)
 unresizable = true
 theme_override_styles/embedded_border = ExtResource("2_imjui")
@@ -28,7 +29,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-expand_mode = 5
+expand_mode = 1
 stretch_mode = 5
 
 [node name="bounce" type="AnimatableBody2D" parent="."]
