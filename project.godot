@@ -19,6 +19,10 @@ boot_splash/image="uid://dy3kv40gi65ac"
 config/icon="uid://c2op4jrngcgc2"
 boot_splash/minimum_display_time=2000
 
+[audio]
+
+driver/enable_input=true
+
 [autoload]
 
 Gamemaster="*res://Scenes/gamemaster.tscn"

@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://4a33w8jd0tmg"]
+[gd_scene load_steps=31 format=3 uid="uid://4a33w8jd0tmg"]
 
 [ext_resource type="Texture2D" uid="uid://dxdwcc07kt2q3" path="res://assets/visuals/w11wallpaper.jpg" id="1_4j8fu"]
 [ext_resource type="Script" uid="uid://bnhmru8blddne" path="res://Scripts/desktop_wallpaper.gd" id="2_djnmm"]
@@ -11,6 +11,7 @@
 [ext_resource type="FontFile" uid="uid://ksloxaxuuijm" path="res://assets/visuals/segoe_slboot.ttf" id="6_pfbb1"]
 [ext_resource type="Texture2D" uid="uid://c2op4jrngcgc2" path="res://assets/visuals/start-button.png" id="7_ad33h"]
 [ext_resource type="Texture2D" uid="uid://c8np16206qjlw" path="res://assets/visuals/search.svg" id="8_inoge"]
+[ext_resource type="Script" uid="uid://dpt8joeatabdy" path="res://Scripts/record_button.gd" id="8_wg1g7"]
 [ext_resource type="Script" uid="uid://csmpkjf8glief" path="res://Scripts/search.gd" id="9_n3uxm"]
 [ext_resource type="Script" uid="uid://cal44pm13ulx8" path="res://Scripts/File/taskbar_button_files.gd" id="11_4j8fu"]
 [ext_resource type="Texture2D" uid="uid://pgyu161absk4" path="res://assets/visuals/file_explorer_icon.png" id="11_cq71g"]
@@ -32,6 +33,8 @@ bg_color = Color(0.870588, 0.870588, 0.870588, 1)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b55dp"]
 bg_color = Color(0.868985, 0.868985, 0.868985, 1)
+
+[sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_qpnbv"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h2yge"]
 bg_color = Color(0.909804, 0.921569, 0.945098, 1)
@@ -105,7 +108,7 @@ context_menu_type = 1
 [node name="QuitPopup" type="Popup" parent="DesktopWallpaper"]
 title = "Oh?"
 initial_position = 1
-size = Vector2i(200, 100)
+size = Vector2i(200, 150)
 visible = true
 borderless = false
 always_on_top = true
@@ -156,6 +159,16 @@ theme_override_styles/focus = SubResource("StyleBoxFlat_qpnbv")
 theme_override_styles/normal = SubResource("StyleBoxFlat_b55dp")
 placeholder_text = "I'm waiting..."
 alignment = 1
+
+[node name="RecordButton" type="Button" parent="DesktopWallpaper/QuitPopup/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(30, 30)
+layout_mode = 2
+size_flags_vertical = 4
+script = ExtResource("8_wg1g7")
+
+[node name="AudioStreamRecord" type="AudioStreamPlayer" parent="DesktopWallpaper/QuitPopup/MarginContainer/VBoxContainer/RecordButton"]
+stream = SubResource("AudioStreamMicrophone_qpnbv")
+bus = &"Record"
 
 [node name="Taskbar" type="Control" parent="."]
 custom_minimum_size = Vector2(0, 45)
@@ -304,6 +317,8 @@ title = "My Files"
 position = Vector2(-1768, 103)
 
 [connection signal="text_submitted" from="DesktopWallpaper/QuitPopup/MarginContainer/VBoxContainer/LineEdit" to="DesktopWallpaper/QuitPopup" method="_on_text_submitted"]
+[connection signal="button_down" from="DesktopWallpaper/QuitPopup/MarginContainer/VBoxContainer/RecordButton" to="DesktopWallpaper/QuitPopup/MarginContainer/VBoxContainer/RecordButton" method="_on_button_down"]
+[connection signal="button_up" from="DesktopWallpaper/QuitPopup/MarginContainer/VBoxContainer/RecordButton" to="DesktopWallpaper/QuitPopup/MarginContainer/VBoxContainer/RecordButton" method="_on_button_up"]
 [connection signal="mouse_entered" from="Taskbar/TaskbarCenter/PanelContainer/HBoxContainer/Search" to="Taskbar/TaskbarCenter/PanelContainer/HBoxContainer/Search" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Taskbar/TaskbarCenter/PanelContainer/HBoxContainer/Search" to="Taskbar/TaskbarCenter/PanelContainer/HBoxContainer/Search" method="_on_mouse_exited"]
 [connection signal="text_submitted" from="Taskbar/TaskbarCenter/PanelContainer/HBoxContainer/SearchLineEdit" to="DesktopWallpaper" method="_on_search_line_edit_text_submitted"]

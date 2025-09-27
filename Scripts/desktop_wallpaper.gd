@@ -20,6 +20,7 @@ var bird = preload("res://Scenes/File_Window/bird.tscn")
 func _on_file_window_change_wallpaper(path: Variant) -> void:
 	texture = load(path)
 
+
 func _on_file_window_bird_up() -> void:
 	if Gamemaster.click_icon["Reports"] > 10:
 		$sound.stream = load("res://assets/sounds/birb-up.mp3")
@@ -31,6 +32,7 @@ func _on_file_window_bird_up() -> void:
 				obj.global_position = Vector2(randi_range(1700, 2700), randi_range(20,800))
 			else:
 				obj.global_position = Vector2(randi_range(-100, -1100), randi_range(20,800))
+
 
 func _on_search_line_edit_text_submitted(new_text: String) -> void:
 	if new_text == "quit":
