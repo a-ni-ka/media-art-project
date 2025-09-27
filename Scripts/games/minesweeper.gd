@@ -7,7 +7,7 @@ var minesweeper = preload("res://Scenes/games/minesweeper.tscn")
 var field = {}
 
 #DIfficulty or in other word how many rows x collumns. Cannot be higher than 25
-var dif = 5.0
+var dif = 25.0
 var bombs = 0
 
 # Generates the minefield and creates a list of neighbours for each tile
