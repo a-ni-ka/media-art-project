@@ -15,6 +15,7 @@ offset_right = 60.0
 offset_bottom = 22.0
 theme_override_styles/panel = SubResource("StyleBoxEmpty_8viyy")
 script = ExtResource("1_b6s4q")
+pitch = null
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -34,3 +35,5 @@ expand_mode = 3
 [node name="Label" type="Label" parent="MarginContainer/HBoxContainer"]
 layout_mode = 2
 label_settings = SubResource("LabelSettings_5vw27")
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="."]

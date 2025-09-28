@@ -13,10 +13,16 @@ extends PanelContainer
 			$MarginContainer/HBoxContainer/TextureRect.texture = value
 		icon = value
 
+@export var pitch: float = 1.
+
+@onready var sound := $Sound
+
 var stylebox_normal := StyleBoxEmpty.new()
 var stylebox_focused := StyleBoxFlat.new()
 
 func _ready() -> void:
+	sound.stream = load("res://assets/sounds/piano.mp3")
+	sound.pitch_scale = pitch
 	label = label
 	icon = icon
 
@@ -34,6 +40,8 @@ func _ready() -> void:
 
 func _on_mouse_entered() -> void:
 	add_theme_stylebox_override("panel", stylebox_focused)
+	sound.play()
+
 
 func _on_mouse_exited() -> void:
 	add_theme_stylebox_override("panel", stylebox_normal)

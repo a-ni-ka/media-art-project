@@ -17,6 +17,7 @@ const ICON_SIZE := Vector2(70., 70.)
 
 @onready var label: Label = $Label
 
+
 func _ready() -> void:
 	$ColorRect.visible = false
 
@@ -29,9 +30,11 @@ func _on_button_pressed() -> void:
 		Gamemaster.click_icon[str(label.text)] = 1
 		print(Gamemaster.click_icon)
 
+
 func _on_button_mouse_entered() -> void:
 	$ColorRect.visible = true
 	label.text_overrun_behavior = TextServer.OVERRUN_NO_TRIMMING
+
 
 func _on_button_mouse_exited() -> void:
 	$ColorRect.visible = false

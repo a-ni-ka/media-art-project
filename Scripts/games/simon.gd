@@ -12,13 +12,13 @@ var max_games = 10
 
 #region Var Child Assigment
 
-@onready var up = $Window/VBoxContainer/up
-@onready var left = $Window/VBoxContainer/HBoxContainer/left
-@onready var right = $Window/VBoxContainer/HBoxContainer/right
-@onready var down = $Window/VBoxContainer/down
+@onready var up := $Window/VBoxContainer/up
+@onready var left := $Window/VBoxContainer/HBoxContainer/left
+@onready var right := $Window/VBoxContainer/HBoxContainer/right
+@onready var down := $Window/VBoxContainer/down
 @onready var timer: Timer = $Timer
-@onready var buttons = get_tree().get_nodes_in_group("buttons")
-@onready var sound = $AudioStreamPlayer2D
+@onready var buttons := get_tree().get_nodes_in_group("buttons")
+@onready var sound := $AudioStreamPlayer2D
 @onready var label: Label = $Window/Label
 #endregion
 
@@ -33,6 +33,7 @@ var right_unpressed = preload("res://assets/visuals/simon_says/right_unpressed.p
 var down_pressed = preload("res://assets/visuals/simon_says/down_pressed.png")
 var down_unpressed = preload("res://assets/visuals/simon_says/down_unpressed.png")
 #endregion
+
 
 func game():
 	if itt == 0:
@@ -62,9 +63,11 @@ func game():
 			last_button = down
 			timer.start()
 
+
 func _on_ready() -> void:
 	label.hide()
 	game()
+
 
 func _on_timer_timeout() -> void:
 	if timer_state == "changing":
@@ -96,6 +99,7 @@ func _on_timer_timeout() -> void:
 		game()
 	elif timer_state == "end":
 		queue_free()
+
 
 func _on_button_pressed(but) -> void:
 	sound.play()

@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://osdsi1x0qrf3"]
 
 [ext_resource type="PackedScene" uid="uid://dfp7jxsdjx0qq" path="res://Scenes/ContextMenu/context_menu_line.tscn" id="1_3jyg3"]
-[ext_resource type="Texture2D" uid="uid://bu1c6m55uvqew" path="res://visuals/icon_view_24x24.png" id="2_0lldq"]
-[ext_resource type="Texture2D" uid="uid://cf7lldcab0dty" path="res://visuals/icon_refresh_24x24.png" id="3_yqa3s"]
-[ext_resource type="Texture2D" uid="uid://dxtyke5ld8me2" path="res://visuals/icon_new_24x24.png" id="4_r4iff"]
+[ext_resource type="Texture2D" uid="uid://bu1c6m55uvqew" path="res://assets/visuals/icon_view_24x24.png" id="2_0lldq"]
+[ext_resource type="Texture2D" uid="uid://cf7lldcab0dty" path="res://assets/visuals/icon_refresh_24x24.png" id="3_yqa3s"]
+[ext_resource type="Texture2D" uid="uid://dxtyke5ld8me2" path="res://assets/visuals/icon_new_24x24.png" id="4_r4iff"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jv6dx"]
 
@@ -19,15 +19,18 @@ layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_jv6dx")
 label = "View"
 icon = ExtResource("2_0lldq")
+pitch = 1.0
 
 [node name="ContextMenuLine2" parent="." instance=ExtResource("1_3jyg3")]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_ar47g")
 label = "Refresh"
 icon = ExtResource("3_yqa3s")
+pitch = 1.125
 
 [node name="ContextMenuLine3" parent="." instance=ExtResource("1_3jyg3")]
 layout_mode = 2
 theme_override_styles/panel = SubResource("StyleBoxEmpty_r2aor")
 label = "New"
 icon = ExtResource("4_r4iff")
+pitch = 1.25

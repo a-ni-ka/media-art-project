@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://4a33w8jd0tmg"]
+[gd_scene load_steps=30 format=3 uid="uid://4a33w8jd0tmg"]
 
 [ext_resource type="Texture2D" uid="uid://dxdwcc07kt2q3" path="res://assets/visuals/w11wallpaper.jpg" id="1_4j8fu"]
 [ext_resource type="Script" uid="uid://bnhmru8blddne" path="res://Scripts/desktop_wallpaper.gd" id="2_djnmm"]
@@ -11,6 +11,7 @@
 [ext_resource type="FontFile" uid="uid://ksloxaxuuijm" path="res://assets/visuals/segoe_slboot.ttf" id="6_pfbb1"]
 [ext_resource type="Texture2D" uid="uid://c2op4jrngcgc2" path="res://assets/visuals/start-button.png" id="7_ad33h"]
 [ext_resource type="Texture2D" uid="uid://c8np16206qjlw" path="res://assets/visuals/search.svg" id="8_inoge"]
+[ext_resource type="Texture2D" uid="uid://c4dda3hn5klm4" path="res://assets/visuals/record.png" id="8_qpnbv"]
 [ext_resource type="Script" uid="uid://dpt8joeatabdy" path="res://Scripts/record_button.gd" id="8_wg1g7"]
 [ext_resource type="Script" uid="uid://csmpkjf8glief" path="res://Scripts/search.gd" id="9_n3uxm"]
 [ext_resource type="Script" uid="uid://cal44pm13ulx8" path="res://Scripts/File/taskbar_button_files.gd" id="11_4j8fu"]
@@ -18,9 +19,9 @@
 [ext_resource type="Script" uid="uid://dfjqhnollgwy4" path="res://Scripts/date_time.gd" id="12_scol6"]
 [ext_resource type="PackedScene" uid="uid://dlkaebh8nai8u" path="res://Scenes/icon.tscn" id="14_pvnqr"]
 [ext_resource type="Script" uid="uid://dl81oaq38sjxv" path="res://Scripts/File/myfiles.gd" id="15_1djlj"]
-[ext_resource type="Texture2D" uid="uid://b3vssf3on3ube" path="res://assets/visuals/icon_spotify_64x64.png" id="16_ojlgc"]
 [ext_resource type="PackedScene" uid="uid://rivmbmqxn413" path="res://Scenes/File_Window/file_window_improve.tscn" id="17_4j8fu"]
 [ext_resource type="PackedScene" uid="uid://bqdej8g1xcycc" path="res://Scenes/File_Window/bounce.tscn" id="18_4j8fu"]
+[ext_resource type="Texture2D" uid="uid://b5mvm5gba0ucg" path="res://assets/visuals/facebook.png" id="19_qpnbv"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pfbb1"]
 
@@ -28,13 +29,7 @@
 font = ExtResource("6_pfbb1")
 font_color = Color(0, 0, 0, 1)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qpnbv"]
-bg_color = Color(0.870588, 0.870588, 0.870588, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b55dp"]
-bg_color = Color(0.868985, 0.868985, 0.868985, 1)
-
-[sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_qpnbv"]
+[sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_wg1g7"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h2yge"]
 bg_color = Color(0.909804, 0.921569, 0.945098, 1)
@@ -108,7 +103,7 @@ context_menu_type = 1
 [node name="QuitPopup" type="Popup" parent="DesktopWallpaper"]
 title = "Oh?"
 initial_position = 1
-size = Vector2i(200, 150)
+size = Vector2i(199, 119)
 visible = true
 borderless = false
 always_on_top = true
@@ -150,25 +145,20 @@ label_settings = SubResource("LabelSettings_wg1g7")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="LineEdit" type="LineEdit" parent="DesktopWallpaper/QuitPopup/MarginContainer/VBoxContainer"]
-layout_mode = 2
-theme_override_colors/font_placeholder_color = Color(0.241156, 0.241156, 0.241156, 1)
-theme_override_colors/font_color = Color(0, 0, 0, 1)
-theme_override_fonts/font = ExtResource("6_pfbb1")
-theme_override_styles/focus = SubResource("StyleBoxFlat_qpnbv")
-theme_override_styles/normal = SubResource("StyleBoxFlat_b55dp")
-placeholder_text = "I'm waiting..."
-alignment = 1
-
 [node name="RecordButton" type="Button" parent="DesktopWallpaper/QuitPopup/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(30, 30)
 layout_mode = 2
 size_flags_vertical = 4
+icon = ExtResource("8_qpnbv")
+expand_icon = true
 script = ExtResource("8_wg1g7")
 
 [node name="AudioStreamRecord" type="AudioStreamPlayer" parent="DesktopWallpaper/QuitPopup/MarginContainer/VBoxContainer/RecordButton"]
-stream = SubResource("AudioStreamMicrophone_qpnbv")
+stream = SubResource("AudioStreamMicrophone_wg1g7")
+autoplay = true
 bus = &"Record"
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="DesktopWallpaper/QuitPopup/MarginContainer/VBoxContainer/RecordButton"]
 
 [node name="Taskbar" type="Control" parent="."]
 custom_minimum_size = Vector2(0, 45)
@@ -298,11 +288,11 @@ script = ExtResource("12_scol6")
 custom_minimum_size = Vector2(10, 0)
 layout_mode = 2
 
-[node name="Spotify" parent="." instance=ExtResource("14_pvnqr")]
+[node name="MyFace" parent="." instance=ExtResource("14_pvnqr")]
 position = Vector2(57, 157)
 collision_mask = 2
-icon = ExtResource("16_ojlgc")
-title = "My Music"
+icon = ExtResource("19_qpnbv")
+title = "MyFace"
 
 [node name="Files" parent="." instance=ExtResource("14_pvnqr")]
 position = Vector2(168, 158)
@@ -316,8 +306,8 @@ title = "My Files"
 [node name="bounce" parent="Files" instance=ExtResource("18_4j8fu")]
 position = Vector2(-1768, 103)
 
-[connection signal="text_submitted" from="DesktopWallpaper/QuitPopup/MarginContainer/VBoxContainer/LineEdit" to="DesktopWallpaper/QuitPopup" method="_on_text_submitted"]
 [connection signal="button_down" from="DesktopWallpaper/QuitPopup/MarginContainer/VBoxContainer/RecordButton" to="DesktopWallpaper/QuitPopup/MarginContainer/VBoxContainer/RecordButton" method="_on_button_down"]
+[connection signal="button_up" from="DesktopWallpaper/QuitPopup/MarginContainer/VBoxContainer/RecordButton" to="DesktopWallpaper/QuitPopup" method="_on_record_button_up"]
 [connection signal="button_up" from="DesktopWallpaper/QuitPopup/MarginContainer/VBoxContainer/RecordButton" to="DesktopWallpaper/QuitPopup/MarginContainer/VBoxContainer/RecordButton" method="_on_button_up"]
 [connection signal="mouse_entered" from="Taskbar/TaskbarCenter/PanelContainer/HBoxContainer/Search" to="Taskbar/TaskbarCenter/PanelContainer/HBoxContainer/Search" method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="Taskbar/TaskbarCenter/PanelContainer/HBoxContainer/Search" to="Taskbar/TaskbarCenter/PanelContainer/HBoxContainer/Search" method="_on_mouse_exited"]

@@ -172,9 +172,12 @@ func _ready():
 	position = Vector2i(-2000,0)
 	patheditor.text = "Home >"
 
+
 func _on_close_requested() -> void:
 	position = Vector2i (-1000,0)
 	hide()
+
+
 # Switches displayed files to those in the hobby node
 func _on_hobbies_pressed() -> void:
 	if state != "hobby":
@@ -187,6 +190,8 @@ func _on_hobbies_pressed() -> void:
 		patheditor.text = "Home > Hobby"
 	else:
 		pass
+
+
 # Switches displayed files to those in the work node
 func _on_work_pressed() -> void:
 	if state != "work":
@@ -199,12 +204,16 @@ func _on_work_pressed() -> void:
 		patheditor.text = "Home > Work"
 	else:
 		pass
+
+
 # When important document file is clicked, spawns a flying pdf file onto the desktop
 func _on_file_button_pressed() -> void:
 	var obj = confetti.instantiate()
 	obj.position = position + Vector2i(size.x / 2.0, 50)
 	obj.display.connect(_on_confetti_display)
 	add_sibling(obj)
+
+
 #When one of those flying pdf files is clicked, displays the text associated with it in the reader window
 func _on_confetti_display(type: String, point: Vector2):
 	var obj = reader.instantiate()
@@ -227,6 +236,8 @@ func _on_confetti_display(type: String, point: Vector2):
 	text = text.insert(randi_range(0, text.length()-1), password)
 	obj.write(text, point)
 	add_sibling(obj)
+
+
 #Opens another window in which a password can be entered.
 #This password changes with every time a password is attempted to be entered and with everytime someone tries to find the password in the important documents pdfs, into which the password is inserted at a random position
 func _on_secret_pressed() -> void:
@@ -235,15 +246,22 @@ func _on_secret_pressed() -> void:
 	obj.password = passwords[tries % 10]
 	obj.tries = tries
 	add_child(obj)
+
+
 #To keep track of the amount of tries a person has spent trying to find the password
 func _on_secret_closed(x):
 	tries += x
+
+
 #Moves the window ever so slightly if the "go back" or "go forward" button are pushed
 func _on_back_button_down() -> void:
 	position.x -= 10
 
+
 func _on_forward_button_down() -> void:
 	position.x += 10
+
+
 #When the birdwatching file is pressed spawns birds on each side of the desktop, which fly back and forth
 func _on_bird_button_pressed() -> void:
 	bird_up.emit()
@@ -260,6 +278,7 @@ func _on_bird_button_pressed() -> void:
 	bird_button.disabled = true
 	timer.start()
 
+
 func _on_timer_timeout() -> void:
 	timer.stop()
 	bird_button.disabled = false
@@ -270,6 +289,7 @@ func _on_timer_timeout() -> void:
 	obj.number_range = [5,20]
 	obj.select.connect(_on_number_selected)
 	add_sibling(obj)
+
 
 func _on_number_selected(x):
 	if birds != x:
@@ -287,9 +307,11 @@ func _on_number_selected(x):
 		state = "bird"
 		patheditor.text = "Home > Hobby > Bird Watching"
 
+
 func _on_line_edit_text_submitted(new_text: String) -> void:
 	if new_text == "relinquo":
 		get_tree().quit()
+
 
 func _on_bird_pic_button_pressed() -> void:
 	var obj = picture_window.instantiate()
@@ -298,6 +320,7 @@ func _on_bird_pic_button_pressed() -> void:
 	obj.global_position = Vector2i(500,400)
 	add_sibling(obj)
 
+
 func _on_cut_pressed() -> void:
 	change_wallpaper.emit("res://assets/visuals/wallpaper_cut.jpg")
 	$VBoxContainer/Control/PanelContainer/interact/cut.disabled = true
@@ -305,12 +328,14 @@ func _on_cut_pressed() -> void:
 	$sound.play()
 	$VBoxContainer/Control/PanelContainer/interact/paste.disabled = false
 
+
 func _on_paste_pressed() -> void:
 	$VBoxContainer/Control/PanelContainer/interact/paste.disabled = true
 	$VBoxContainer/Control/PanelContainer/interact/cut.disabled = false
 	change_wallpaper.emit("res://assets/visuals/wallpaper_putz.jpg")
 	$sound.stream = load("res://assets/sounds/putz.wav")
 	$sound.play()
+
 
 func _on_detection_pressed() -> void:
 	if not Gamemaster.click_icon.has("Important Documents"):
@@ -324,6 +349,7 @@ func _on_detection_pressed() -> void:
 		var obj = minesweeper.instantiate()
 		add_sibling(obj)
 
+
 func _on_drawing_pressed() -> void:
 	if not Gamemaster.click_icon.has("Important Documents"):
 		Gamemaster.click_icon["Important Documents"] = 0
@@ -336,18 +362,22 @@ func _on_drawing_pressed() -> void:
 		var obj = simon_says.instantiate()
 		add_sibling(obj)
 
+
 func _on_focus_entered() -> void:
 	if "minesweeper" and "simon" in Gamemaster.flags:
 		$VBoxContainer/HSplitContainer/folders/hobby_files/tutorial.show()
+
 
 func _on_tutorial_pressed() -> void:
 	var obj = reader.instantiate()
 	obj.write("3: uo \n Search for it", get_mouse_position())
 	add_sibling(obj)
 
+
 func _on_new_pressed() -> void:
 	var obj = creation.instantiate()
 	add_sibling(obj)
+
 
 func _on_copy_pressed() -> void:
 	var obj = picture_window.instantiate()
