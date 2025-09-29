@@ -11,8 +11,8 @@ func _ready():
 	direction = [-1,1].pick_random()
 	if direction > 0:
 		sprite.flip_h = true
-	
-	
+
+
 func _physics_process(delta: float) -> void:
 	if falling:
 		velocity.y = speed * 3 *delta
@@ -33,4 +33,3 @@ func _physics_process(delta: float) -> void:
 			$sound.stream = load("res://assets/sounds/duck-falling.mp3")
 			$sound.volume_db = -10.0
 			$sound.play()
-		

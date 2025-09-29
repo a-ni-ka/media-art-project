@@ -48,6 +48,12 @@ func place_context_menu(event: InputEventMouseButton) -> void:
 			position.x = event.position.x - size.x
 		if position.y + size.y > screen_size.y:
 			position.y = event.position.y - size.y
+	elif context_menu_type == ContextMenuTypes.ITEM:
+		var item: Area2D = get_parent()
+		print(item)
+		position.x = item.position.x * .5
+		position.y = item.position.y * .5
+		print(position, item.position)
 	for item in get_tree().get_nodes_in_group("ContextMenu"):
 		var control_node := item as Control
 		control_node.visible = false

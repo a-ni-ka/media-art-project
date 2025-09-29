@@ -264,19 +264,20 @@ func _on_forward_button_down() -> void:
 
 #When the birdwatching file is pressed spawns birds on each side of the desktop, which fly back and forth
 func _on_bird_button_pressed() -> void:
-	bird_up.emit()
-	for x in randi_range(5,20):
-		var obj = bird.instantiate()
-		add_sibling(obj)
-		if obj.direction < 0:
-			obj.global_position = Vector2(randi_range(1700, 2200), randi_range(20,700))
-		else:
-			obj.global_position = Vector2(randi_range(-100, -600), randi_range(20,700))
-		birds += 1
-	$sound.play()
-	timer.wait_time = 15.0
-	bird_button.disabled = true
-	timer.start()
+	if birds < 45:
+		bird_up.emit()
+		for x in randi_range(5,20):
+			var obj = bird.instantiate()
+			add_sibling(obj)
+			if obj.direction < 0:
+				obj.global_position = Vector2(randi_range(1700, 2200), randi_range(20,700))
+			else:
+				obj.global_position = Vector2(randi_range(-100, -600), randi_range(20,700))
+			birds += 1
+		$sound.play()
+		timer.wait_time = 15.0
+		bird_button.disabled = true
+		timer.start()
 
 
 func _on_timer_timeout() -> void:

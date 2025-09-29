@@ -1,15 +1,18 @@
-[gd_scene load_steps=8 format=3 uid="uid://osdsi1x0qrf3"]
+[gd_scene load_steps=10 format=3 uid="uid://osdsi1x0qrf3"]
 
 [ext_resource type="PackedScene" uid="uid://dfp7jxsdjx0qq" path="res://Scenes/ContextMenu/context_menu_line.tscn" id="1_3jyg3"]
 [ext_resource type="Texture2D" uid="uid://bu1c6m55uvqew" path="res://assets/visuals/icon_view_24x24.png" id="2_0lldq"]
 [ext_resource type="Texture2D" uid="uid://cf7lldcab0dty" path="res://assets/visuals/icon_refresh_24x24.png" id="3_yqa3s"]
 [ext_resource type="Texture2D" uid="uid://dxtyke5ld8me2" path="res://assets/visuals/icon_new_24x24.png" id="4_r4iff"]
+[ext_resource type="Texture2D" uid="uid://cabtklvx7vqwk" path="res://assets/visuals/settings.png" id="5_ar47g"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_jv6dx"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_ar47g"]
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_r2aor"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_gmwxc"]
 
 [node name="VBoxContainer" type="VBoxContainer"]
 size_flags_vertical = 4
@@ -34,3 +37,10 @@ theme_override_styles/panel = SubResource("StyleBoxEmpty_r2aor")
 label = "New"
 icon = ExtResource("4_r4iff")
 pitch = 1.25
+
+[node name="ContextMenuLine4" parent="." instance=ExtResource("1_3jyg3")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_gmwxc")
+label = "Settings"
+icon = ExtResource("5_ar47g")
+pitch = 1.325

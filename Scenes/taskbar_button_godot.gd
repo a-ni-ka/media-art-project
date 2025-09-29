@@ -15,6 +15,6 @@ func _input(event: InputEvent) -> void:
 			else:
 				letters_filtered.append(element)
 		if letters_filtered == click:
-			EventBus.explorer_clicked.emit()
+			EventBus.godot_clicked.emit()
 	elif not mouse_state and not letters_filtered.is_empty():
 		letters_filtered.clear()

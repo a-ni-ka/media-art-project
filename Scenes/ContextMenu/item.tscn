@@ -1,15 +1,25 @@
-[gd_scene load_steps=4 format=3 uid="uid://bocvsia8epccx"]
+[gd_scene load_steps=6 format=3 uid="uid://bocvsia8epccx"]
 
 [ext_resource type="PackedScene" uid="uid://dfp7jxsdjx0qq" path="res://Scenes/ContextMenu/context_menu_line.tscn" id="1_cpb66"]
-[ext_resource type="Texture2D" uid="uid://bu1c6m55uvqew" path="res://visuals/icon_view_24x24.png" id="2_qplvq"]
+[ext_resource type="Texture2D" uid="uid://bu1c6m55uvqew" path="res://assets/visuals/icon_view_24x24.png" id="2_qplvq"]
+[ext_resource type="Texture2D" uid="uid://cf7lldcab0dty" path="res://assets/visuals/icon_refresh_24x24.png" id="3_crgdt"]
 
-[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nj4g0"]
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_cpb66"]
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_qplvq"]
 
 [node name="VBoxContainer" type="VBoxContainer"]
 size_flags_vertical = 4
 
 [node name="ContextMenuLine" parent="." instance=ExtResource("1_cpb66")]
 layout_mode = 2
-theme_override_styles/panel = SubResource("StyleBoxEmpty_nj4g0")
+theme_override_styles/panel = SubResource("StyleBoxEmpty_cpb66")
 label = "Open"
 icon = ExtResource("2_qplvq")
+
+[node name="ContextMenuLine2" parent="." instance=ExtResource("1_cpb66")]
+layout_mode = 2
+theme_override_styles/panel = SubResource("StyleBoxEmpty_qplvq")
+label = "Refresh"
+icon = ExtResource("3_crgdt")
+pitch = 1.125

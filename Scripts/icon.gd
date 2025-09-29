@@ -16,9 +16,11 @@ const ICON_SIZE := Vector2(70., 70.)
 # When copying this icon, remember to connect to the mouse signal
 
 @onready var label: Label = $Label
+@onready var context_menu := $ContextMenu as ContextMenu
 
 
 func _ready() -> void:
+	context_menu.hide()
 	$ColorRect.visible = false
 
 
@@ -39,3 +41,9 @@ func _on_button_mouse_entered() -> void:
 func _on_button_mouse_exited() -> void:
 	$ColorRect.visible = false
 	label.text_overrun_behavior = TextServer.OVERRUN_TRIM_ELLIPSIS
+
+
+func _input(event: InputEvent) -> void:
+	if $ColorRect.visible:
+		if event.is_action_pressed("Right Click"):
+			context_menu.place_context_menu(event)

@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://dlkaebh8nai8u"]
+[gd_scene load_steps=5 format=3 uid="uid://dlkaebh8nai8u"]
 
 [ext_resource type="Script" uid="uid://bxmjkx7lppbq" path="res://Scripts/icon.gd" id="1_rsedf"]
 [ext_resource type="Texture2D" uid="uid://restn4myfd6p" path="res://assets/visuals/file_explorer.png" id="2_mremn"]
+[ext_resource type="PackedScene" uid="uid://dk16qhj3ykph2" path="res://Scenes/ContextMenu/context_menu.tscn" id="3_mremn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rsedf"]
 size = Vector2(70, 70)
@@ -60,6 +61,9 @@ action_mode = 0
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, 7)
 shape = SubResource("RectangleShape2D_rsedf")
+
+[node name="ContextMenu" parent="." instance=ExtResource("3_mremn")]
+visible = false
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="body_exited" from="." to="." method="_on_body_exited"]
