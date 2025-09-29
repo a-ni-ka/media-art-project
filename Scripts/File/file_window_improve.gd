@@ -209,7 +209,7 @@ func _on_work_pressed() -> void:
 # When important document file is clicked, spawns a flying pdf file onto the desktop
 func _on_file_button_pressed() -> void:
 	var obj = confetti.instantiate()
-	obj.position = position + Vector2i(size.x / 2.0, 50)
+	obj.position = position + Vector2i(int(size.x / 2.0), 50)
 	obj.display.connect(_on_confetti_display)
 	add_sibling(obj)
 

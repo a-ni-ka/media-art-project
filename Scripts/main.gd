@@ -9,16 +9,23 @@ enum ZoomStateOptions {
 }
 
 @onready var canvas_layer: CanvasLayer = $SubViewportContainer/SubViewport/CanvasLayer
+@onready var viewport: SubViewportContainer = $SubViewportContainer
 @onready var colorblind_shader: ShaderMaterial = $SubViewportContainer.material
 
 var zoom_state_option : ZoomStateOptions : set = _set_zoom_state
 var tolerance: float = 0.0
+var screen_split: bool = false
 
 
 func _ready() -> void:
 	get_tree().set_auto_accept_quit(false)
 	$LoadingScreen.visible = true
+	#print("cameras:")
+	#for feed in CameraServer.feeds():
+		#var name := feed.get_name()
+		#print(name)
 	EventBus.zoom_clicked.connect(_on_zoom_clicked)
+	EventBus.start_clicked.connect(_on_start_clicked)
 	zoom_state_option = ZoomStateOptions.DEFAULT
 
 
@@ -71,3 +78,28 @@ func _input(event: InputEvent) -> void:
 				if tolerance > 0:
 					tolerance -= .1
 		colorblind_shader.set_shader_parameter("tolerance", tolerance)
+
+
+func _on_start_clicked() -> void:
+	var temp_viewport_1: SubViewportContainer = viewport.duplicate()
+	var temp_viewport_2: SubViewportContainer = viewport.duplicate()
+	var temp_viewport_3: SubViewportContainer = viewport.duplicate()
+	if screen_split:
+		screen_split = false
+		for child in get_children():
+			if child is SubViewportContainer and child != viewport:
+				child.queue_free()
+		viewport.scale = Vector2(1. ,1.)
+	else:
+		screen_split = true
+		viewport.scale = Vector2(.5, .5)
+		temp_viewport_1.scale = Vector2(.5, .5)
+		temp_viewport_2.scale = Vector2(.5, .5)
+		temp_viewport_3.scale = Vector2(.5, .5)
+		add_child(temp_viewport_1)
+		add_child(temp_viewport_2)
+		add_child(temp_viewport_3)
+		temp_viewport_1.offset_top = viewport.size.y
+		temp_viewport_2.offset_left = viewport.size.x
+		temp_viewport_3.offset_top = viewport.size.y
+		temp_viewport_3.offset_left = viewport.size.x

@@ -17,7 +17,7 @@ func _input(event: InputEvent) -> void:
 		click += 1
 
 	# Saves last ten letters typed in array
-	if event is InputEventKey:
+	if event is InputEventKey and event.is_released():
 		match event.keycode:
 			KEY_A:
 				letters.append("a")
@@ -75,6 +75,5 @@ func _input(event: InputEvent) -> void:
 				pass
 
 		if letters.size() > 10:
-			print(letters.pop_front())
-
+			letters.pop_front()
 		print(letters)

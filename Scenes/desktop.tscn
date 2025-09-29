@@ -1,4 +1,4 @@
-[gd_scene load_steps=30 format=3 uid="uid://4a33w8jd0tmg"]
+[gd_scene load_steps=34 format=3 uid="uid://4a33w8jd0tmg"]
 
 [ext_resource type="Texture2D" uid="uid://dxdwcc07kt2q3" path="res://assets/visuals/w11wallpaper.jpg" id="1_4j8fu"]
 [ext_resource type="Script" uid="uid://bnhmru8blddne" path="res://Scripts/desktop_wallpaper.gd" id="2_djnmm"]
@@ -16,12 +16,16 @@
 [ext_resource type="Script" uid="uid://csmpkjf8glief" path="res://Scripts/search.gd" id="9_n3uxm"]
 [ext_resource type="Script" uid="uid://cal44pm13ulx8" path="res://Scripts/File/taskbar_button_files.gd" id="11_4j8fu"]
 [ext_resource type="Texture2D" uid="uid://pgyu161absk4" path="res://assets/visuals/file_explorer_icon.png" id="11_cq71g"]
+[ext_resource type="Script" uid="uid://d0hkk0w2eskp" path="res://Scenes/start_button.gd" id="12_inoge"]
 [ext_resource type="Script" uid="uid://dfjqhnollgwy4" path="res://Scripts/date_time.gd" id="12_scol6"]
 [ext_resource type="PackedScene" uid="uid://dlkaebh8nai8u" path="res://Scenes/icon.tscn" id="14_pvnqr"]
 [ext_resource type="Script" uid="uid://dl81oaq38sjxv" path="res://Scripts/File/myfiles.gd" id="15_1djlj"]
 [ext_resource type="PackedScene" uid="uid://rivmbmqxn413" path="res://Scenes/File_Window/file_window_improve.tscn" id="17_4j8fu"]
 [ext_resource type="PackedScene" uid="uid://bqdej8g1xcycc" path="res://Scenes/File_Window/bounce.tscn" id="18_4j8fu"]
+[ext_resource type="Script" uid="uid://ba1laqi7vl7vt" path="res://Scripts/my_face.gd" id="19_b55dp"]
 [ext_resource type="Texture2D" uid="uid://b5mvm5gba0ucg" path="res://assets/visuals/facebook.png" id="19_qpnbv"]
+[ext_resource type="Texture2D" uid="uid://cy3lb3jupwjlu" path="res://assets/visuals/recycle_icon.png" id="24_ad33h"]
+[ext_resource type="Script" uid="uid://bxj6crt6r8vq0" path="res://Scenes/trash.gd" id="24_inoge"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_pfbb1"]
 
@@ -202,6 +206,7 @@ alignment = 1
 
 [node name="Start" parent="Taskbar/TaskbarCenter" instance=ExtResource("6_b55dp")]
 layout_mode = 2
+script = ExtResource("12_inoge")
 icon = ExtResource("7_ad33h")
 icon_size = 22.0
 
@@ -291,11 +296,12 @@ layout_mode = 2
 [node name="MyFace" parent="." instance=ExtResource("14_pvnqr")]
 position = Vector2(57, 157)
 collision_mask = 2
+script = ExtResource("19_b55dp")
 icon = ExtResource("19_qpnbv")
 title = "MyFace"
 
 [node name="Files" parent="." instance=ExtResource("14_pvnqr")]
-position = Vector2(168, 158)
+position = Vector2(168, 157)
 collision_mask = 2
 script = ExtResource("15_1djlj")
 icon = ExtResource("11_cq71g")
@@ -305,6 +311,14 @@ title = "My Files"
 
 [node name="bounce" parent="Files" instance=ExtResource("18_4j8fu")]
 position = Vector2(-1768, 103)
+
+[node name="Trash" parent="." instance=ExtResource("14_pvnqr")]
+position = Vector2(57, 57)
+script = ExtResource("24_inoge")
+icon = ExtResource("24_ad33h")
+title = "Recycling Bin"
+
+[node name="Sound" type="AudioStreamPlayer2D" parent="Trash"]
 
 [connection signal="button_down" from="DesktopWallpaper/QuitPopup/MarginContainer/VBoxContainer/RecordButton" to="DesktopWallpaper/QuitPopup/MarginContainer/VBoxContainer/RecordButton" method="_on_button_down"]
 [connection signal="button_up" from="DesktopWallpaper/QuitPopup/MarginContainer/VBoxContainer/RecordButton" to="DesktopWallpaper/QuitPopup" method="_on_record_button_up"]

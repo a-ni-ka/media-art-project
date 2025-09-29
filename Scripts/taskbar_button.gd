@@ -5,6 +5,7 @@ extends Control
 @export var icon_size: float
 var mouse_state = false
 
+
 func _ready() -> void:
 	%Icon.custom_minimum_size = Vector2(icon_size, icon_size)
 	%Icon.texture = icon

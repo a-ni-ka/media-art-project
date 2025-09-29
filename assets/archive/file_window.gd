@@ -151,7 +151,7 @@ func _on_close_requested() -> void:
 	self.position = Vector2i(-1000, 0)
 	self.size = Vector2i(267,450)
 	self.hide()
-	
+
 func _on_hobbies_pressed() -> void:
 	if state != "hobby":
 		$work_files.position = Vector2(269,-300)
@@ -195,7 +195,7 @@ func _on_confetti_display(type: String, point: Vector2):
 	text = text.insert(randi_range(0, text.length()-1), password)
 	obj.write(text, point)
 	add_sibling(obj)
-	
+
 
 func _on_secret_pressed() -> void:
 	var obj = secret_window.instantiate()
@@ -206,4 +206,3 @@ func _on_secret_pressed() -> void:
 
 func _on_secret_closed(x):
 	tries += x
-	
