@@ -6,7 +6,7 @@ extends TextureRect
 
 func _ready() -> void:
 	context_menu.hide()
-
+	EventBus.face_clicked.connect(_on_face_clicked)
 
 func _gui_input(event: InputEvent) -> void:
 	if event is InputEventMouseButton:
@@ -37,3 +37,8 @@ func _on_file_window_bird_up() -> void:
 func _on_search_line_edit_text_submitted(new_text: String) -> void:
 	if new_text == "quit":
 		quit_popup.show()
+
+
+func _on_face_clicked() -> void:
+	$Face.show()
+	$Face.play("default")

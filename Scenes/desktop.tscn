@@ -1,4 +1,4 @@
-[gd_scene load_steps=34 format=3 uid="uid://4a33w8jd0tmg"]
+[gd_scene load_steps=44 format=3 uid="uid://4a33w8jd0tmg"]
 
 [ext_resource type="Texture2D" uid="uid://dxdwcc07kt2q3" path="res://assets/visuals/w11wallpaper.jpg" id="1_4j8fu"]
 [ext_resource type="Script" uid="uid://bnhmru8blddne" path="res://Scripts/desktop_wallpaper.gd" id="2_djnmm"]
@@ -14,6 +14,7 @@
 [ext_resource type="Texture2D" uid="uid://c4dda3hn5klm4" path="res://assets/visuals/record.png" id="8_qpnbv"]
 [ext_resource type="Script" uid="uid://dpt8joeatabdy" path="res://Scripts/record_button.gd" id="8_wg1g7"]
 [ext_resource type="Script" uid="uid://csmpkjf8glief" path="res://Scripts/search.gd" id="9_n3uxm"]
+[ext_resource type="Texture2D" uid="uid://domdu8uwrgotc" path="res://assets/visuals/faces.png" id="10_ix27p"]
 [ext_resource type="Script" uid="uid://cal44pm13ulx8" path="res://Scripts/File/taskbar_button_files.gd" id="11_4j8fu"]
 [ext_resource type="Texture2D" uid="uid://pgyu161absk4" path="res://assets/visuals/file_explorer_icon.png" id="11_cq71g"]
 [ext_resource type="Script" uid="uid://d0hkk0w2eskp" path="res://Scenes/start_button.gd" id="12_inoge"]
@@ -34,6 +35,88 @@ font = ExtResource("6_pfbb1")
 font_color = Color(0, 0, 0, 1)
 
 [sub_resource type="AudioStreamMicrophone" id="AudioStreamMicrophone_wg1g7"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cq71g"]
+atlas = ExtResource("10_ix27p")
+region = Rect2(200, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_scol6"]
+atlas = ExtResource("10_ix27p")
+region = Rect2(600, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cvi26"]
+atlas = ExtResource("10_ix27p")
+region = Rect2(400, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pvnqr"]
+atlas = ExtResource("10_ix27p")
+region = Rect2(800, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jk4xc"]
+atlas = ExtResource("10_ix27p")
+region = Rect2(1000, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ojlgc"]
+atlas = ExtResource("10_ix27p")
+region = Rect2(1200, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iunll"]
+atlas = ExtResource("10_ix27p")
+region = Rect2(1400, 0, 200, 200)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_gru58"]
+atlas = ExtResource("10_ix27p")
+region = Rect2(1600, 0, 200, 200)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_5bsna"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cq71g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_scol6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cvi26")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_scol6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pvnqr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jk4xc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ojlgc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iunll")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_gru58")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iunll")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pvnqr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pvnqr")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iunll")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ojlgc")
+}],
+"loop": true,
+"name": &"default",
+"speed": 3.0
+}]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_h2yge"]
 bg_color = Color(0.909804, 0.921569, 0.945098, 1)
@@ -163,6 +246,14 @@ autoplay = true
 bus = &"Record"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="DesktopWallpaper/QuitPopup/MarginContainer/VBoxContainer/RecordButton"]
+
+[node name="Face" type="AnimatedSprite2D" parent="DesktopWallpaper"]
+visible = false
+position = Vector2(800, 450)
+scale = Vector2(2, 2)
+sprite_frames = SubResource("SpriteFrames_5bsna")
+frame = 13
+frame_progress = 0.921828
 
 [node name="Taskbar" type="Control" parent="."]
 custom_minimum_size = Vector2(0, 45)
