@@ -14,7 +14,7 @@ var text_options: Array = [
 
 func _on_record_button_up() -> void:
 	await record_button._on_button_up()
-	print("popup: ", record_button.volume)
+	#print("popup: ", record_button.volume)
 	if record_button.volume < .12:
 		label.text = text_options[randi_range(0, 4)]
 	else:

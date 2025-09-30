@@ -4,6 +4,7 @@ const WARP_SHADER = preload("res://assets/visuals/warp.gdshader")
 
 @onready var context_menu := $ContextMenu as ContextMenu
 @onready var quit_popup: Popup = $QuitPopup
+@onready var ad_popup: Popup = $AdPopup
 
 
 func _ready() -> void:
@@ -43,6 +44,8 @@ func _on_file_window_bird_up() -> void:
 func _on_search_line_edit_text_submitted(new_text: String) -> void:
 	if new_text == "quit":
 		quit_popup.show()
+	else:
+		ad_popup.show()
 
 
 func _on_face_clicked() -> void:

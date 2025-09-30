@@ -1,4 +1,4 @@
-[gd_scene load_steps=45 format=3 uid="uid://4a33w8jd0tmg"]
+[gd_scene load_steps=46 format=3 uid="uid://4a33w8jd0tmg"]
 
 [ext_resource type="Texture2D" uid="uid://dxdwcc07kt2q3" path="res://assets/visuals/w11wallpaper.jpg" id="1_4j8fu"]
 [ext_resource type="Script" uid="uid://bnhmru8blddne" path="res://Scripts/desktop_wallpaper.gd" id="2_djnmm"]
@@ -15,6 +15,7 @@
 [ext_resource type="Script" uid="uid://dpt8joeatabdy" path="res://Scripts/record_button.gd" id="8_wg1g7"]
 [ext_resource type="Script" uid="uid://csmpkjf8glief" path="res://Scripts/search.gd" id="9_n3uxm"]
 [ext_resource type="Texture2D" uid="uid://domdu8uwrgotc" path="res://assets/visuals/faces.png" id="10_ix27p"]
+[ext_resource type="Texture2D" uid="uid://d4canmt1c2l0e" path="res://assets/visuals/ad_img.png" id="10_scol6"]
 [ext_resource type="Script" uid="uid://cal44pm13ulx8" path="res://Scripts/File/taskbar_button_files.gd" id="11_4j8fu"]
 [ext_resource type="Texture2D" uid="uid://pgyu161absk4" path="res://assets/visuals/file_explorer_icon.png" id="11_cq71g"]
 [ext_resource type="Script" uid="uid://d0hkk0w2eskp" path="res://Scripts/start_button.gd" id="12_inoge"]
@@ -247,6 +248,30 @@ autoplay = true
 bus = &"Record"
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="DesktopWallpaper/QuitPopup/MarginContainer/VBoxContainer/RecordButton"]
+
+[node name="AdPopup" type="Popup" parent="DesktopWallpaper"]
+auto_translate_mode = 1
+title = "Request submitted! Enjoy this ad reward:"
+initial_position = 1
+size = Vector2i(600, 400)
+visible = true
+borderless = false
+always_on_top = true
+max_size = Vector2i(1600, 900)
+keep_title_visible = true
+theme = ExtResource("5_pfbb1")
+
+[node name="ColorRect" type="ColorRect" parent="DesktopWallpaper/AdPopup"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="DesktopWallpaper/AdPopup"]
+offset_right = 40.0
+offset_bottom = 40.0
+texture = ExtResource("10_scol6")
 
 [node name="Face" type="AnimatedSprite2D" parent="DesktopWallpaper"]
 visible = false

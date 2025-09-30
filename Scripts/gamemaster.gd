@@ -76,4 +76,4 @@ func _input(event: InputEvent) -> void:
 
 		if letters.size() > 10:
 			letters.pop_front()
-		print(letters)
+		#print(letters)

@@ -1,20 +1,19 @@
 @tool
 extends "res://Scripts/taskbar_button.gd"
 
-var click: Array = ["c", "l", "i", "c", "k"]
+var click: Array = ["C", "L", "I", "C", "K"]
 var letters_filtered: Array = []
 
 
 func _input(event: InputEvent) -> void:
-	if mouse_state and event is InputEventKey and event.is_released():
-		if letters_filtered.size() > 5:
-			letters_filtered.pop_front()
-		for element in click:
-			if element not in Gamemaster.letters:
-				pass
-			else:
-				letters_filtered.append(element)
+	if mouse_state:
+		if event is InputEventKey and event.is_pressed():
+			var event_key := event as InputEventKey
+			if letters_filtered.size() > 5:
+				letters_filtered.pop_front()
+			letters_filtered.append(event_key.as_text_keycode())
 		if letters_filtered == click:
+			letters_filtered.clear()
 			EventBus.start_clicked.emit()
-	elif not mouse_state and not letters_filtered.is_empty():
+	else:
 		letters_filtered.clear()

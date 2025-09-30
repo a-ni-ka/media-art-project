@@ -11,16 +11,18 @@
 	- date and time
 - desktop files:
 	- recycle bin
-	- spotify
+	- "myFace"
 	- files
 - basic window layout
 - color swap shader
 ### Functionally
-- right click = context menu
-- taskbar buttons are highlighted when hovering
+- twice an hour a cuckoo clock sound will play
+- right click on taskbar, wallpaper or icon = context menu
+- taskbar buttons & icons are highlighted when hovering
 - window:
 	- closes with click on x button
-	- turns on gravity for cursor
+	- moves with clicking left & right arrows
+	- navigation through folders with mouse left click
 - game master:
 	- left click counter
 	- 10 last keys pressed added to a list
@@ -30,13 +32,19 @@
 	- it can wrap around desktop icons and will then activate them
 - left click on search icon = zoom to random zoom state
 	- if zoom is more than 100%, screen can be scrolled by moving the cursor to the edge
+- input into search bar & submit will spawn a popup
+- if gamemaster list has the letters "c", "l", "i", "c", "k", hover over a taskbar button and press a key to activate it
 
 ## What is being worked on? Current problems and issues?
-- making the screen scroll better
+- Context menu doesn't place correctly when clicking item
 
 ## What are we planning to implement?
-- sooo many things
+- Implementation finalized
 
 ## Credits
 - Black Squirrel for the Mine Sweeper Sprites
-- Piano Sound Effect by freesound_community from Pixabay
+- Piano sound effect by freesound_community from Pixabay
+- Rotate woosh sound effect by floraphonic from Pixabay
+- Cuckoo clock sound effect by DRAGON-STUDIO from Pixabay
+- colorblind.gdshader adapted from "Replace Color" by edo0xff on godotshaders.com
+- warp.gdshader adapted from "WARP" by nikita1212 / imjustnerdio on godotshaders.com

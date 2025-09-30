@@ -120,7 +120,7 @@ func _on_click(click):
 		for tile in field[row]:
 			if tile.tile_state == Tile.State.MINE and tile.sprite.animation != "flag":
 				x += 1
-				print("Jup")
+				#print("Jup")
 	if x == 0:
 		$Window/Label.text = "You Won"
 		$Window/Label.show()

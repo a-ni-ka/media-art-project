@@ -33,4 +33,4 @@ func _on_button_up() -> void:
 	recording.set_format(format)
 	audio_stream_player.stream = recording
 	audio_stream_player.play()
-	print("button: ", volume)
+	#print("button: ", volume)
