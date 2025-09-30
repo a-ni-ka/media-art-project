@@ -48,3 +48,4 @@
 - Cuckoo clock sound effect by DRAGON-STUDIO from Pixabay
 - colorblind.gdshader adapted from "Replace Color" by edo0xff on godotshaders.com
 - warp.gdshader adapted from "WARP" by nikita1212 / imjustnerdio on godotshaders.com
+- "Never gonna give you up" by Rick Astley - https://www.youtube.com/watch?v=dQw4w9WgXcQ&list=RDdQw4w9WgXcQ&start_radio=1

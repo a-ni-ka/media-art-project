@@ -95,7 +95,7 @@ shape = SubResource("RectangleShape2D_576ms")
 
 [node name="sprite" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_1knak")
-animation = &"crash"
+animation = &"flying"
 autoplay = "flying"
 
 [node name="sound" type="AudioStreamPlayer2D" parent="."]
