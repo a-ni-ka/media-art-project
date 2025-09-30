@@ -1,5 +1,9 @@
 # ANNOYING OS
 
+## Description
+
+*"Windows POS" is a virtual desktop application that reacts to user input in unexpected ways and thus calls into question the users’ assumptions and preconceptions about interactive interfaces. It is designed to be frustrating and opposite to what UI designers might call intuitive. Upon first glance, it may appear as a regular Windows 11 desktop surface, but while interacting with the application the user will experience how much of what they take for granted in a digital user interface is the result of a decade-long process of standardization, influenced and driven by the capitalist system. This project is a commentary on the illusion of control in digital spaces, and on the ways in which digital architecture and design under capitalism are built around the ideal worker default in order to increase productivity, leaving behind those who may not fit this narrow definition: disabled people, homeless people, people who never had the means to learn the conventions of digital user interfaces, and more. Modern digital spaces were not made for them, and "Windows POS" was not made for you.*
+
 ## What has been implemented so far?
 
 ### Visually
