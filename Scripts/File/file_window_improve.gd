@@ -264,8 +264,8 @@ func _on_forward_button_down() -> void:
 
 #When the birdwatching file is pressed spawns birds on each side of the desktop, which fly back and forth
 func _on_bird_button_pressed() -> void:
+	bird_up.emit()
 	if birds < 45:
-		bird_up.emit()
 		for x in randi_range(5,20):
 			var obj = bird.instantiate()
 			add_sibling(obj)
